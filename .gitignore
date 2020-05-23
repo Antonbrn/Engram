@@ -1,2 +1,3 @@
-.DS_Store
-photo-app/src/.DS_Store
+.DS_store
+/node_modules
+node_modules/
