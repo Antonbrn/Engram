@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     height: "10vh",
   },
 });
-
+// hej
 
 const BottomBar = () => {
    
