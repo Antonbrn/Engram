@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AlbumContext } from "./AlbumContext";
+import { Link } from "react-router-dom";
 import {
   Typography,
   Box,
@@ -7,20 +8,50 @@ import {
   TextField,
   Button,
   IconButton,
+  Input,
 } from "@material-ui/core";
-import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
+import { ArrowForward } from "@material-ui/icons";
+import { storage } from "../../base";
 
 const CreateAlbums = () => {
-  const [title, setTitle] = useState("");
   const [albums, setAlbums] = useContext(AlbumContext);
+  const [title, setTitle] = useState("");
+  const [thumbnail, setThumbnail] = useState([]);
+  const [url, setUrl] = useState("");
 
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
 
+  const updateThumbnail = (e) => {
+    if (e.target.files[0]) {
+      setThumbnail(e.target.files[0]);
+    }
+  };
+
   const createAlbum = (e) => {
     e.preventDefault();
-    setAlbums((prevAlbums) => [...prevAlbums, { title: title }]);
+    const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("images")
+          .child(thumbnail.name)
+          .getDownloadURL()
+          .then((url) => {
+            setUrl(url);
+          });
+      }
+    );
+    setAlbums((prevAlbums) => [
+      ...prevAlbums,
+      { title: title, thumbnail: thumbnail },
+    ]);
   };
 
   return (
@@ -37,14 +68,18 @@ const CreateAlbums = () => {
         />
         <Typography variant="h5">Thumbnail</Typography>
         <Box>
-          <IconButton>
-            <AddToPhotosIcon fontSize="large" />
-          </IconButton>
+          <Input type="file" onChange={updateThumbnail} />
+          <Box>
+            <img src={url} />
+          </Box>
         </Box>
         <Box>
           <Button variant="outlined" type="submit">
             Create Album
           </Button>
+          <IconButton component={Link} to="/myalbums">
+            <ArrowForward />
+          </IconButton>
         </Box>
       </form>
     </Container>

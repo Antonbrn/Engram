@@ -1,10 +1,11 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 
-const Album = ({ name, key }) => {
+const Album = ({ title, thumbnail }) => {
   return (
     <div>
-      <Typography>{name}</Typography>
+      <Typography>{title}</Typography>
+      <img src={thumbnail} />
     </div>
   );
 };
