@@ -16,8 +16,10 @@ import fire from "../../base";
 //Imported icons
 import { ArrowBack } from "@material-ui/icons";
 import SettingsIcon from "@material-ui/icons/Settings";
+
 import BottomBar from './BottomBar';
 import { useMediaQuery } from "@material-ui/core";
+
 
 //CSS STYLES
 const useStyles = makeStyles({
@@ -31,7 +33,9 @@ const useStyles = makeStyles({
   },
   navBar: {
     height: "12vh",
-    background: "green",
+
+    background: "Orange",
+
   },
   menuIcon: {
     color: "#FFFFFF",

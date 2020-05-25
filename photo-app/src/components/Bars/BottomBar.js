@@ -5,18 +5,17 @@ import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 
-
-
 const useStyles = makeStyles({
   bottomIcons: {
     color: "#FFFF",
     fontSize: "30px",
   },
   bottomNav: {
-    background: "green",
-    height: "12vh",
+    background: "Orange",
+    height: "10vh",
   },
 });
+
 
 const BottomBar = () => {
    
