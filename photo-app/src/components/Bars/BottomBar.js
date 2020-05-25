@@ -10,8 +10,8 @@ const useStyles = makeStyles({
     fontSize: "40px",
   },
   bottomNav: {
-    background: "green",
-    height: "12vh",
+    background: "Orange",
+    height: "10vh",
   },
 });
 
