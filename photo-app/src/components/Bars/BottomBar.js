@@ -4,10 +4,13 @@ import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
+
+
+
 const useStyles = makeStyles({
   bottomIcons: {
     color: "#FFFF",
-    fontSize: "40px",
+    fontSize: "30px",
   },
   bottomNav: {
     background: "green",
@@ -16,16 +19,20 @@ const useStyles = makeStyles({
 });
 
 const BottomBar = () => {
+   
   const classes = useStyles();
 
   const [value, setValue] = React.useState("feed");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  
+  
   };
 
   return (
-    <BottomNavigation
+     
+      <BottomNavigation
       value={value}
       onChange={handleChange}
       className={classes.bottomNav}
@@ -54,6 +61,11 @@ const BottomBar = () => {
         icon={<NotificationsActive className={classes.bottomIcons} />}
       />
     </BottomNavigation>
+    
+    
+   
+
+    
   );
 };
 
