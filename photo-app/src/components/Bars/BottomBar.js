@@ -4,6 +4,7 @@ import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
+//123
 const useStyles = makeStyles({
   bottomIcons: {
     color: "#FFFF",
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
     height: "10vh",
   },
 });
+
 
 const BottomBar = () => {
   const classes = useStyles();
