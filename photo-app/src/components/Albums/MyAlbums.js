@@ -5,15 +5,12 @@ import Card from "@material-ui/core/Card";
 import { Link } from "react-router-dom";
 import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
+import styled from "styled-components";
 
 const useStyles = makeStyles({
   createAlbumBtn: {
     background: "green",
     color: "#FFFF",
-  },
-  cards: {
-    width: "50px",
-    height: "50px",
   },
   flexContainer: {
     background: "white",
@@ -32,7 +29,6 @@ const MyAlbums = () => {
 
       <Typography variant="h5">Shared Albums</Typography>
       <Box borderBottom={1} />
-      <Card className={classes.cards}></Card>
 
       <Button
         variant="contained"
