@@ -11,7 +11,7 @@ const Album = ({ title, thumbnail, url }) => {
   return (
     <Card>
       {console.log({ title, thumbnail })}
-      <img src={storage.url} />
+      <img src={url} />
       <CardContent>
         <Typography>{title}</Typography>
       </CardContent>
