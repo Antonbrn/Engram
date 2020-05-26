@@ -10,8 +10,8 @@ import { storage } from "../../base";
 const Album = ({ title, thumbnail, url }) => {
   return (
     <Card>
-      {console.log({ title, thumbnail })}
-      <img src={storage.url} />
+      {console.log({ title, thumbnail, url })}
+      <img src={url} />
       <CardContent>
         <Typography>{title}</Typography>
       </CardContent>

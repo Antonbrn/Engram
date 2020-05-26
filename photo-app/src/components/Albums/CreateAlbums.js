@@ -45,13 +45,15 @@ const CreateAlbums = () => {
           .getDownloadURL()
           .then((url) => {
             setUrl(url);
+            setAlbums((prevAlbums) => [
+              ...prevAlbums,
+              { title: title, thumbnail: thumbnail, url: url },
+            ]);
           });
+
       }
     );
-    setAlbums((prevAlbums) => [
-      ...prevAlbums,
-      { title: title, thumbnail: thumbnail, url: url },
-    ]);
+    
   };
   return (
     <Container style={{ height: "78vh" }}>
