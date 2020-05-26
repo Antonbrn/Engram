@@ -50,10 +50,9 @@ const CreateAlbums = () => {
     );
     setAlbums((prevAlbums) => [
       ...prevAlbums,
-      { title: title, thumbnail: thumbnail },
+      { title: title, thumbnail: thumbnail, url: url },
     ]);
   };
-
   return (
     <Container style={{ height: "78vh" }}>
       <Typography variant="h4">Create Album</Typography>

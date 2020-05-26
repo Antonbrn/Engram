@@ -7,7 +7,7 @@ export const AlbumProvider = (props) => {
     {
       title: "",
       thumbnail: "",
-      photos: [],
+      photos: "",
     },
   ]);
   return (
