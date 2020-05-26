@@ -21,12 +21,13 @@ const Album = ({ title, thumbnail, url }) => {
   return (
     <StyledCard>
       <CardActionArea>
-      {console.log({ title, thumbnail, url })}
-      <img  style={{width: "100%", height: "100%"}}  src={url} />
-      <CardContent>
-        <Typography>{title}</Typography>
-      </CardContent>
+      
+      <img  style={{width: "100%", height: "70%"}}  src={url} />
       </CardActionArea>
+      <CardContent>
+        <Typography variant="body2">{title}</Typography>
+      </CardContent>
+      
     </StyledCard>
   );
 };
