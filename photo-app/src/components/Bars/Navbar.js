@@ -25,7 +25,7 @@ import { useMediaQuery } from "@material-ui/core";
 const useStyles = makeStyles({
   menuSliderContainer: {
     width: 250,
-    background: "lightgrey",
+    background: "#bc5100",
     height: "100%",
   },
   listItem: {
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   navBar: {
     height: "12vh",
 
-    background: "Orange",
+    background: "#bc5100",
 
   },
   menuIcon: {
@@ -68,7 +68,7 @@ const menuLinks = [
 
 const Navbar = () => {
 
-  const isActive = useMediaQuery("(min-width: 600px)");
+  const mediaQueried = useMediaQuery("(min-width: 601px)");
   //Uses statehook for the slider
   const [state, setState] = useState({
     right: false,
@@ -107,7 +107,7 @@ const Navbar = () => {
       <AppBar position="static" className={classes.navBar}>
         <Toolbar classes={classes.toolBar}>
           <img src={logo} className={classes.logo} />
-          {isActive && <BottomBar />}
+          {mediaQueried && <BottomBar />}
           <IconButton onClick={toggleSlider("right", true)}>
             <SettingsIcon className={classes.menuIcon} />
           </IconButton>
