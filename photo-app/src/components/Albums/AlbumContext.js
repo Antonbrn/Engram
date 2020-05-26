@@ -5,9 +5,9 @@ export const AlbumContext = createContext();
 export const AlbumProvider = (props) => {
   const [albums, setAlbums] = useState([
     {
-      title: " ",
-      Thumbnail: " ",
-      Photos: [],
+      title: "",
+      thumbnail: "",
+      photos: [],
     },
   ]);
   return (

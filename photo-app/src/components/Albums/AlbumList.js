@@ -9,7 +9,7 @@ const AlbumList = () => {
     <div>
       {albums.map((album, key) => (
         <ListItem key={key}>
-          <Album name={album.title} />
+          <Album title={album.title} thumbnail={album.thumbnail} />
         </ListItem>
       ))}
     </div>
