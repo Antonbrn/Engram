@@ -32,7 +32,6 @@ const MyAlbums = () => {
 
       <Typography variant="h5">Shared Albums</Typography>
       <Box borderBottom={1} />
-      <Card className={classes.cards}></Card>
 
       <Button
         variant="contained"
