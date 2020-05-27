@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
-import fire from "../../../base.js";
+import fire from "../../base.js";
 import { Typography, Box, FormControl, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
