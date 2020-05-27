@@ -8,27 +8,31 @@ import CardMedia from "@material-ui/core/CardMedia";
 import { storage } from "../../base";
 import styled from 'styled-components';
 
-const StyledCard = styled(Card)`
+const CardContainer = styled(Card)`
     /* Stylar korten i albums, behöver lägga till grid eller flex för att få dem att aligna bra! */
-    width: 200px;
-    height: 200px;
+    /* display: flex;
+    flex-flow: row wrap-reverse; */
     
+    height: 70px;
+    width: 70px;
+    @media only screen and (min-width: 768px) {
+    height: 200px;
+    width: 200px;
+    
+  }
   `;
-
-
 
 const Album = ({ title, thumbnail, url }) => {
   return (
-    <StyledCard>
-      <CardActionArea>
-      
-      <img  style={{width: "100%", height: "70%"}}  src={url} />
+    <div>
+    <CardContainer>
+      <CardActionArea style={{width: "100%", height: "100%",}}>
+      <img  style={{width: "100%", height: "100%",}}  src={url} />
       </CardActionArea>
-      <CardContent>
-        <Typography variant="body2">{title}</Typography>
-      </CardContent>
-      
-    </StyledCard>
+   
+    </CardContainer>
+      <Typography>{title}</Typography>
+      </div>
   );
 };
 

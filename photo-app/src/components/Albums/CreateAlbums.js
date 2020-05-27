@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 import { storage } from "../../base";
+import styled from "styled-components";
 
 const CreateAlbums = () => {
   const [albums, setAlbums] = useContext(AlbumContext);
@@ -59,7 +60,7 @@ const CreateAlbums = () => {
     <Container style={{ height: "78vh" }}>
       <Typography variant="h4">Create Album</Typography>
       <Box borderBottom={1} />
-      <form onSubmit={createAlbum}>
+      <div>
         <TextField
           error={false}
           required
@@ -75,14 +76,14 @@ const CreateAlbums = () => {
           </Box>
         </Box>
         <Box>
-          <Button variant="outlined" type="submit">
+          <Button variant="outlined" onClick={createAlbum}>
             Create Album
           </Button>
           <IconButton component={Link} to="/myalbums">
             <ArrowForward />
           </IconButton>
         </Box>
-      </form>
+      </div>
     </Container>
   );
 };
