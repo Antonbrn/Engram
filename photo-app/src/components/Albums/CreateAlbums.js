@@ -19,10 +19,12 @@ const CreateAlbums = () => {
   const [thumbnail, setThumbnail] = useState([]);
   const [url, setUrl] = useState("");
 
+  // fucntion for updating the title for album
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
 
+  //function for getting the img file
   const updateThumbnail = (e) => {
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
@@ -50,10 +52,8 @@ const CreateAlbums = () => {
               { title: title, thumbnail: thumbnail, url: url },
             ]);
           });
-
       }
     );
-    
   };
   return (
     <Container style={{ height: "78vh" }}>
