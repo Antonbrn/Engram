@@ -1,10 +1,10 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
-import { AuthContext } from "../../Auth";
+import { AuthContext } from "../Auth";
 import { Box, Button, FormControl, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import logo from ".../engramLogo.png";
-import fire from "../../base";
+import logo from "../engramLogo.png";
+import fire from "../base";
 import styled from 'styled-components';
 
 
