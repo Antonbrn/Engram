@@ -24,16 +24,16 @@ function App() {
         
       </div>
     </AlbumProvider>
-    /*
+  
     
-   <AuthProvider>
-<Router>
-  <Route path="/signup" component={SignUp} />
-  <Route path="/login" component={Login} />
-  <PrivateRoute exact path="/" component={Layout} />
-</Router>
-</AuthProvider>
-*/
+//    <AuthProvider>
+// <Router>
+//   <Route path="/signup" component={SignUp} />
+//   <Route path="/login" component={Login} />
+//   <PrivateRoute exact path="/" component={Layout} />
+// </Router>
+// </AuthProvider>
+
   );
 }
 
