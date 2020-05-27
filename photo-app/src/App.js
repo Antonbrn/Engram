@@ -2,8 +2,8 @@ import React from "react";
 import "./App.css";
 import Layout from "./components/Layout";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
+import Login from "./components/Notifications/Login/Login";
+import SignUp from "./components/Notifications/Login/SignUp";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
@@ -16,15 +16,15 @@ function App() {
 
   return (
     
-    <AlbumProvider>
-      <div>
-        <CssBaseline />
+    // <AlbumProvider>
+    //   <div>
+    //     <CssBaseline />
         
-        <Layout />
+    //     <Layout />
         
-      </div>
-    </AlbumProvider>
-    /*
+    //   </div>
+    // </AlbumProvider>
+  
     
    <AuthProvider>
 <Router>
@@ -33,7 +33,7 @@ function App() {
   <PrivateRoute exact path="/" component={Layout} />
 </Router>
 </AuthProvider>
-*/
+
   );
 }
 
