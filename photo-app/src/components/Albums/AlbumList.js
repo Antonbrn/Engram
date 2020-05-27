@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 
 const StyledBox = styled.div`
-  margin: 40px;
+  margin: 5px;
   display:flex;
   flex-flow: row wrap;
   text-align: center;
