@@ -4,7 +4,7 @@ import { AlbumContext } from "./AlbumContext";
 import { ListItem } from "@material-ui/core";
 import Box from "@material-ui/core/Card";
 import styled from "styled-components";
-
+import { db } from "../../base";
 
 const StyledBox = styled.div`
   margin: 0 10px 0 10px;
@@ -12,7 +12,6 @@ const StyledBox = styled.div`
   
   flex-flow: row wrap;
   text-align: center;
-
 `;
 const StyledContainer = styled.div`
   margin: 5px;
@@ -20,6 +19,7 @@ const StyledContainer = styled.div`
 
 const AlbumList = () => {
   const [albums, setAlbums] = useContext(AlbumContext);
+
   return (
     <StyledBox>
       {albums.map((album, key) => (
@@ -34,5 +34,4 @@ const AlbumList = () => {
     </StyledBox>
   );
 };
-
 export default AlbumList;

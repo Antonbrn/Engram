@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 import { storage } from "../../base";
+import { db } from "../../base";
+import styled from "styled-components";
 
 const CreateAlbums = () => {
   const [albums, setAlbums] = useContext(AlbumContext);
@@ -19,6 +21,12 @@ const CreateAlbums = () => {
   const [thumbnail, setThumbnail] = useState([]);
   const [url, setUrl] = useState("");
 
+  // get albums collection from firebase
+  //Denna fungerar ej än måste föröska få albums från firebase, den sätter upp och sparar dem dit iallafall
+  //borde vara i t.ex. setUrl statet som man ska göra något med den,
+  //just nu tar den från setUrl och renderar det istället för från databasen
+
+  // fucntion for updating the title for album
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -29,8 +37,10 @@ const CreateAlbums = () => {
     }
   };
 
-  const createAlbum = (e) => {
+  const addAlbum = (e) => {
     e.preventDefault();
+
+    //Upload thumbnail image and add data to the albumcollection
     const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
     uploadTask.on(
       "state_changed",
@@ -44,10 +54,16 @@ const CreateAlbums = () => {
           .child(thumbnail.name)
           .getDownloadURL()
           .then((url) => {
+            db.collection("albums").add({
+              thumbnail: url,
+              title: title,
+            });
             setUrl(url);
+
+            //Set the albumsstate
             setAlbums((prevAlbums) => [
               ...prevAlbums,
-              { title: title, thumbnail: thumbnail, url: url },
+              { title: title, url: url },
             ]);
           });
 
@@ -55,6 +71,7 @@ const CreateAlbums = () => {
     );
     
   };
+
   return (
     <Container style={{ height: "78vh" }}>
       <Typography variant="h4">Create Album</Typography>
@@ -76,7 +93,7 @@ const CreateAlbums = () => {
           </Box>
         </Box>
         <Box>
-          <Button variant="outlined" type="submit">
+          <Button variant="outlined" onClick={addAlbum}>
             Create Album
           </Button>
           <IconButton component={Link} to="/myalbums">
