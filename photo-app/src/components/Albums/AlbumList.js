@@ -7,14 +7,15 @@ import styled from "styled-components";
 
 
 const StyledBox = styled.div`
-  margin: 40px;
+  margin: 0 10px 0 10px;
   display:flex;
+  
   flex-flow: row wrap;
   text-align: center;
 
 `;
 const StyledContainer = styled.div`
-  margin: 10px;
+  margin: 5px;
 `;
 
 const AlbumList = () => {
