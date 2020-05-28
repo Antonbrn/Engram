@@ -8,11 +8,13 @@ import Feed from "./Feed/Feed";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 
+
 const Layout = () => {
 
   const mediaQueried = useMediaQuery("(max-width: 600px)");
 
   return (
+    
     <BrowserRouter>
       <Navbar />
       
