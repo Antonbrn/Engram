@@ -7,6 +7,7 @@ import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
 import styled from "styled-components";
 import { db } from "../../base";
+import addAlbum from "../Assets/addAlbum.png";
 
 const useStyles = makeStyles({
   createAlbumBtn: {
@@ -42,20 +43,17 @@ const MyAlbums = () => {
     <Container className={classes.flexContainer}>
       <Typography variant="h5">Private Albums</Typography>
       <Box borderBottom={1} />
+      <Button
+       // className={classes.createAlbumBtn}
+        to="/createalbums"
+        component={Link}
+      >
+        <img src={addAlbum}></img>
+      </Button>
       <AlbumList />
 
       <Typography variant="h5">Shared Albums</Typography>
       <Box borderBottom={1} />
-
-      <Button
-        variant="contained"
-        size="large"
-        className={classes.createAlbumBtn}
-        to="/createalbums"
-        component={Link}
-      >
-        + Create Album
-      </Button>
     </Container>
   );
 };

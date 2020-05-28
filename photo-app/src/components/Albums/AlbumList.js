@@ -7,13 +7,14 @@ import styled from "styled-components";
 import { db } from "../../base";
 
 const StyledBox = styled.div`
-  margin: 5px;
-  display: flex;
+  margin: 0 10px 0 10px;
+  display:flex;
+  
   flex-flow: row wrap;
   text-align: center;
 `;
 const StyledContainer = styled.div`
-  margin: 10px;
+  margin: 5px;
 `;
 
 const AlbumList = () => {
