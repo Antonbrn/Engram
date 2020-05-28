@@ -4,32 +4,26 @@ import { AlbumContext } from "./AlbumContext";
 import { ListItem } from "@material-ui/core";
 import Box from "@material-ui/core/Card";
 import styled from "styled-components";
-
+import { db } from "../../base";
 
 const StyledBox = styled.div`
   margin: 5px;
-  display:flex;
+  display: flex;
   flex-flow: row wrap;
   text-align: center;
-
 `;
 
 const AlbumList = () => {
   const [albums, setAlbums] = useContext(AlbumContext);
+
   return (
     <StyledBox>
       {albums.map((album, key) => (
         <Box key={key}>
-          <Album
-            
-            thumbnail={album.thumbnail}
-            url={album.url}
-            title={album.title}
-          />
+          <Album url={album.url} title={album.title} />
         </Box>
       ))}
     </StyledBox>
   );
 };
-
 export default AlbumList;

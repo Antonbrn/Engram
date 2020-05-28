@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
 import styled from "styled-components";
+import { db } from "../../base";
 
 const useStyles = makeStyles({
   createAlbumBtn: {
@@ -20,6 +21,13 @@ const useStyles = makeStyles({
 
 const MyAlbums = () => {
   const classes = useStyles();
+  db.collection("albums")
+    .get()
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        console.log(doc.data());
+      });
+    });
 
   return (
     <Container className={classes.flexContainer}>

@@ -9,35 +9,23 @@ import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import { AlbumProvider } from "./components/Albums/AlbumContext";
 
-
 function App() {
-
-  
-
   return (
-    
-    <AlbumProvider>
-      <div>
-        <CssBaseline />
-        
+    <div>
+      <CssBaseline />
+      <AlbumProvider>
         <Layout />
-        
-      </div>
-    </AlbumProvider>
-  
-    
-//    <AuthProvider>
-// <Router>
-//   <Route path="/signup" component={SignUp} />
-//   <Route path="/login" component={Login} />
-//   <PrivateRoute exact path="/" component={Layout} />
-// </Router>
-// </AuthProvider>
+      </AlbumProvider>
+    </div>
 
+    //    <AuthProvider>
+    // <Router>
+    //   <Route path="/signup" component={SignUp} />
+    //   <Route path="/login" component={Login} />
+    //   <PrivateRoute exact path="/" component={Layout} />
+    // </Router>
+    // </AuthProvider>
   );
 }
-
-
-
 
 export default App;
