@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   flexContainer: {
     background: "white",
     height: "78vh",
+    
   },
 });
 
@@ -23,6 +24,7 @@ const MyAlbums = () => {
 
   return (
     <Container className={classes.flexContainer}>
+      
       <Typography variant="h5">Your Albums</Typography>
       <Box borderBottom={1} />
       <AlbumList />
