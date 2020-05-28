@@ -24,7 +24,6 @@ const AlbumList = () => {
       {albums.map((album, key) => (
         <StyledContainer key={key}>
           <Album
-            
             thumbnail={album.thumbnail}
             url={album.url}
             title={album.title}
