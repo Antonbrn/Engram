@@ -21,6 +21,7 @@ const useStyles = makeStyles({
   flexContainer: {
     background: "white",
     height: "78vh",
+    
   },
 });
 
