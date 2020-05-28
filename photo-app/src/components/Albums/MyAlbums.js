@@ -10,14 +10,23 @@ import { db } from "../../base";
 
 const useStyles = makeStyles({
   createAlbumBtn: {
-    background: "green",
+    background: "#0e973c",
     color: "#FFFF",
+    marginTop: "10px",
+    '&:hover':  {
+      background: "#54c969",
+      color: "black",
+      transition: ".7s ease"
+    }
   },
   flexContainer: {
     background: "white",
     height: "78vh",
+    
   },
 });
+
+
 
 const MyAlbums = () => {
   const classes = useStyles();
@@ -31,7 +40,7 @@ const MyAlbums = () => {
 
   return (
     <Container className={classes.flexContainer}>
-      <Typography variant="h5">Your Albums</Typography>
+      <Typography variant="h5">Private Albums</Typography>
       <Box borderBottom={1} />
       <AlbumList />
 

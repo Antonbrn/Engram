@@ -12,11 +12,11 @@ const CardContainer = styled(Card)`
   /* Stylar korten i albums, behöver lägga till grid eller flex för att få dem att aligna bra! */
   /* display: flex;
     flex-flow: row wrap-reverse; */
-
-  height: 70px;
-  width: 70px;
-  @media only screen and (min-width: 768px) {
-    height: 200px;
+    
+    height: 70px;
+    width: 70px;
+    @media only screen and (min-width: 768px) {
+    height: 200px; 
     width: 200px;
   }
 `;

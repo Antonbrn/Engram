@@ -12,6 +12,9 @@ const StyledBox = styled.div`
   flex-flow: row wrap;
   text-align: center;
 `;
+const StyledContainer = styled.div`
+  margin: 10px;
+`;
 
 const AlbumList = () => {
   const [albums, setAlbums] = useContext(AlbumContext);
@@ -19,9 +22,14 @@ const AlbumList = () => {
   return (
     <StyledBox>
       {albums.map((album, key) => (
-        <Box key={key}>
-          <Album url={album.url} title={album.title} />
-        </Box>
+        <StyledContainer key={key}>
+          <Album
+            
+            thumbnail={album.thumbnail}
+            url={album.url}
+            title={album.title}
+          />
+        </StyledContainer>
       ))}
     </StyledBox>
   );
