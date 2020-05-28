@@ -7,6 +7,7 @@ import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
 import styled from "styled-components";
 import { db } from "../../base";
+import addAlbum from "../Assets/addAlbum.png";
 
 
 const useStyles = makeStyles({
