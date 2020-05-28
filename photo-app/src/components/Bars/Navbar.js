@@ -17,15 +17,14 @@ import fire from "../../base";
 import { ArrowBack } from "@material-ui/icons";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-import BottomBar from './BottomBar';
+import BottomBar from "./BottomBar";
 import { useMediaQuery } from "@material-ui/core";
-
 
 //CSS STYLES
 const useStyles = makeStyles({
   menuSliderContainer: {
     width: 250,
-    background: "#bc5100",
+    background: "lightgrey",
     height: "100%",
   },
   listItem: {
@@ -35,7 +34,6 @@ const useStyles = makeStyles({
     height: "12vh",
 
     background: "#bc5100",
-
   },
   menuIcon: {
     color: "#FFFFFF",
@@ -67,8 +65,7 @@ const menuLinks = [
 ];
 
 const Navbar = () => {
-
-  const mediaQueried = useMediaQuery("(min-width: 601px)");
+  const isActive = useMediaQuery("(min-width: 600px)");
   //Uses statehook for the slider
   const [state, setState] = useState({
     right: false,
@@ -107,7 +104,7 @@ const Navbar = () => {
       <AppBar position="static" className={classes.navBar}>
         <Toolbar classes={classes.toolBar}>
           <img src={logo} className={classes.logo} />
-          {mediaQueried && <BottomBar />}
+          {isActive && <BottomBar />}
           <IconButton onClick={toggleSlider("right", true)}>
             <SettingsIcon className={classes.menuIcon} />
           </IconButton>
