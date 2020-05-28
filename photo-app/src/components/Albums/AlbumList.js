@@ -5,6 +5,9 @@ import { ListItem } from "@material-ui/core";
 import Box from "@material-ui/core/Card";
 import styled from "styled-components";
 import { db } from "../../base";
+import addAlbum from "../Assets/addAlbum.png";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const StyledBox = styled.div`
   margin: 0 10px 0 10px;
@@ -31,6 +34,13 @@ const AlbumList = () => {
           />
         </StyledContainer>
       ))}
+      <Button
+       // className={classes.createAlbumBtn}
+        to="/createalbums"
+        component={Link}
+      >
+        <img src={addAlbum}></img>
+      </Button>
     </StyledBox>
   );
 };

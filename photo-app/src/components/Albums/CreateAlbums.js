@@ -88,7 +88,7 @@ const CreateAlbums = () => {
           <Input type="file" onChange={updateThumbnail} />
           <Box>
             
-            <img style={{width:"250px",height:"250px"}} src={url} />
+            <img style={{maxWidth:"250px",maxHeight:"250px"}} src={url} />
           </Box>
         </Box>
         <Box>
