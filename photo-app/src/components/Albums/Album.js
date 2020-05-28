@@ -16,7 +16,7 @@ const CardContainer = styled(Card)`
     height: 70px;
     width: 70px;
     @media only screen and (min-width: 768px) {
-    height: 200px;
+    height: 200px; 
     width: 200px;
     
   }
