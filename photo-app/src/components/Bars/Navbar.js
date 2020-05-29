@@ -31,7 +31,7 @@ const useStyles = makeStyles({
     color: "black",
   },
   navBar: {
-    height: "12vh",
+    height: "70px",
 
     background: "#bc5100",
   },

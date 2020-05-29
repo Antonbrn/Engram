@@ -4,6 +4,9 @@ import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useMediaQuery } from "@material-ui/core";
+
+//const isActive = useMediaQuery("(min-width: 600px)");
 
 const useStyles = makeStyles({
   bottomIcons: {
@@ -12,13 +15,12 @@ const useStyles = makeStyles({
   },
   bottomNav: {
     background: "#ffb04c",
-    height: "10vh",
+
+    height: "70px",
   },
 });
 
-const label = styled.label`
-  color: white;
-`;
+
 // hej
 
 const BottomBar = () => {
