@@ -8,11 +8,13 @@ import Feed from "./Feed/Feed";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 
+
 const Layout = () => {
 
-  const isActive = useMediaQuery("(max-width: 600px)");
+  const mediaQueried = useMediaQuery("(max-width: 600px)");
 
   return (
+    
     <BrowserRouter>
       <Navbar />
       
@@ -22,7 +24,7 @@ const Layout = () => {
         <Route path="/createalbums" component={CreateAlbums} />
         <Route path="/notifications" component={Notifications} />
       </Switch>
-      {isActive && <BottomBar />}
+      {mediaQueried && <BottomBar />}
     </BrowserRouter>
   );
 };

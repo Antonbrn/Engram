@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
 import styled from "styled-components";
+import { db } from "../../base";
+import addAlbum from "../Assets/addAlbum.png";
+
 
 const useStyles = makeStyles({
   createAlbumBtn: {
@@ -21,6 +24,7 @@ const useStyles = makeStyles({
   flexContainer: {
     background: "white",
     height: "78vh",
+    
   },
 });
 
@@ -28,25 +32,23 @@ const useStyles = makeStyles({
 
 const MyAlbums = () => {
   const classes = useStyles();
+  db.collection("albums")
+    .get()
+    .then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        console.log(doc.data());
+      });
+    });
 
   return (
     <Container className={classes.flexContainer}>
       <Typography variant="h5">Private Albums</Typography>
       <Box borderBottom={1} />
+      
       <AlbumList />
-
+      
       <Typography variant="h5">Shared Albums</Typography>
       <Box borderBottom={1} />
-
-      <Button
-        variant="contained"
-        size="large"
-        className={classes.createAlbumBtn}
-        to="/createalbums"
-        component={Link}
-      >
-        + Create Album
-      </Button>
     </Container>
   );
 };
