@@ -7,25 +7,29 @@ import CreateAlbums from "./Albums/CreateAlbums";
 import Feed from "./Feed/Feed";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
+import { AlbumProvider } from"./Albums/AlbumContext";
 
 
 const Layout = () => {
 
   const mediaQueried = useMediaQuery("(max-width: 600px)");
 
-  return (
-    
-    <BrowserRouter>
-      <Navbar />
+  return ( 
+    <layout>
       
-      <Switch>
-        <Route exact path="/feed" component={Feed} />
+      <AlbumProvider>
+        
+       <Navbar />
+        <Route exact path="/" component={Feed} />
         <Route path="/myalbums" component={MyAlbums} />
         <Route path="/createalbums" component={CreateAlbums} />
         <Route path="/notifications" component={Notifications} />
-      </Switch>
+        
       {mediaQueried && <BottomBar />}
-    </BrowserRouter>
+        </AlbumProvider>
+
+      </layout>  
+   
   );
 };
 

@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import logo from "../engramLogo.png";
 import fire from "../base";
 import styled from 'styled-components';
+import Layout from "./Layout";
 
 
 const useStyles = makeStyles({

@@ -52,7 +52,7 @@ const BottomBar = () => {
 
       <BottomNavigationAction
         component={Link}
-        to="/feed"
+        to="/"
         label="Feed"
         value="feed"
         icon={<Home className={classes.bottomIcons} />}

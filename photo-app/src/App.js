@@ -8,6 +8,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import { AlbumProvider } from"./components/Albums/AlbumContext";
+import Navbar from "./components/Bars/Navbar";
+import BottomBar from "./components/Bars/BottomBar";
+import { useMediaQuery } from "@material-ui/core";
+
 
 function App() {
   return (
@@ -17,17 +21,15 @@ function App() {
     //     <Layout />
     // </div>
     //   </AlbumProvider>
-
-    <AlbumProvider>
+    
+<Router> 
+  
        <AuthProvider>
-    <Router>     
-      <PrivateRoute exact path="/" component={Layout} />
+      <PrivateRoute path="/" component={Layout} />
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={Login} />
-    </Router>
     </AuthProvider>
-
-    </AlbumProvider>
+</Router>
   );
 }
 
