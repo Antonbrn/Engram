@@ -20,24 +20,17 @@ const useStyles = makeStyles({
   },
 });
 
-
-// hej
-
 const BottomBar = () => {
-   
   const classes = useStyles();
 
   const [value, setValue] = React.useState("feed");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  
-  
   };
 
   return (
-     
-      <BottomNavigation
+    <BottomNavigation
       value={value}
       onChange={handleChange}
       className={classes.bottomNav}
@@ -66,11 +59,6 @@ const BottomBar = () => {
         icon={<NotificationsActive className={classes.bottomIcons} />}
       />
     </BottomNavigation>
-    
-    
-   
-
-    
   );
 };
 

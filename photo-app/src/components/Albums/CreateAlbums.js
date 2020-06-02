@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { AlbumContext } from "./AlbumContext";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -11,28 +10,17 @@ import {
   Input,
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
-import { storage } from "../../base";
 import { db } from "../../base";
+import { storage } from "../../base";
 import styled from "styled-components";
 
 const CreateAlbums = () => {
-  const [albums, setAlbums] = useContext(AlbumContext);
   const [title, setTitle] = useState("");
-  const [thumbnail, setThumbnail] = useState([]);
   const [url, setUrl] = useState("");
-
-  // get albums collection from firebase
-  //Denna fungerar ej än måste föröska få albums från firebase, den sätter upp och sparar dem dit iallafall
-  //borde vara i t.ex. setUrl statet som man ska göra något med den,
-  //just nu tar den från setUrl och renderar det istället för från databasen
-
-  // fucntion for updating the title for album
-  const updateTitle = (e) => {
-    setTitle(e.target.value);
-  };
+  const [thumbnail, setThumbnail] = useState(null);
 
   //function for getting the img file
-  const updateThumbnail = (e) => {
+  const getThumbnailFile = (e) => {
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
     }
@@ -41,7 +29,7 @@ const CreateAlbums = () => {
   const addAlbum = (e) => {
     e.preventDefault();
 
-    //Upload thumbnail image and add data to the albumcollection
+    //Upload the imagefile to firebase storage
     const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
     uploadTask.on(
       "state_changed",
@@ -55,18 +43,17 @@ const CreateAlbums = () => {
           .child(thumbnail.name)
           .getDownloadURL()
           .then((url) => {
-            //add albums
-            db.collection("albums").add({
-              thumbnail: url,
-              title: title,
-            });
+            //add url and title to the database, Albums collection
+            db.collection("albums")
+              .add({
+                url: url,
+                title: title,
+              })
+              .then(() => {
+                setTitle("");
+                setUrl("");
+              });
             setUrl(url);
-
-            /*   //Set the albumsstate
-            setAlbums((prevAlbums) => [
-              ...prevAlbums,
-              { title: title, url: url },
-            ]);*/
           });
       }
     );
@@ -82,11 +69,11 @@ const CreateAlbums = () => {
           required
           label="Title"
           value={title}
-          onChange={updateTitle}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <Typography variant="h5">Thumbnail</Typography>
         <Box>
-          <Input type="file" onChange={updateThumbnail} />
+          <Input type="file" onChange={getThumbnailFile} />
           <Box>
             <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
           </Box>
@@ -105,4 +92,3 @@ const CreateAlbums = () => {
 };
 
 export default CreateAlbums;
-///test

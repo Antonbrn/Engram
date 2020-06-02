@@ -7,29 +7,20 @@ import SignUp from "./components/SignUp";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
-import { AlbumProvider } from"./components/Albums/AlbumContext";
 import Navbar from "./components/Bars/Navbar";
 import BottomBar from "./components/Bars/BottomBar";
 import { useMediaQuery } from "@material-ui/core";
 
-
 function App() {
   return (
-    // <AlbumProvider>
-    // <div>
-    //   <CssBaseline />
-    //     <Layout />
-    // </div>
-    //   </AlbumProvider>
-    
-<Router> 
-  
-       <AuthProvider>
-      <PrivateRoute path="/" component={Layout} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/login" component={Login} />
-    </AuthProvider>
-</Router>
+    <Router>
+      <AuthProvider>
+        <CssBaseline />
+        <PrivateRoute path="/" component={Layout} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+      </AuthProvider>
+    </Router>
   );
 }
 
