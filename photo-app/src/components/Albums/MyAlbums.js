@@ -38,7 +38,7 @@ const MyAlbums = (props) => {
       //.where("userId", "==", u.userId)
       .get()
       .then((snapshot) => {
-        let albums = [];
+        let a = [];
 
         snapshot.docs.forEach((doc) => {
           let { title, thumbnail } = doc.data();
@@ -48,7 +48,7 @@ const MyAlbums = (props) => {
           });
         });
 
-        setAlbums(() => [...albums]);
+        //setAlbums(() => [...albums]);
       });
   });
 
