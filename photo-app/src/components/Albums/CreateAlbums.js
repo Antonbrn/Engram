@@ -55,17 +55,18 @@ const CreateAlbums = () => {
           .child(thumbnail.name)
           .getDownloadURL()
           .then((url) => {
+            //add albums
             db.collection("albums").add({
               thumbnail: url,
               title: title,
             });
             setUrl(url);
 
-            //Set the albumsstate
+            /*   //Set the albumsstate
             setAlbums((prevAlbums) => [
               ...prevAlbums,
               { title: title, url: url },
-            ]);
+            ]);*/
           });
       }
     );
@@ -87,8 +88,7 @@ const CreateAlbums = () => {
         <Box>
           <Input type="file" onChange={updateThumbnail} />
           <Box>
-            
-            <img style={{maxWidth:"250px",maxHeight:"250px"}} src={url} />
+            <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
           </Box>
         </Box>
         <Box>

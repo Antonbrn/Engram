@@ -1,12 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Container, Button } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import { Link } from "react-router-dom";
 import CreateAlbums from "./CreateAlbums";
 import AlbumList from "./AlbumList";
 import { AlbumContext } from "./AlbumContext";
-import { AuthContext } from "../../Auth";
 import styled from "styled-components";
 import { db } from "../../base";
 import addAlbum from "../Assets/addAlbum.png";
@@ -30,9 +27,10 @@ const useStyles = makeStyles({
 
 const MyAlbums = (props) => {
   const classes = useStyles();
+
   const [albums, setAlbums] = useContext(AlbumContext);
 
-  console.log("props");
+  console.log("props", props);
   useEffect(() => {
     db.collection("albums")
       //.where("userId", "==", u.userId)
@@ -47,10 +45,9 @@ const MyAlbums = (props) => {
             url: thumbnail,
           });
         });
-
-        //setAlbums(() => [...albums]);
+        setAlbums(() => [...albums]);
       });
-  });
+  }, []);
 
   return (
     <Container className={classes.flexContainer}>

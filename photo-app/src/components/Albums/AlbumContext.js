@@ -1,6 +1,4 @@
 import React, { createContext, useState } from "react";
-import { db } from "../../base";
-import { Typography } from "@material-ui/core";
 
 export const AlbumContext = createContext();
 
