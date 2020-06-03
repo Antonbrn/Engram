@@ -7,12 +7,15 @@ import CreateAlbums from "./Albums/CreateAlbums";
 import Feed from "./Feed/Feed";
 import { Route } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
+import { ThemeProvider }  from '@material-ui/core/styles';
+import theme from "./theme"
 
 const Layout = () => {
   const mediaQueried = useMediaQuery("(max-width: 600px)");
 
   return (
     <div>
+      <ThemeProvider theme={theme}>
       <Navbar />
       <Route exact path="/" component={Feed} />
       <Route path="/myalbums" component={MyAlbums} />
@@ -20,6 +23,7 @@ const Layout = () => {
       <Route path="/notifications" component={Notifications} />
 
       {mediaQueried && <BottomBar />}
+      </ThemeProvider>
     </div>
   );
 };

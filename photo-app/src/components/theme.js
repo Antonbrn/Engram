@@ -1,5 +1,5 @@
 
-import { createMuiTheme }  from '@material-ui/core/styles'
+import { createMuiTheme }  from '@material-ui/core/styles';
 
 
 const theme = createMuiTheme({
@@ -18,14 +18,22 @@ const theme = createMuiTheme({
      }
   },
     typography: {
-        fontFamily: [
-            'Prompt',
-            '"Baloo Cheetan 2"',
-            '"Maven Pro"',
-            '"Didact Gothic"',
-            'Inter',
-        ].join(','),  
-    }
+        h1: {
+            fontFamily: 'Changa'
+        },
+        h2: {
+            fontFamily: 'Changa'
+        },
+        h3: {
+            fontFamily: 'Changa'
+        },
+        h4: {
+            fontFamily: 'Changa'
+        }
+        h5: {
+            fontFamily: 'Changa'
+        }  
+    },
 
 })
 
