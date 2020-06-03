@@ -13,13 +13,18 @@ const useStyles = makeStyles({
     color: "#bc5100",
     fontSize: "30px",
   },
-  bottomNav: {
-    background: "#ffb04c",
-
-    height: "70px",
-  },
 });
+const BottomNavigationStyled = styled(BottomNavigation)`
+background: #ffb04c;
+height: 70px;
 
+@media only screen and (max-width: 600px) {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+`;
 const BottomBar = () => {
   const classes = useStyles();
 
@@ -30,7 +35,7 @@ const BottomBar = () => {
   };
 
   return (
-    <BottomNavigation
+    <BottomNavigationStyled
       value={value}
       onChange={handleChange}
       className={classes.bottomNav}
@@ -58,7 +63,7 @@ const BottomBar = () => {
         value="notifications"
         icon={<NotificationsActive className={classes.bottomIcons} />}
       />
-    </BottomNavigation>
+    </BottomNavigationStyled>
   );
 };
 
