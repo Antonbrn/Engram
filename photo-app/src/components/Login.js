@@ -5,9 +5,8 @@ import { Box, Button, FormControl, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import logo from "../engramLogo.png";
 import fire from "../base";
-import styled from 'styled-components';
+import styled from "styled-components";
 import Layout from "./Layout";
-
 
 const useStyles = makeStyles({
   loginPage: {
@@ -16,7 +15,7 @@ const useStyles = makeStyles({
     justifyContent: "top",
     alignItems: "center",
     height: "100vh",
-    backgroundColor: "#f57f17"
+    backgroundColor: "#f57f17",
   },
   loginBox: {
     border: "solid black 2px",
@@ -26,17 +25,14 @@ const useStyles = makeStyles({
     backgroundColor: "#0e973c",
   },
   labelStyle: {
-    padding: "10px 5px"
-    
+    padding: "10px 5px",
   },
   inputStyle: {
     backgroundColor: "#53c969",
     color: "#000",
-    borderColor: "#89fd98"
+    borderColor: "#89fd98",
   },
 });
-
-
 
 const Login = ({ history }) => {
   const classes = useStyles();
@@ -69,13 +65,21 @@ const Login = ({ history }) => {
         <FormControl className={classes.loginBox}>
           <Typography>LOG IN</Typography>
           <label className={classes.labelStyle}>
-            
-            <input className={classes.inputStyle} name="email" type="email" placeholder="Email" />
+            <input
+              className={classes.inputStyle}
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
           </label>
-          
+
           <label>
-            
-            <input className={classes.inputStyle} name="password" type="password" placeholder="Password" />
+            <input
+              className={classes.inputStyle}
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
           </label>
           <Button type="submit">Login</Button>
           <Button component={Link} to="/signup">
