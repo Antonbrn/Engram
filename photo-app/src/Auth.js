@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
+    fire.auth().onAuthStateChanged(setCurrentUser);
     fire.auth().onAuthStateChanged((user) => {
       db.collection("users")
         .doc(user.uid)
