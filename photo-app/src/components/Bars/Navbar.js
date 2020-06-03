@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import RightMenuSlider from "@material-ui/core/Drawer";
 import {
@@ -9,9 +9,12 @@ import {
   ListItemText,
   List,
   Box,
+  Typography,
 } from "@material-ui/core";
 import logo from "../../engramLogo.png";
 import fire from "../../base";
+import { db } from "../../base";
+import { AuthContext } from "../../Auth";
 
 //Imported icons
 import { ArrowBack } from "@material-ui/icons";
@@ -71,6 +74,9 @@ const Navbar = () => {
     right: false,
   });
 
+  //currentUser context
+  const { currentUser } = useContext(AuthContext);
+
   //Toggler function for the slider
   const toggleSlider = (slider, open) => () => {
     setState({ ...state, [slider]: open });
@@ -94,6 +100,10 @@ const Navbar = () => {
             />
           </ListItem>
         ))}
+        <Typography
+          className={classes.listItem}
+          style={{ margin: "10px" }}
+        >{`logged in as ${currentUser}`}</Typography>
         <button onClick={() => fire.auth().signOut()}>Log out</button>
       </List>
     </Box>
