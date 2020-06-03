@@ -12,34 +12,44 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import styled from "styled-components";
 
-const useStyles = makeStyles({
-  createAlbumBtn: {
-    background: "#0e973c",
-    color: "#FFFF",
-    marginTop: "10px",
-    "&:hover": {
-      background: "#54c969",
-      color: "black",
-      transition: ".7s ease",
-    },
-  },
-  flexContainer: {
-    background: "#f57f17",
-    height: "78vh",
-  },
-});
 
+const ButtonStyled = styled(Button)`
+  background: #0e973c;
+  color: #FFFF;
+  margin-top: 10px;
+    &:hover{
+      background: #54c969;
+      color: black;
+      transition: .7s ease;
+    }
+`;
+const ContainerStyled = styled(Container)`
+background: #f57f17;
+height: 100vh;
+
+`;
+const BoxContainer = styled(Box)`
+  display: flex;
+  flex-wrap: wrap;
+`;
 const CardContainer = styled(Card)`
-  /* Stylar korten i albums, behöver lägga till grid eller flex för att få dem att aligna bra! */
-  /* display: flex;
-    flex-flow: row wrap-reverse; */
-
-  height: 70px;
-  width: 70px;
+    
+    height: 100px;
+    width: 100px;
+    margin: 5px;
   @media only screen and (min-width: 768px) {
     height: 200px;
     width: 200px;
+    margin: 20px;
   }
+`;
+const TypographyStyled = styled(Typography)`
+text-align: center;
+padding: 5px;
+justify-content: center;
+color: white;
+background: #0e973c;
+height: 20%;
 `;
 
 const useAlbums = () => {
@@ -60,38 +70,34 @@ const useAlbums = () => {
 };
 
 const MyAlbums = (props) => {
-  const classes = useStyles();
   const albums = useAlbums();
 
   return (
-    <Container className={classes.flexContainer}>
+    <ContainerStyled>
       <Typography variant="h5">Private Albums</Typography>
       <Box borderBottom={1} />
-
-      {/* en tillfällig box för att displaya flex */}
-      <Box style={{ display: "flex" }}>
+      {/* Box för display flex */}
+      <BoxContainer>
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
-          <CardContainer style={{ margin: "20px" }} key={album.id}>
+          <CardContainer key={album.id}>
             <CardActionArea style={{ width: "100%", height: "100%" }}>
-              <img style={{ width: "100%", height: "70%" }} src={album.url} />
-              <Typography
-                style={{ background: "blue", color: "white", height: "30%" }}
-              >
+              <img style={{ width: "100%", height: "80%" }} src={album.url} />
+              <TypographyStyled>
                 {album.title}
-              </Typography>
+              </TypographyStyled>
             </CardActionArea>
           </CardContainer>
         ))}
-      </Box>
+      </BoxContainer>
 
-      <Button variant="outlined" component={Link} to="/createalbums">
+      <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
-      </Button>
+      </ButtonStyled>
 
       <Typography variant="h5">Shared Albums</Typography>
       <Box borderBottom={1} />
-    </Container>
+    </ContainerStyled>
   );
 };
 
