@@ -45,11 +45,13 @@ const CardContainer = styled(Card)`
 `;
 const TypographyStyled = styled(Typography)`
 text-align: center;
-padding: 5px;
 justify-content: center;
 color: white;
 background: #0e973c;
 height: 20%;
+@media only screen and (min-width: 768px) {
+  padding: 5px;
+}
 `;
 
 const useAlbums = () => {
