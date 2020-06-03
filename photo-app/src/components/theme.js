@@ -2,7 +2,7 @@
 import { createMuiTheme }  from '@material-ui/core/styles';
 
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
 // -Orange-
   palette: {
     primary: { 
@@ -19,20 +19,23 @@ const theme = createMuiTheme({
   },
     typography: {
         h1: {
-            fontFamily: 'Changa'
+            fontFamily: "Changa"
         },
         h2: {
-            fontFamily: 'Changa'
+            fontFamily: "Changa"
         },
         h3: {
-            fontFamily: 'Changa'
+            fontFamily: '"Changa"'
         },
         h4: {
-            fontFamily: 'Changa'
-        }
+            fontFamily: "Changa"
+        },
         h5: {
-            fontFamily: 'Changa'
-        }  
+            fontFamily: "Changa"
+        },
+        body: {
+            fontFamily: '"Prompt"'
+        },  
     },
 
 })
