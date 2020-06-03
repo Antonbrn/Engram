@@ -1,19 +1,34 @@
 import React, { useCallback } from "react";
 import { withRouter } from "react-router";
-import fire from "../../../base.js";
+import fire from "../base.js";
 import { Typography, Box, FormControl, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import logo from "../engramLogo.png";
 
 const useStyles = makeStyles({
-  loginPage: {
+  signUpPage: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "top",
     alignItems: "center",
     height: "100vh",
+    backgroundColor: "#f57f17"
   },
-  loginBox: {
+  signUpBox: {
     border: "solid black 2px",
+  },
+  formStyle: {
+    textAlign: "center",
+    backgroundColor: "#0e973c",
+  },
+  labelStyle: {
+    padding: "10px 5px"
+    
+  },
+  inputStyle: {
+    backgroundColor: "#53c969",
+    color: "#000",
+    borderColor: "#89fd98"
   },
 });
 
@@ -38,16 +53,17 @@ const SignUp = ({ history }) => {
 
   return (
     <Box className={classes.signUpPage}>
-      <form onSubmit={handleSignUp}>
+      <img src={logo} />
+      <form className={classes.formStyle} onSubmit={handleSignUp}>
         <FormControl className={classes.signUpBox}>
-          <Typography>Sign up</Typography>
-          <label>
-            Email
-            <input name="email" type="email" placeholder="email" />
+          <Typography>SIGN UP</Typography>
+          <label className={classes.labelStyle}>
+            
+            <input className={classes.inputStyle} name="email" type="email" placeholder="email" />
           </label>
           <label>
-            Password
-            <input name="password" type="password" placeholder="password" />
+            
+            <input className={classes.inputStyle} name="password" type="password" placeholder="password" />
           </label>
           <Button type="submit">Signup</Button>
         </FormControl>

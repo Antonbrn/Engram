@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { AlbumContext } from "./AlbumContext";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -11,26 +10,26 @@ import {
   Input,
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
+import { db } from "../../base";
 import { storage } from "../../base";
+import styled from "styled-components";
 
 const CreateAlbums = () => {
-  const [albums, setAlbums] = useContext(AlbumContext);
   const [title, setTitle] = useState("");
-  const [thumbnail, setThumbnail] = useState([]);
   const [url, setUrl] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
 
-  const updateTitle = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const updateThumbnail = (e) => {
+  //function for getting the img file
+  const getThumbnailFile = (e) => {
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
     }
   };
 
-  const createAlbum = (e) => {
+  const addAlbum = (e) => {
     e.preventDefault();
+
+    //Upload the imagefile to firebase storage
     const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
     uploadTask.on(
       "state_changed",
@@ -44,45 +43,50 @@ const CreateAlbums = () => {
           .child(thumbnail.name)
           .getDownloadURL()
           .then((url) => {
+            //add url and title to the database, Albums collection
+            db.collection("albums")
+              .add({
+                url: url,
+                title: title,
+              })
+              .then(() => {
+                setTitle("");
+                setUrl("");
+              });
             setUrl(url);
-            setAlbums((prevAlbums) => [
-              ...prevAlbums,
-              { title: title, thumbnail: thumbnail, url: url },
-            ]);
           });
-
       }
     );
-    
   };
+
   return (
     <Container style={{ height: "78vh" }}>
       <Typography variant="h4">Create Album</Typography>
       <Box borderBottom={1} />
-      <form onSubmit={createAlbum}>
+      <div>
         <TextField
           error={false}
           required
           label="Title"
           value={title}
-          onChange={updateTitle}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <Typography variant="h5">Thumbnail</Typography>
         <Box>
-          <Input type="file" onChange={updateThumbnail} />
+          <Input type="file" onChange={getThumbnailFile} />
           <Box>
-            <img src={url} />
+            <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
           </Box>
         </Box>
         <Box>
-          <Button variant="outlined" type="submit">
+          <Button variant="outlined" onClick={addAlbum}>
             Create Album
           </Button>
           <IconButton component={Link} to="/myalbums">
             <ArrowForward />
           </IconButton>
         </Box>
-      </form>
+      </div>
     </Container>
   );
 };
