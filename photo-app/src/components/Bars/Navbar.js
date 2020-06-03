@@ -32,7 +32,7 @@ const useStyles = makeStyles({
   },
   navBar: {
     height: "70px",
-
+    position: "fixed",
     background: "#bc5100",
   },
   menuIcon: {
