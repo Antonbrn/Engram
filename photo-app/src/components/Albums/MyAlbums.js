@@ -26,6 +26,7 @@ const ButtonStyled = styled(Button)`
 const ContainerStyled = styled(Container)`
 background: #f57f17;
 height: 100vh;
+padding-top: 100px;
 
 `;
 const BoxContainer = styled(Box)`

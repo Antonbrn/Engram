@@ -15,29 +15,7 @@ export const theme = createMuiTheme({
          main: "#54c969",
          light: "#89fd98",
          dark: "#0e973c"
-     }
-  },
-    typography: {
-        h1: {
-            fontFamily: "Changa"
-        },
-        h2: {
-            fontFamily: "Changa"
-        },
-        h3: {
-            fontFamily: '"Changa"'
-        },
-        h4: {
-            fontFamily: "Changa"
-        },
-        h5: {
-            fontFamily: "Changa"
-        },
-        body: {
-            fontFamily: '"Prompt"'
-        },  
-    },
+     },
+  }
 
 })
-
-export default theme
