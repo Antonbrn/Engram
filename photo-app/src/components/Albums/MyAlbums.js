@@ -65,6 +65,7 @@ const useAlbums = () => {
       setAlbums(newAlbums);
     });
   }, []);
+  //.where("userId", "==", u.userId)
 
   return albums;
 };
