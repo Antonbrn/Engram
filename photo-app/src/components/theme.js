@@ -1,8 +1,32 @@
-//Orangea fäger
-export const carrotOrange = "#f57f17"; //Primary
-export const koromiko = "#ffb04c"; //Light
-export const tenneTowny = "#bc5100"; //Dark
-//Gröna färger
-export const emerald = "#54c969"; //Primary
-export const mintGreen = "#89fd98"; //Light
-export const salem = "#0E973C"; //Dark
+
+import { createMuiTheme }  from '@material-ui/core/styles'
+
+
+const theme = createMuiTheme({
+// -Orange-
+  palette: {
+    primary: { 
+        main: "#f57f17",
+        light: "#ffb04c",
+        dark: "#bc5100"
+     },
+// -Green-
+     secondary: {
+         main: "#54c969",
+         light: "#89fd98",
+         dark: "#bc5100"
+     }
+  },
+    typography: {
+        fontFamily: [
+            'Prompt',
+            '"Baloo Cheetan 2"',
+            '"Maven Pro"',
+            '"Didact Gothic"',
+            'Inter',
+        ].join(','),  
+    }
+
+})
+
+export default theme
