@@ -11,9 +11,12 @@ import {
   Box,
   Typography,
 } from "@material-ui/core";
+//Logo for navbar
 import logo from "../../engramLogo.png";
+
+//backend
 import fire from "../../base";
-import { db } from "../../base";
+//Authcontext, userdata
 import { AuthContext } from "../../Auth";
 
 //Imported icons
