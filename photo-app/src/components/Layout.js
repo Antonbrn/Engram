@@ -8,11 +8,14 @@ import Feed from "./Feed/Feed";
 import { Route } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
 
+
+
 const Layout = () => {
   const mediaQueried = useMediaQuery("(max-width: 600px)");
 
   return (
     <div>
+      
       <Navbar />
       <Route exact path="/" component={Feed} />
       <Route path="/myalbums" component={MyAlbums} />
@@ -20,6 +23,7 @@ const Layout = () => {
       <Route path="/notifications" component={Notifications} />
 
       {mediaQueried && <BottomBar />}
+      
     </div>
   );
 };

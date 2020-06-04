@@ -14,11 +14,29 @@ const useStyles = makeStyles({
     fontSize: "30px",
   },
 });
-const BottomNavigationStyled = styled(BottomNavigation)`
-background: #ffb04c;
-height: 70px;
+const BottomNavigationActionStyled = styled(BottomNavigationAction)`
+    
+    &:visited {
+      color: #bc5100;
+  }
+  font-size: 30px;
 
-@media only screen and (max-width: 600px) {
+  @media only screen and (min-width: 600px) {
+    color: #ffb04c;
+      &:visited {
+        color: #ffb04c;
+  }
+    
+  }
+`;
+
+const BottomNavigationStyled = styled(BottomNavigation)`
+background: #bc5100;
+height: 70px;
+padding-top: 10px;
+@media only screen and (max-width: 599px) {
+  background: #ffb04c;
+  
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -38,30 +56,27 @@ const BottomBar = () => {
     <BottomNavigationStyled
       value={value}
       onChange={handleChange}
-      className={classes.bottomNav}
+      
     >
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/myalbums"
-        label="Albums"
         value="myalbums"
-        icon={<PhotoAlbum className={classes.bottomIcons} />}
+        icon={<PhotoAlbum />}
       />
 
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/"
-        label="Feed"
         value="feed"
-        icon={<Home className={classes.bottomIcons} />}
+        icon={<Home />}
       />
 
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/notifications"
-        label="Notifications"
         value="notifications"
-        icon={<NotificationsActive className={classes.bottomIcons} />}
+        icon={<NotificationsActive />}
       />
     </BottomNavigationStyled>
   );

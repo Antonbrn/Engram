@@ -10,6 +10,7 @@ import { AuthContext } from "../../Auth";
 import styled from "styled-components";
 //Backend
 import { db } from "../../base";
+import {StylesAlbums, ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled} from "./StylesAlbums";
 
 const ButtonStyled = styled(Button)`
   background: #0e973c;
