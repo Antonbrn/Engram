@@ -16,6 +16,7 @@ import {
   CardContainer,
   TypographyStyled,
   ButtonStyled,
+  AlbumDiv,
 } from "./StylesAlbums";
 
 const MyAlbums = (props) => {
@@ -42,12 +43,15 @@ const MyAlbums = (props) => {
       <BoxContainer>
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
-          <CardContainer key={album.id}>
-            <CardActionArea style={{ width: "100%", height: "100%" }}>
-              <img style={{ width: "100%", height: "80%" }} src={album.url} />
-              <TypographyStyled>{album.title}</TypographyStyled>
+          <AlbumDiv key={album.id}>
+          <CardContainer >
+
+            <CardActionArea style={{ }}>
+              <img style={{ width: "100%", height: "100%" }} src={album.url} />
             </CardActionArea>
           </CardContainer>
+            <TypographyStyled>{album.title}</TypographyStyled>
+          </AlbumDiv>
         ))}
       </BoxContainer>
 
