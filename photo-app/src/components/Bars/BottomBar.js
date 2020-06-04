@@ -43,7 +43,6 @@ const BottomBar = () => {
       <BottomNavigationAction
         component={Link}
         to="/myalbums"
-        label="Albums"
         value="myalbums"
         icon={<PhotoAlbum className={classes.bottomIcons} />}
       />
@@ -51,7 +50,6 @@ const BottomBar = () => {
       <BottomNavigationAction
         component={Link}
         to="/"
-        label="Feed"
         value="feed"
         icon={<Home className={classes.bottomIcons} />}
       />
@@ -59,7 +57,6 @@ const BottomBar = () => {
       <BottomNavigationAction
         component={Link}
         to="/notifications"
-        label="Notifications"
         value="notifications"
         icon={<NotificationsActive className={classes.bottomIcons} />}
       />
