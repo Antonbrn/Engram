@@ -10,9 +10,9 @@ import {
   Input,
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
+//backend
 import { db } from "../../base";
 import { storage } from "../../base";
-import styled from "styled-components";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");

@@ -2,42 +2,36 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Container, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import CreateAlbums from "./CreateAlbums";
-import { db } from "../../base";
 import addAlbum from "../Assets/addAlbum.png";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import styled from "styled-components";
 
+import styled from "styled-components";
+//Backend
+import { db } from "../../base";
 
 const ButtonStyled = styled(Button)`
   background: #0e973c;
-  color: #FFFF;
+  color: #ffff;
   margin-top: 10px;
-    &:hover{
-      background: #54c969;
-      color: black;
-      transition: .7s ease;
-    }
+  &:hover {
+    background: #54c969;
+    color: black;
+    transition: 0.7s ease;
+  }
 `;
 const ContainerStyled = styled(Container)`
-background: #f57f17;
-height: 100vh;
-padding-top: 100px;
-
+  background: #f57f17;
+  height: 100vh;
 `;
 const BoxContainer = styled(Box)`
   display: flex;
   flex-wrap: wrap;
 `;
 const CardContainer = styled(Card)`
-    
-    height: 100px;
-    width: 100px;
-    margin: 5px;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
   @media only screen and (min-width: 768px) {
     height: 200px;
     width: 200px;
@@ -87,9 +81,7 @@ const MyAlbums = (props) => {
           <CardContainer key={album.id}>
             <CardActionArea style={{ width: "100%", height: "100%" }}>
               <img style={{ width: "100%", height: "80%" }} src={album.url} />
-              <TypographyStyled>
-                {album.title}
-              </TypographyStyled>
+              <TypographyStyled>{album.title}</TypographyStyled>
             </CardActionArea>
           </CardContainer>
         ))}
