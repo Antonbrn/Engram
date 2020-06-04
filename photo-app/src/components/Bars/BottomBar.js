@@ -62,6 +62,7 @@ const BottomBar = () => {
         component={Link}
         to="/myalbums"
         value="myalbums"
+        label="Albums"
         icon={<PhotoAlbum />}
       />
 
@@ -69,6 +70,7 @@ const BottomBar = () => {
         component={Link}
         to="/"
         value="feed"
+        label="Home"
         icon={<Home />}
       />
 
@@ -76,6 +78,7 @@ const BottomBar = () => {
         component={Link}
         to="/notifications"
         value="notifications"
+        label="Notifications"
         icon={<NotificationsActive />}
       />
     </BottomNavigationStyled>
