@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -13,6 +13,7 @@ import { ArrowForward } from "@material-ui/icons";
 //backend
 import { db } from "../../base";
 import { storage } from "../../base";
+import { AuthContext } from "../../Auth";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
@@ -25,6 +26,8 @@ const CreateAlbums = () => {
       setThumbnail(e.target.files[0]);
     }
   };
+
+  const { currentUser } = useContext(AuthContext);
 
   const addAlbum = (e) => {
     e.preventDefault();
@@ -44,15 +47,11 @@ const CreateAlbums = () => {
           .getDownloadURL()
           .then((url) => {
             //add url and title to the database, Albums collection
-            db.collection("albums")
-              .add({
-                url: url,
-                title: title,
-              })
-              .then(() => {
-                setTitle("");
-                setUrl("");
-              });
+            db.collection("albums").add({
+              url: url,
+              title: title,
+              userId: currentUser.id,
+            });
             setUrl(url);
           });
       }
