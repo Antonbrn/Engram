@@ -54,7 +54,10 @@ const MyAlbums = (props) => {
           </AlbumDiv>
         ))}
       </BoxContainer>
-
+      
+      <ButtonStyled variant="outlined" component={Link} to="/album">
+        to album
+      </ButtonStyled>
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
