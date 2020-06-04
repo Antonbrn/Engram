@@ -21,7 +21,7 @@ const BottomNavigationActionStyled = styled(BottomNavigationAction)`
   }
   font-size: 30px;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 768px) {
     color: #ffb04c;
       &:visited {
         color: #ffb04c;
@@ -34,7 +34,7 @@ const BottomNavigationStyled = styled(BottomNavigation)`
 background: #bc5100;
 height: 70px;
 padding-top: 10px;
-@media only screen and (max-width: 599px) {
+@media only screen and (max-width: 767px) {
   background: #ffb04c;
   
   position: fixed;

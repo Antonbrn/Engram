@@ -73,7 +73,7 @@ const menuLinks = [
 ];
 
 const Navbar = () => {
-  const isActive = useMediaQuery("(min-width: 600px)");
+  const isActive = useMediaQuery("(min-width: 767px)");
   //Uses statehook for the slider
   const [state, setState] = useState({
     right: false,

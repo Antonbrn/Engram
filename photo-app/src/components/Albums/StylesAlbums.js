@@ -17,6 +17,7 @@ export const ButtonStyled = styled(Button)`
 export const ContainerStyled = styled(Container)`
   background: #f57f17;
   height: 100vh;
+  padding-top: 100px;
 `;
 export const BoxContainer = styled(Box)`
   display: flex;
