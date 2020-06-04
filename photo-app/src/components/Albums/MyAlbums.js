@@ -42,7 +42,7 @@ const MyAlbums = (props) => {
       <BoxContainer>
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
-          <CardContainer key={album.id} component={Link} to="/Album">
+          <CardContainer key={album.id}>
             <CardActionArea style={{ width: "100%", height: "100%" }}>
               <img style={{ width: "100%", height: "80%" }} src={album.url} />
               <TypographyStyled>{album.title}</TypographyStyled>
@@ -50,7 +50,10 @@ const MyAlbums = (props) => {
           </CardContainer>
         ))}
       </BoxContainer>
-
+      
+      <ButtonStyled variant="outlined" component={Link} to="/album">
+        to album
+      </ButtonStyled>
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>

@@ -10,10 +10,11 @@ import {
   } from "@material-ui/core";
 
 const Album = () => {
+    console.log('asda')
     return (
         <Box>
             <Typography>
-                {console.log('asda')}
+                
                 aisjdhaskd
             </Typography>
         </Box>
