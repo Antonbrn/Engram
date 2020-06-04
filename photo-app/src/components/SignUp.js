@@ -3,7 +3,9 @@ import { withRouter } from "react-router";
 import fire from "../base.js";
 import { Typography, Box, FormControl, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+//logo
 import logo from "../engramLogo.png";
+//backend
 import { db } from "../base";
 
 const useStyles = makeStyles({
