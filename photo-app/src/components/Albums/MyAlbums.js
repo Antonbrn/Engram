@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Container, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import { AuthContext } from "../../Auth";
 
 import styled from "styled-components";
 //Backend
@@ -39,36 +40,31 @@ const CardContainer = styled(Card)`
   }
 `;
 const TypographyStyled = styled(Typography)`
-text-align: center;
-justify-content: center;
-color: white;
-background: #0e973c;
-height: 20%;
-@media only screen and (min-width: 768px) {
-  padding: 5px;
-}
+  text-align: center;
+  justify-content: center;
+  color: white;
+  background: #0e973c;
+  height: 20%;
+  @media only screen and (min-width: 768px) {
+    padding: 5px;
+  }
 `;
 
-const useAlbums = () => {
-  const [albums, setAlbums] = useState([]);
-
-  //Tar ner bilder från databasen
-  useEffect(() => {
-    db.collection("albums").onSnapshot((snapshot) => {
-      const newAlbums = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setAlbums(newAlbums);
-    });
-  }, []);
-  //.where("userId", "==", u.userId)
-
-  return albums;
-};
-
 const MyAlbums = (props) => {
-  const albums = useAlbums();
+  const [albums, setAlbums] = useState([]);
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    db.collection("albums")
+      .where("userId", "==", currentUser.id)
+      .onSnapshot((snapshot) => {
+        const newAlbums = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setAlbums(newAlbums);
+      });
+  }, []);
 
   return (
     <ContainerStyled>

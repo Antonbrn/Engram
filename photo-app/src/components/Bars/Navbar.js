@@ -106,7 +106,7 @@ const Navbar = () => {
         <Typography
           className={classes.listItem}
           style={{ margin: "10px" }}
-        >{`logged in as ${currentUser}`}</Typography>
+        >{`logged in as ${currentUser.username}`}</Typography>
         <button onClick={() => fire.auth().signOut()}>Log out</button>
       </List>
     </Box>
