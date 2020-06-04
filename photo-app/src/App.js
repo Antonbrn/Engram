@@ -10,14 +10,18 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { AuthProvider } from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
+
+
 function App() {
   return (
     <Router>
       <AuthProvider>
         <CssBaseline />
+        
         <PrivateRoute path="/" component={Layout} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        
       </AuthProvider>
     </Router>
   );
