@@ -11,7 +11,7 @@ import { useMediaQuery } from "@material-ui/core";
 
 
 const Layout = () => {
-  //const mediaQueried = useMediaQuery("(max-width: 768px)");
+  const isActive = useMediaQuery("(max-width: 768px)");
 
   return (
     <div>
@@ -22,7 +22,7 @@ const Layout = () => {
       <Route path="/createalbums" component={CreateAlbums} />
       <Route path="/notifications" component={Notifications} />
 
-      <BottomBar />
+      {isActive&& <BottomBar />}
       
     </div>
   );
