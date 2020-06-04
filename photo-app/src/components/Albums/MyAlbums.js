@@ -10,46 +10,13 @@ import { AuthContext } from "../../Auth";
 import styled from "styled-components";
 //Backend
 import { db } from "../../base";
-import {StylesAlbums, ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled} from "./StylesAlbums";
-
-const ButtonStyled = styled(Button)`
-  background: #0e973c;
-  color: #ffff;
-  margin-top: 10px;
-  &:hover {
-    background: #54c969;
-    color: black;
-    transition: 0.7s ease;
-  }
-`;
-const ContainerStyled = styled(Container)`
-  background: #f57f17;
-  height: 100vh;
-`;
-const BoxContainer = styled(Box)`
-  display: flex;
-  flex-wrap: wrap;
-`;
-const CardContainer = styled(Card)`
-  height: 100px;
-  width: 100px;
-  margin: 5px;
-  @media only screen and (min-width: 768px) {
-    height: 200px;
-    width: 200px;
-    margin: 20px;
-  }
-`;
-const TypographyStyled = styled(Typography)`
-  text-align: center;
-  justify-content: center;
-  color: white;
-  background: #0e973c;
-  height: 20%;
-  @media only screen and (min-width: 768px) {
-    padding: 5px;
-  }
-`;
+import {
+  ContainerStyled,
+  BoxContainer,
+  CardContainer,
+  TypographyStyled,
+  ButtonStyled,
+} from "./StylesAlbums";
 
 const MyAlbums = (props) => {
   const [albums, setAlbums] = useState([]);
