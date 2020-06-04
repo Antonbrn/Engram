@@ -30,11 +30,13 @@ import { useMediaQuery } from "@material-ui/core";
 const useStyles = makeStyles({
   menuSliderContainer: {
     width: 250,
-    background: "lightgrey",
+    background: "#bc5100",
     height: "100%",
+    
   },
   listItem: {
     color: "black",
+    textAlign: "center",
   },
   navBar: {
     height: "70px",
