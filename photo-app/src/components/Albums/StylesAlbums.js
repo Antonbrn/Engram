@@ -3,7 +3,6 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
 
-
 export const ButtonStyled = styled(Button)`
   background: #0e973c;
   color: #ffff;
@@ -34,14 +33,26 @@ export const CardContainer = styled(Card)`
   }
 `;
 export const TypographyStyled = styled(Typography)`
-text-align: center;
-justify-content: center;
-color: white;
-background: #0e973c;
-height: 20%;
-@media only screen and (min-width: 768px) {
-  padding: 5px;
-}
+  text-align: center;
+  justify-content: center;
+  color: white;
+  background: #0e973c;
+  height: 20%;
+  @media only screen and (min-width: 768px) {
+    padding: 5px;
+  }
 `;
- 
-export default {ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled};
+
+export const StyledTypo = styled(Typography)`
+  color: green;
+  text-align: center;
+`;
+
+export default {
+  ButtonStyled,
+  ContainerStyled,
+  BoxContainer,
+  CardContainer,
+  TypographyStyled,
+  StyledTypo
+};
