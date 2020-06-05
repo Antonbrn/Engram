@@ -15,6 +15,10 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
+//BACKEND
+import { db } from "../../base";
+import { storage } from "../../base";
+
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
@@ -40,6 +44,25 @@ const Album = () => {
   //Add photos function
   const addPhotos = (e) => {
     e.preventDefault();
+    //Upload photofile to firebase storage
+    const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("photos")
+          .child(photo.name)
+          .getDownloadURL()
+          .then((url) => {
+            //Add url, userId to database
+          });
+        setUrl(url);
+      }
+    );
   };
 
   const classes = useStyles();
@@ -57,7 +80,7 @@ const Album = () => {
           <IconButton
             className={classes.albumButton}
             aria-label="Add Photo"
-            type="file"
+            onClick={addPhotos}
           >
             <AddPhotoAlternateIcon fontSize="large" />
           </IconButton>
@@ -74,7 +97,8 @@ const Album = () => {
         </Tooltip>
       </Container>
       <Box border={1} />
-      <Input type="file" />
+      <Input type="file" onChange={getPhotoFile} />
+      <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
     </Box>
   );
 };
