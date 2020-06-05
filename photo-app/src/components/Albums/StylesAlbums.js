@@ -29,25 +29,23 @@ export const BoxContainer = styled(Box)`
 export const CardContainer = styled(Card)`
   height: 100px;
   width: 100px;
-  
 
   @media only screen and (min-width: 768px) {
     height: 200px;
     width: 200px;
-    
   }
 `;
 export const TypographyStyled = styled(Typography)`
-text-align: center;
-max-width: 100px;
-color: white;
-background: #0e973c;
-margin-top: 5px;
-border-radius: 5px;
-@media only screen and (min-width: 768px) {
-  padding: 5px;
-  justify-content: center;
-}
+  text-align: center;
+  max-width: 100px;
+  color: white;
+  background: #0e973c;
+  margin-top: 5px;
+  border-radius: 5px;
+  @media only screen and (min-width: 768px) {
+    padding: 5px;
+    justify-content: center;
+  }
 `;
 
 export const AlbumDiv = styled.div`
@@ -55,8 +53,13 @@ export const AlbumDiv = styled.div`
   @media only screen and (min-width: 768px) {
     margin: 10px;
   }
-
 `;
- 
-export default {ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled, AlbumDiv};
-export default {ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled, AlbumDiv};
+
+export default {
+  ButtonStyled,
+  ContainerStyled,
+  BoxContainer,
+  CardContainer,
+  TypographyStyled,
+  AlbumDiv
+};
