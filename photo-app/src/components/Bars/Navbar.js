@@ -1,14 +1,11 @@
 import React, { useState, useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import RightMenuSlider from "@material-ui/core/Drawer";
 import {
-  AppBar,
   Toolbar,
   ListItem,
   IconButton,
   ListItemText,
   List,
-  Box,
   Typography,
 } from "@material-ui/core";
 //Logo for navbar
@@ -17,41 +14,15 @@ import logo from "../../engramLogo.png";
 import fire from "../../base";
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
-
 //Imported icons
 import { ArrowBack } from "@material-ui/icons";
-import SettingsIcon from "@material-ui/icons/Settings";
-
 import BottomBar from "./BottomBar";
 import { useMediaQuery } from "@material-ui/core";
-import styled from "styled-components";
+import {BoxSlider,
+        StyledAppbar,
+        StyledSettingsIcon,
+        } from "./NavbarStyles";
 
-//CSS STYLES
-const useStyles = makeStyles({
-  menuSliderContainer: {
-    width: 250,
-    background: "#bc5100",
-    height: "100%",
-    
-  },
-  listItem: {
-    color: "black",
-    textAlign: "center",
-  },
-  navBar: {
-    height: "70px",
-    position: "fixed",
-    background: "#bc5100",
-  },
-  menuIcon: {
-    color: "#FFFFFF",
-    fontSize: "30px",
-  },
-  logo: {
-    maxWidth: 130,
-    marginRight: "auto",
-  },
-});
 
 //Navbarlinks Array
 const menuLinks = [
@@ -87,12 +58,9 @@ const Navbar = () => {
     setState({ ...state, [slider]: open });
   };
 
-  //saves the css into a classes variable
-  const classes = useStyles();
-
   //Function for the slideList
   const slideList = (slider) => (
-    <Box className={classes.menuSliderContainer} component="div">
+    <BoxSlider>
       <IconButton onClick={toggleSlider(slider, false)}>
         <ArrowBack />
       </IconButton>
@@ -100,28 +68,31 @@ const Navbar = () => {
         {menuLinks.map((Link, key) => (
           <ListItem button key={key}>
             <ListItemText
-              className={classes.listItem}
+              style={{
+                color: "black",
+                textAlign: "center",}}
               primary={Link.listText}
             />
           </ListItem>
         ))}
         <Typography
-          className={classes.listItem}
-          style={{ margin: "10px" }}
+          style={{ margin: "10px",
+                    color: "black",
+                   textAlign: "center", }}
         >{`logged in as ${currentUser.username}`}</Typography>
         <button onClick={() => fire.auth().signOut()}>Log out</button>
       </List>
-    </Box>
+    </BoxSlider>
   );
 
   return (
     <>
-      <AppBar position="static" className={classes.navBar}>
-        <Toolbar classes={classes.toolBar}>
-          <img src={logo} className={classes.logo} />
+      <StyledAppbar position="static">
+        <Toolbar>
+          <img src={logo} style={{marginRight: "auto", maxWidth: 180,}} />
           {isActive && <BottomBar />}
           <IconButton onClick={toggleSlider("right", true)}>
-            <SettingsIcon className={classes.menuIcon} />
+            <StyledSettingsIcon/>
           </IconButton>
           <RightMenuSlider
             anchor="right"
@@ -131,7 +102,7 @@ const Navbar = () => {
             {slideList("right")}
           </RightMenuSlider>
         </Toolbar>
-      </AppBar>
+      </StyledAppbar>
     </>
   );
 };
