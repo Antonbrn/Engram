@@ -13,7 +13,6 @@ import {
 } from "@material-ui/core";
 //Logo for navbar
 import logo from "../../engramLogo.png";
-
 //backend
 import fire from "../../base";
 //Authcontext, userdata
@@ -25,6 +24,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 import BottomBar from "./BottomBar";
 import { useMediaQuery } from "@material-ui/core";
+import styled from "styled-components";
 
 //CSS STYLES
 const useStyles = makeStyles({
