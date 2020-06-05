@@ -1,12 +1,12 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
-import { AuthContext } from "../Auth";
+import { AuthContext } from "../../Auth";
 import { Box, Button, FormControl, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 //engram logo
-import logo from "../engramLogo.png";
+import logo from "../../engramLogo.png";
 //backend
-import fire from "../base";
+import fire from "../../base";
 
 const useStyles = makeStyles({
   loginPage: {
