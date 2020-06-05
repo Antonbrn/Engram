@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Box,
@@ -7,7 +7,7 @@ import {
   Button,
   IconButton,
   Input,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -17,13 +17,31 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 const useStyles = makeStyles({
   albumButton: {
-    fontSize: 30
-  }
+    fontSize: 30,
+  },
 });
+
 //------
 // tooltip fungerar inte annu, inte heller placeringen av iconerna
 //------
+
 const Album = () => {
+  //State for photos
+  const [url, setUrl] = useState("");
+  const [photo, setPhoto] = useState(null);
+
+  //Get photofile
+  const getPhotoFile = (e) => {
+    if (e.target.files[0]) {
+      setPhoto(e.target.files[0]);
+    }
+  };
+
+  //Add photos function
+  const addPhotos = (e) => {
+    e.preventDefault();
+  };
+
   const classes = useStyles();
   return (
     <Box style={{ background: "white", height: "100vh", paddingTop: "100px" }}>
@@ -36,7 +54,11 @@ const Album = () => {
 
       <Container>
         <Tooltip title="Add Photo" placement="bottom">
-          <IconButton className={classes.albumButton} aria-label="Add Photo">
+          <IconButton
+            className={classes.albumButton}
+            aria-label="Add Photo"
+            type="file"
+          >
             <AddPhotoAlternateIcon fontSize="large" />
           </IconButton>
         </Tooltip>
@@ -52,6 +74,7 @@ const Album = () => {
         </Tooltip>
       </Container>
       <Box border={1} />
+      <Input type="file" />
     </Box>
   );
 };

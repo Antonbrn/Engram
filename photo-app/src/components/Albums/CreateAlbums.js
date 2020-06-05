@@ -14,10 +14,7 @@ import { ArrowForward } from "@material-ui/icons";
 import { db } from "../../base";
 import { storage } from "../../base";
 import { AuthContext } from "../../Auth";
-import {
-  ContainerStyled,
-  ButtonStyled,
-} from "./StylesAlbums";
+import { ContainerStyled, ButtonStyled } from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
