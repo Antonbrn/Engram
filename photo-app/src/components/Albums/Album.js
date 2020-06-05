@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Typography,
   Box,
@@ -7,7 +7,7 @@ import {
   Button,
   IconButton,
   Input,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -15,6 +15,8 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
+//CONTEXT
+import { AuthContext } from "../../Auth";
 //BACKEND
 import { db } from "../../base";
 import { storage } from "../../base";
@@ -22,11 +24,11 @@ import { storage } from "../../base";
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   boxflex: {
-    display: "flex"
-  }
+    display: "flex",
+  },
 });
 
 //------
@@ -34,19 +36,22 @@ const useStyles = makeStyles({
 //------
 
 const Album = () => {
+  //Context for getting userid
+  const { currentUser } = useContext(AuthContext);
+
   //State for photos
   const [url, setUrl] = useState("");
   const [photo, setPhoto] = useState(null);
 
   //Get photofile
-  const getPhotoFile = e => {
+  const getPhotoFile = (e) => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = e => {
+  const addPhotos = (e) => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
@@ -63,6 +68,10 @@ const Album = () => {
           .getDownloadURL()
           .then((url) => {
             //Add url, userId to database
+            db.collection("photos").add({
+              url: url,
+              userId: currentUser.id,
+            });
           });
         setUrl(url);
       }
@@ -87,7 +96,7 @@ const Album = () => {
             <IconButton
               className={classes.albumButton}
               aria-label="Add Photo"
-              type="file"
+              onClick={addPhotos}
             >
               <AddPhotoAlternateIcon fontSize="large" />
             </IconButton>
@@ -105,7 +114,7 @@ const Album = () => {
         </Box>
         <Box border={1} />
 
-        <Input type="file" />
+        <Input type="file" onChange={getPhotoFile} />
       </Box>
     </Container>
   );
