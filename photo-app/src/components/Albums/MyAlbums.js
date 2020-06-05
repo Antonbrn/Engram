@@ -14,6 +14,7 @@ import {
   TypographyStyled,
   ButtonStyled,
   AlbumDiv,
+  Title,
 } from "./StylesAlbums";
 
 const MyAlbums = (props) => {
@@ -34,28 +35,30 @@ const MyAlbums = (props) => {
 
   return (
     <ContainerStyled>
-      <Typography variant="h5">Private Albums</Typography>
+      <Title variant="h4">Private Albums</Title>
       <Box borderBottom={1} />
       {/* Box för display flex */}
       <BoxContainer>
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
           <AlbumDiv key={album.id}>
-          <CardContainer >
-
-            <CardActionArea>
-              <img style={{ width: "100%", height: "100%" }} src={album.url} />
-            </CardActionArea>
-          </CardContainer>
+            <CardContainer>
+              <CardActionArea>
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src={album.url}
+                />
+              </CardActionArea>
+            </CardContainer>
             <TypographyStyled>{album.title}</TypographyStyled>
           </AlbumDiv>
         ))}
       </BoxContainer>
-      
-      <ButtonStyled variant="outlined" component={Link} to="/album">
+
+      <ButtonStyled component={Link} to="/album">
         to album
       </ButtonStyled>
-      <ButtonStyled variant="outlined" component={Link} to="/createalbums">
+      <ButtonStyled component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
 

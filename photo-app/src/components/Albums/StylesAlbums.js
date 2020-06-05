@@ -3,9 +3,10 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
 
-
 export const ButtonStyled = styled(Button)`
-  background: #0e973c;
+  font-family: "Viga";
+  background: linear-gradient(160deg, #0e973c 40%, #54d67f);
+  border: 1px solid #000;
   color: #ffff;
   margin: 10px 0 0 5px;
   &:hover {
@@ -18,7 +19,7 @@ export const ButtonStyled = styled(Button)`
   }
 `;
 export const ContainerStyled = styled(Container)`
-  background: #f57f17;
+  background: linear-gradient(160deg, #f57f17 50%, #fab30a);
   height: 100vh;
   padding-top: 100px;
 `;
@@ -30,25 +31,28 @@ export const BoxContainer = styled(Box)`
 export const CardContainer = styled(Card)`
   height: 100px;
   width: 100px;
-  
 
   @media only screen and (min-width: 768px) {
     height: 200px;
     width: 200px;
-    
   }
 `;
 export const TypographyStyled = styled(Typography)`
-text-align: center;
-max-width: 100px;
-color: white;
-background: #0e973c;
-margin-top: 5px;
-border-radius: 5px;
-@media only screen and (min-width: 768px) {
-  padding: 5px;
-  justify-content: center;
-}
+  text-align: center;
+  max-width: 100px;
+  color: white;
+
+  margin-top: 5px;
+  border-radius: 5px;
+  font-family: "Viga";
+  @media only screen and (min-width: 768px) {
+    padding: 5px;
+    justify-content: center;
+  }
+`;
+
+export const Title = styled(Typography)`
+  font-family: "Viga";
 `;
 
 export const AlbumDiv = styled.div`
@@ -56,7 +60,13 @@ export const AlbumDiv = styled.div`
   @media only screen and (min-width: 768px) {
     margin: 10px;
   }
-
 `;
- 
-export default {ButtonStyled, ContainerStyled, BoxContainer, CardContainer, TypographyStyled, AlbumDiv};
+
+export default {
+  ButtonStyled,
+  ContainerStyled,
+  BoxContainer,
+  CardContainer,
+  TypographyStyled,
+  AlbumDiv,
+};
