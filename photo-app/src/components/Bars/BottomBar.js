@@ -5,46 +5,14 @@ import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useMediaQuery } from "@material-ui/core";
+import {BottomNavigationActionStyled,
+        BottomNavigationStyled} from "./NavbarStyles";
 
 //const isActive = useMediaQuery("(min-width: 600px)");
 
-const useStyles = makeStyles({
-  bottomIcons: {
-    color: "#bc5100",
-    fontSize: "30px",
-  },
-});
-const BottomNavigationActionStyled = styled(BottomNavigationAction)`
-    
-    &:visited {
-      color: #bc5100;
-  }
-  font-size: 30px;
 
-  @media only screen and (min-width: 768px) {
-    color: #ffb04c;
-      &:visited {
-        color: #ffb04c;
-  }
-    
-  }
-`;
 
-const BottomNavigationStyled = styled(BottomNavigation)`
-background: #bc5100;
-height: 70px;
-padding-top: 10px;
-@media only screen and (max-width: 767px) {
-  background: #ffb04c;
-  
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-`;
 const BottomBar = () => {
-  const classes = useStyles();
 
   const [value, setValue] = React.useState("feed");
 
