@@ -40,7 +40,7 @@ padding-top: 10px;
 ////^^^^^^^^^^^^^^^^^^^^^^^^BOTTOMBAR STYLING^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-------------------
 export const BoxSlider = styled(Box)`
 
-    width: 250;
+    width: 250px;
     background: #bc5100;
     height: 100%;
 
