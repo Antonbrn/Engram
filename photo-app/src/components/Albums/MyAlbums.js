@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Container, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
-import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
 
-import styled from "styled-components";
 //Backend
 import { db } from "../../base";
 import {
@@ -46,7 +43,7 @@ const MyAlbums = (props) => {
           <AlbumDiv key={album.id}>
           <CardContainer >
 
-            <CardActionArea style={{ }}>
+            <CardActionArea>
               <img style={{ width: "100%", height: "100%" }} src={album.url} />
             </CardActionArea>
           </CardContainer>

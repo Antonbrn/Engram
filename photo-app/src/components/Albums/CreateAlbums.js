@@ -14,6 +14,10 @@ import { ArrowForward } from "@material-ui/icons";
 import { db } from "../../base";
 import { storage } from "../../base";
 import { AuthContext } from "../../Auth";
+import {
+  ContainerStyled,
+  ButtonStyled,
+} from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
@@ -59,7 +63,7 @@ const CreateAlbums = () => {
   };
 
   return (
-    <Container style={{ height: "78vh" }}>
+    <ContainerStyled>
       <Typography variant="h4">Create Album</Typography>
       <Box borderBottom={1} />
       <div>
@@ -78,15 +82,15 @@ const CreateAlbums = () => {
           </Box>
         </Box>
         <Box>
-          <Button variant="outlined" onClick={addAlbum}>
+          <ButtonStyled variant="outlined" onClick={addAlbum}>
             Create Album
-          </Button>
+          </ButtonStyled>
           <IconButton component={Link} to="/myalbums">
             <ArrowForward />
           </IconButton>
         </Box>
       </div>
-    </Container>
+    </ContainerStyled>
   );
 };
 
