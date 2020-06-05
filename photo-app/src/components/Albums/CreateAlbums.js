@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
   Typography,
@@ -13,6 +13,11 @@ import { ArrowForward } from "@material-ui/icons";
 //backend
 import { db } from "../../base";
 import { storage } from "../../base";
+import { AuthContext } from "../../Auth";
+import {
+  ContainerStyled,
+  ButtonStyled,
+} from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
@@ -25,6 +30,8 @@ const CreateAlbums = () => {
       setThumbnail(e.target.files[0]);
     }
   };
+
+  const { currentUser } = useContext(AuthContext);
 
   const addAlbum = (e) => {
     e.preventDefault();
@@ -44,15 +51,11 @@ const CreateAlbums = () => {
           .getDownloadURL()
           .then((url) => {
             //add url and title to the database, Albums collection
-            db.collection("albums")
-              .add({
-                url: url,
-                title: title,
-              })
-              .then(() => {
-                setTitle("");
-                setUrl("");
-              });
+            db.collection("albums").add({
+              url: url,
+              title: title,
+              userId: currentUser.id,
+            });
             setUrl(url);
           });
       }
@@ -60,7 +63,7 @@ const CreateAlbums = () => {
   };
 
   return (
-    <Container style={{ height: "78vh" }}>
+    <ContainerStyled>
       <Typography variant="h4">Create Album</Typography>
       <Box borderBottom={1} />
       <div>
@@ -79,15 +82,15 @@ const CreateAlbums = () => {
           </Box>
         </Box>
         <Box>
-          <Button variant="outlined" onClick={addAlbum}>
+          <ButtonStyled variant="outlined" onClick={addAlbum}>
             Create Album
-          </Button>
+          </ButtonStyled>
           <IconButton component={Link} to="/myalbums">
             <ArrowForward />
           </IconButton>
         </Box>
       </div>
-    </Container>
+    </ContainerStyled>
   );
 };
 

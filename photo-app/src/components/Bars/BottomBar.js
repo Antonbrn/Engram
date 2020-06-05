@@ -5,28 +5,14 @@ import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useMediaQuery } from "@material-ui/core";
+import {BottomNavigationActionStyled,
+        BottomNavigationStyled} from "./NavbarStyles";
 
 //const isActive = useMediaQuery("(min-width: 600px)");
 
-const useStyles = makeStyles({
-  bottomIcons: {
-    color: "#bc5100",
-    fontSize: "30px",
-  },
-});
-const BottomNavigationStyled = styled(BottomNavigation)`
-background: #ffb04c;
-height: 70px;
 
-@media only screen and (max-width: 600px) {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
 
-`;
 const BottomBar = () => {
-  const classes = useStyles();
 
   const [value, setValue] = React.useState("feed");
 
@@ -38,30 +24,30 @@ const BottomBar = () => {
     <BottomNavigationStyled
       value={value}
       onChange={handleChange}
-      className={classes.bottomNav}
+      
     >
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/myalbums"
-        label="Albums"
         value="myalbums"
-        icon={<PhotoAlbum className={classes.bottomIcons} />}
+        label="Albums"
+        icon={<PhotoAlbum />}
       />
 
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/"
-        label="Feed"
         value="feed"
-        icon={<Home className={classes.bottomIcons} />}
+        label="Home"
+        icon={<Home />}
       />
 
-      <BottomNavigationAction
+      <BottomNavigationActionStyled
         component={Link}
         to="/notifications"
-        label="Notifications"
         value="notifications"
-        icon={<NotificationsActive className={classes.bottomIcons} />}
+        label="Notifications"
+        icon={<NotificationsActive />}
       />
     </BottomNavigationStyled>
   );

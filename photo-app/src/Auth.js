@@ -14,8 +14,9 @@ export const AuthProvider = ({ children }) => {
         .doc(user.uid)
         .get()
         .then((doc) => {
-          const userId = doc.data().username;
-          setCurrentUser(userId);
+          const userData = doc.data();
+          userData.id = user.uid;
+          setCurrentUser(userData);
         });
     });
   }, []);
