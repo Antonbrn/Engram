@@ -7,6 +7,7 @@ import CreateAlbums from "./Albums/CreateAlbums";
 import Feed from "./Feed/Feed";
 import { Route } from "react-router-dom";
 import { useMediaQuery } from "@material-ui/core";
+import Album from "./Albums/Album";
 
 
 
@@ -21,7 +22,7 @@ const Layout = () => {
       <Route path="/myalbums" component={MyAlbums} />
       <Route path="/createalbums" component={CreateAlbums} />
       <Route path="/notifications" component={Notifications} />
-
+      <Route path='/album' component={Album}/>
       {isActive&& <BottomBar />}
       
     </div>
