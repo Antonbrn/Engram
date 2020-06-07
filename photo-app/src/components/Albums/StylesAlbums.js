@@ -5,12 +5,12 @@ import styled from "styled-components";
 
 export const ButtonStyled = styled(Button)`
   font-family: "Viga";
-  background: linear-gradient(160deg, #0e973c 40%, #54d67f);
+  background: #bc5100;
   border: 1px solid #000;
-  color: #ffff;
+  color: #f57f17;
   margin: 10px 0 0 5px;
   &:hover {
-    background: #54c969;
+    background: #ffffff;
     color: black;
     transition: 0.7s ease;
   }
@@ -19,7 +19,7 @@ export const ButtonStyled = styled(Button)`
   }
 `;
 export const ContainerStyled = styled(Container)`
-  background: linear-gradient(160deg, #f57f17 50%, #fab30a);
+  // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
   height: 100vh;
   padding-top: 100px;
 `;
@@ -40,7 +40,7 @@ export const CardContainer = styled(Card)`
 export const TypographyStyled = styled(Typography)`
   text-align: center;
   max-width: 100px;
-  color: white;
+  color: black;
 
   margin-top: 5px;
   border-radius: 5px;

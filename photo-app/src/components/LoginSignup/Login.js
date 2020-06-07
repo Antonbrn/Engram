@@ -7,9 +7,10 @@ import logo from "../../engramLogo.png";
 //backend
 import fire from "../../base";
 import {
-  ButtonStyled, StyledBoxContainer
+  ButtonStyled, StyledBoxContainer, StyledForm
 } from "./LoginSignupStyles";
 import TextField from '@material-ui/core/TextField';
+var bg=require('../LoginSignup/hejhej2.jpg');
 
 
 const Login = ({ history }) => {
@@ -36,14 +37,18 @@ const Login = ({ history }) => {
   }
 
   return (
-      <StyledBoxContainer>
+      <StyledBoxContainer className='background-image' style ={ { backgroundImage: "url("+bg+")" } }>
+        <StyledForm>
         <img src={logo} />
         <form onSubmit={handleLogin}>
           <FormControl>
             <TextField
+
+            style={{color: 'black'}}
             name="email"
               label="Username/Email"
               hintText="Enter Your Username/Email"
+              color="secondary"
               floatingLabelText="Email/Username"
               onSubmit={handleLogin}
             />
@@ -67,6 +72,7 @@ const Login = ({ history }) => {
         </ButtonStyled>
           </FormControl>
         </form>
+        </StyledForm>
       </StyledBoxContainer>
   );
 };
