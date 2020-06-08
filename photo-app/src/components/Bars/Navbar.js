@@ -18,11 +18,13 @@ import { AuthContext } from "../../Auth";
 import { ArrowBack } from "@material-ui/icons";
 import BottomBar from "./BottomBar";
 import { useMediaQuery } from "@material-ui/core";
-import {BoxSlider,
-        StyledAppbar,
-        StyledSettingsIcon,
-        } from "./NavbarStyles";
-
+import {
+  BoxSlider,
+  StyledAppbar,
+  StyledSettingsIcon,
+  LoggedUser,
+  StyledDiv,
+} from "./NavbarStyles";
 
 //Navbarlinks Array
 const menuLinks = [
@@ -44,7 +46,7 @@ const menuLinks = [
 ];
 
 const Navbar = () => {
-  const isActive = useMediaQuery("(min-width: 767px)");
+  const isActive = useMediaQuery("(min-width: 768px)");
   //Uses statehook for the slider
   const [state, setState] = useState({
     right: false,
@@ -61,25 +63,26 @@ const Navbar = () => {
   //Function for the slideList
   const slideList = (slider) => (
     <BoxSlider>
-      <IconButton onClick={toggleSlider(slider, false)}>
-        <ArrowBack />
-      </IconButton>
+      <StyledDiv>
+        <IconButton onClick={toggleSlider(slider, false)}>
+          <ArrowBack />
+        </IconButton>
+        <LoggedUser>{`${currentUser.username}`}</LoggedUser>
+      </StyledDiv>
+
       <List>
         {menuLinks.map((Link, key) => (
           <ListItem button key={key}>
             <ListItemText
               style={{
                 color: "black",
-                textAlign: "center",}}
+                textAlign: "center",
+              }}
               primary={Link.listText}
             />
           </ListItem>
         ))}
-        <Typography
-          style={{ margin: "10px",
-                    color: "black",
-                   textAlign: "center", }}
-        >{`logged in as ${currentUser.username}`}</Typography>
+
         <button onClick={() => fire.auth().signOut()}>Log out</button>
       </List>
     </BoxSlider>
@@ -89,10 +92,10 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-          <img src={logo} style={{marginRight: "auto", maxWidth: 180,}} />
+          <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
           {isActive && <BottomBar />}
           <IconButton onClick={toggleSlider("right", true)}>
-            <StyledSettingsIcon/>
+            <StyledSettingsIcon />
           </IconButton>
           <RightMenuSlider
             anchor="right"
