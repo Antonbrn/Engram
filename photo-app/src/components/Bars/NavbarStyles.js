@@ -3,6 +3,7 @@ import { AppBar, Box } from "@material-ui/core";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
 
+//---- SLIDER ----
 export const StyledDiv = styled.div`
   width: 100%;
   display: flex;
@@ -33,9 +34,9 @@ export const BottomNavigationStyled = styled(BottomNavigation)`
   background: #bc5100;
   height: 70px;
   padding-top: 10px;
+
   @media only screen and (max-width: 767px) {
     background: #ffb04c;
-
     position: fixed;
     bottom: 0;
     width: 100%;

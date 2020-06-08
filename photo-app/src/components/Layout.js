@@ -10,7 +10,7 @@ import { useMediaQuery } from "@material-ui/core";
 import Album from "./Albums/Album";
 
 const Layout = () => {
-  const isActive = useMediaQuery("(max-width: 768px)");
+  const isActive = useMediaQuery("(max-width: 767px)");
 
   return (
     <div>
