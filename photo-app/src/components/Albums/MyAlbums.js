@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 
 
@@ -18,6 +17,7 @@ import {
   ButtonStyled,
   AlbumDiv,
   Title,
+  StyledCardMedia
 } from "./StylesAlbums";
 
 const MyAlbums = () => {
@@ -52,7 +52,7 @@ const MyAlbums = () => {
 
   return (
     <ContainerStyled>
-      <Title variant="h4">Private Albums</Title>
+      <Title variant="h4">My Albums</Title>
       <Box borderBottom={1} />
       {/* Box för display flex */}
       <BoxContainer>
@@ -61,9 +61,9 @@ const MyAlbums = () => {
           <AlbumDiv key={album.id}>
             <CardContainer>
               <CardActionArea>
-                <CardMedia
+                <StyledCardMedia
+                  // style={{height: 120}}
                   component="img"
-                  style={{ height: 170 }}
                   src={album.url}
                 />
               </CardActionArea>
@@ -72,15 +72,12 @@ const MyAlbums = () => {
           </AlbumDiv>
         ))}
       </BoxContainer>
-
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
       <ButtonStyled variant="outlined" component={Link} to="/album">
         To album
       </ButtonStyled>
-      <Title variant="h4">Shared Albums</Title>
-      <Box borderBottom={1} />
     </ContainerStyled>
   );
 };
