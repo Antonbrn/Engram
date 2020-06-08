@@ -20,10 +20,24 @@ import {
   Title,
 } from "./StylesAlbums";
 
-const MyAlbums = (props) => {
+const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const [currentAlbum, setCurrentAlbum] = useState("");
 
+  //Get currentAlbum
+  const getCurrentAlbum = (e) => {
+    e.preventDefault();
+    db.collection("albums")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          console.log(doc.id);
+        });
+      });
+  };
+
+  //Get Albums
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
@@ -61,10 +75,7 @@ const MyAlbums = (props) => {
         ))}
       </BoxContainer>
 
-      <ButtonStyled component={Link} to="/album">
-        to album
-      </ButtonStyled>
-      <ButtonStyled component={Link} to="/createalbums">
+      <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
       <Title variant="h4">Shared Albums</Title>

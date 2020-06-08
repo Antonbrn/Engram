@@ -17,6 +17,7 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 
 //CONTEXT
 import { AuthContext } from "../../Auth";
+
 //BACKEND
 import { db } from "../../base";
 import { storage } from "../../base";
@@ -71,6 +72,7 @@ const Album = () => {
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
+              albumId: "",
             });
           });
         setUrl(url);
