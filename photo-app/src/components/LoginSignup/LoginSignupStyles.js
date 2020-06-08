@@ -1,24 +1,19 @@
-import { Typography, Box, Container, Button, FormControl } from "@material-ui/core";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
+import React from "react";
+import { Typography, Box, Container, Button, FormControl, TextField, } from "@material-ui/core";
 import styled from "styled-components";
-var bg=require('../LoginSignup/hejhej.jpg');
-
-
-
-
-
-
+import background from "./hejhej2.jpg";
+import { Label } from "@material-ui/icons";
 
 
 
 export const StyledBoxContainer = styled(Box)`
  display: flex;
     flex-direction: column;
-    justify-content: top;
+    justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
+    background-image: url(${background});
     background-repeat: no-repeat;
     background-size: 100% 100%;
 
@@ -34,7 +29,7 @@ export const ButtonStyled = styled(Button)`
     color: #bc5100;
     border: solid 1px #bc5100;
     transition: 0.7s ease;
-  },
+  }
 
   @media only screen and (min-width: 768px) {
     
@@ -43,10 +38,9 @@ export const ButtonStyled = styled(Button)`
 `;
 
 export const StyledForm = styled.div`
+padding: 15px;
 border-radius: 5px;
 border: solid 5px #bc5100;
-padding: 5px; 
-padding-top: 0px; margin-top: 200px;
 background-color: white;
 
 
@@ -54,5 +48,18 @@ background-color: white;
 
 
 export const FormControlStyled = styled(FormControl)`
-    color: #bc5100;
+display: flex;
+justify-items: center;
+`;
+
+export const StyledTextField = styled(TextField)`
+  
+&& .MuiInput-underline:hover:before {
+  border-bottom: 2px solid #ffb04c;
+}
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid #bc5100;
+}
+
 `;
