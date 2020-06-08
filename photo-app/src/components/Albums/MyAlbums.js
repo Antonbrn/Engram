@@ -14,7 +14,8 @@ import {
   TypographyStyled,
   ButtonStyled,
   AlbumDiv,
-  Title
+  Title,
+  StyledCardMedia
 } from "./StylesAlbums";
 
 export const AlbumContext = React.createContext();
@@ -69,10 +70,10 @@ const MyAlbums = ({ children }) => {
                     getCurrentAlbum(album.id);
                   }}
                 >
-                  <img
-                    style={{ width: "100%", height: "100%" }}
-                    src={album.url}
-                  />
+                  <StyledCardMedia
+                  component="img"
+                  src={album.url}
+                />
                 </CardActionArea>
               </CardContainer>
               <TypographyStyled>{album.title}</TypographyStyled>
