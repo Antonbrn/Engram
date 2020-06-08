@@ -14,7 +14,7 @@ import {
   TypographyStyled,
   ButtonStyled,
   AlbumDiv,
-  Title,
+  Title
 } from "./StylesAlbums";
 
 const MyAlbums = () => {
@@ -23,12 +23,12 @@ const MyAlbums = () => {
   const [currentAlbum, setCurrentAlbum] = useState("");
 
   //Get currentAlbum
-  const getCurrentAlbum = (e) => {
+  const getCurrentAlbum = e => {
     e.preventDefault();
     db.collection("albums")
       .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
+      .then(snapshot => {
+        snapshot.docs.forEach(doc => {
           console.log(doc.id);
         });
       });
@@ -38,10 +38,10 @@ const MyAlbums = () => {
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
-      .onSnapshot((snapshot) => {
-        const newAlbums = snapshot.docs.map((doc) => ({
+      .onSnapshot(snapshot => {
+        const newAlbums = snapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
         setAlbums(newAlbums);
       });
@@ -54,14 +54,10 @@ const MyAlbums = () => {
       {/* Box för display flex */}
       <BoxContainer>
         {/* Loopar ut alla albums i ett card med title */}
-        {albums.map((album) => (
+        {albums.map(album => (
           <AlbumDiv key={album.id}>
             <CardContainer>
-              <CardActionArea
-                component={Link}
-                to="/album"
-                onClick={getCurrentAlbum}
-              >
+              <CardActionArea component={Link} to="/album">
                 <img
                   style={{ width: "100%", height: "100%" }}
                   src={album.url}
