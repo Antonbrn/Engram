@@ -23,15 +23,10 @@ const MyAlbums = () => {
   const [currentAlbum, setCurrentAlbum] = useState("");
 
   //Get currentAlbum
-  const getCurrentAlbum = (e) => {
-    e.preventDefault();
-    db.collection("albums")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.id);
-        });
-      });
+  const getCurrentAlbum = (albumId) => {
+    console.log(albumId);
+    setCurrentAlbum(albumId);
+    console.log(currentAlbum);
   };
 
   //Get Albums
@@ -60,7 +55,9 @@ const MyAlbums = () => {
               <CardActionArea
                 component={Link}
                 to="/album"
-                onClick={getCurrentAlbum}
+                onClick={() => {
+                  getCurrentAlbum(album.id);
+                }}
               >
                 <img
                   style={{ width: "100%", height: "100%" }}
