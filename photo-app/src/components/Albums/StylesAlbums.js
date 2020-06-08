@@ -2,6 +2,7 @@ import { Typography, Box, Container, Button } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
+import CardMedia from "@material-ui/core/CardMedia";
 
 export const ButtonStyled = styled(Button)`
   font-family: "Viga";
@@ -20,7 +21,7 @@ export const ButtonStyled = styled(Button)`
 `;
 export const ContainerStyled = styled(Container)`
   // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
-  height: 100vh;
+  /* height: 100vh; */
   padding-top: 100px;
 `;
 export const BoxContainer = styled(Box)`
@@ -30,13 +31,13 @@ export const BoxContainer = styled(Box)`
   padding: 10px 0 10px 0;
 `;
 export const CardContainer = styled(Card)`
-   max-width: 120px;
+   width: 150px;
    border: solid 1px #bc5100;
-    border-radius: 5px;
+   border-radius: 5px;
+   max-height: 21.34471718249733vh;
 
-  /* VH = 200px */
   @media only screen and (min-width: 768px) {
-    min-height: 21.34471718249733vh;
+
     max-width: 200px;
   }
 `;
@@ -62,6 +63,14 @@ export const AlbumDiv = styled.div`
     margin: 10px;
   }
 `;
+export const StyledCardMedia = styled(CardMedia)`
+ height: 150px;
+
+ @media only screen and (min-width: 768px) {
+  height: 300px;
+ }
+`
+
 
 export default {
   ButtonStyled,
