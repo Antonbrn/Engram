@@ -15,18 +15,18 @@ import {
   ButtonStyled,
   AlbumDiv,
   Title,
-  StyledCardMedia
+  StyledCardMedia,
 } from "./StylesAlbums";
 
 export const AlbumContext = React.createContext();
 
-const MyAlbums = ({ children }) => {
+const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
   const [currentAlbum, setCurrentAlbum] = useState("");
 
   //Get currentAlbum
-  const getCurrentAlbum = albumId => {
+  const getCurrentAlbum = (albumId) => {
     console.log(albumId);
     setCurrentAlbum(albumId);
   };
@@ -35,10 +35,10 @@ const MyAlbums = ({ children }) => {
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
-      .onSnapshot(snapshot => {
-        const newAlbums = snapshot.docs.map(doc => ({
+      .onSnapshot((snapshot) => {
+        const newAlbums = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setAlbums(newAlbums);
       });
@@ -52,7 +52,7 @@ const MyAlbums = ({ children }) => {
         {/* Box för display flex */}
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-          {albums.map(album => (
+          {albums.map((album) => (
             <AlbumDiv key={album.id}>
               <CardContainer>
                 <CardActionArea
