@@ -17,7 +17,9 @@ import {
   Title,
 } from "./StylesAlbums";
 
-const MyAlbums = () => {
+export const AlbumContext = React.createContext();
+
+const MyAlbums = ({ children }) => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
   const [currentAlbum, setCurrentAlbum] = useState("");
@@ -43,40 +45,46 @@ const MyAlbums = () => {
   }, []);
 
   return (
-    <ContainerStyled>
-      <Title variant="h4">Private Albums</Title>
-      <Box borderBottom={1} />
-      {/* Box för display flex */}
-      <BoxContainer>
-        {/* Loopar ut alla albums i ett card med title */}
-        {albums.map((album) => (
-          <AlbumDiv key={album.id}>
-            <CardContainer>
-              <CardActionArea
-                component={Link}
-                to="/album"
-                onClick={() => {
-                  getCurrentAlbum(album.id);
-                }}
-              >
-                <img
-                  style={{ width: "100%", height: "100%" }}
-                  src={album.url}
-                />
-              </CardActionArea>
-            </CardContainer>
-            <TypographyStyled>{album.title}</TypographyStyled>
-          </AlbumDiv>
-        ))}
-      </BoxContainer>
+    <>
+      <AlbumContext.Provider value={{ currentAlbum }}>
+        {children}
+      </AlbumContext.Provider>
 
-      <ButtonStyled variant="outlined" component={Link} to="/createalbums">
-        Create album
-      </ButtonStyled>
+      <ContainerStyled>
+        <Title variant="h4">Private Albums</Title>
+        <Box borderBottom={1} />
+        {/* Box för display flex */}
+        <BoxContainer>
+          {/* Loopar ut alla albums i ett card med title */}
+          {albums.map((album) => (
+            <AlbumDiv key={album.id}>
+              <CardContainer>
+                <CardActionArea
+                  component={Link}
+                  to="/album"
+                  onClick={() => {
+                    getCurrentAlbum(album.id);
+                  }}
+                >
+                  <img
+                    style={{ width: "100%", height: "100%" }}
+                    src={album.url}
+                  />
+                </CardActionArea>
+              </CardContainer>
+              <TypographyStyled>{album.title}</TypographyStyled>
+            </AlbumDiv>
+          ))}
+        </BoxContainer>
 
-      <Typography variant="h5">Shared Albums</Typography>
-      <Box borderBottom={1} />
-    </ContainerStyled>
+        <ButtonStyled variant="outlined" component={Link} to="/createalbums">
+          Create album
+        </ButtonStyled>
+
+        <Typography variant="h5">Shared Albums</Typography>
+        <Box borderBottom={1} />
+      </ContainerStyled>
+    </>
   );
 };
 
