@@ -9,7 +9,7 @@ import {
   Input,
   Tooltip,
   Grid,
-  Paper,
+  Paper
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -32,19 +32,19 @@ import { storage } from "../../base";
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   root: {
     paddingTop: 20,
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    overflow: "hidden",
+    overflow: "hidden"
   },
   gridList: {
     width: 500,
-    height: 450,
-  },
+    height: 450
+  }
 });
 
 const Album = () => {
@@ -56,21 +56,21 @@ const Album = () => {
   const [photo, setPhoto] = useState(null);
 
   //Get photofile
-  const getPhotoFile = (e) => {
+  const getPhotoFile = e => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = (e) => {
+  const addPhotos = e => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
-      (error) => {
+      snapshot => {},
+      error => {
         console.log(error);
       },
       () => {
@@ -78,12 +78,12 @@ const Album = () => {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then((url) => {
+          .then(url => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: "",
+              albumId: ""
             });
           });
         setUrl(url);
@@ -95,53 +95,49 @@ const Album = () => {
 
   return (
     <ContainerStyled maxWidth="md">
-      <Box
-        style={{ background: "#f57f17", height: "100vh", paddingTop: "100px" }}
-      >
-        <Box>
-          <Typography
-            variant="h1"
-            style={{ textAlign: "center", fontSize: "50px" }}
-          >
-            albumName
-          </Typography>
+      <Box>
+        <Typography
+          variant="h1"
+          style={{ textAlign: "center", fontSize: "50px" }}
+        >
+          albumName
+        </Typography>
 
-          <Tooltip title="Add Photo" placement="bottom">
-            <IconButton
-              className={classes.albumButton}
-              aria-label="Add Photo"
-              onClick={addPhotos}
-            >
-              <AddPhotoAlternateIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Add Friend">
-            <IconButton className={classes.albumButton}>
-              <PersonAddIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Delete Photo">
-            <IconButton className={classes.albumButton}>
-              <DeleteIcon fontSize="large" />
-            </IconButton>
-          </Tooltip>
-        </Box>
-        <Input type="file" onChange={getPhotoFile} />
-        <Box border={1} />
-        <div className={classes.root}>
-          <GridList cellHeight={200} className={classes.gridList} cols={3}>
-            {pictureData.map((tile) => (
-              <GridListTile
-                key={tile.img}
-                cols={tile.featured ? 2 : 1}
-                rows={tile.featured ? 2 : 1}
-              >
-                <img src={"https://picsum.photos/200"} alt={"hejsan"} />
-              </GridListTile>
-            ))}
-          </GridList>
-        </div>
+        <Tooltip title="Add Photo" placement="bottom">
+          <IconButton
+            className={classes.albumButton}
+            aria-label="Add Photo"
+            onClick={addPhotos}
+          >
+            <AddPhotoAlternateIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Add Friend">
+          <IconButton className={classes.albumButton}>
+            <PersonAddIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete Photo">
+          <IconButton className={classes.albumButton}>
+            <DeleteIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
       </Box>
+      <Input type="file" onChange={getPhotoFile} />
+      <Box border={1} />
+      <div className={classes.root}>
+        <GridList cellHeight={200} className={classes.gridList} cols={3}>
+          {pictureData.map(tile => (
+            <GridListTile
+              key={tile.img}
+              cols={tile.featured ? 2 : 1}
+              rows={tile.featured ? 2 : 1}
+            >
+              <img src={"https://picsum.photos/200"} alt={"hejsan"} />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
     </ContainerStyled>
   );
 };
