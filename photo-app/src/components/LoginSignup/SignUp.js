@@ -8,7 +8,7 @@ import logo from "../../engramLogo.png";
 //backend
 import { db } from "../../base";
 import {
-  ButtonStyled, StyledBoxContainer
+  ButtonStyled, StyledBoxContainer, StyledForm, StyledTextField
 } from "./LoginSignupStyles";
 import TextField from '@material-ui/core/TextField';
 
@@ -42,23 +42,24 @@ const SignUp = ({ history }) => {
 
 
     <StyledBoxContainer>
+      <StyledForm>
       <img src={logo} />
       <form onSubmit={handleSignUp}>
         <FormControl>
-          <TextField
+          <StyledTextField
             name="email"
             type="email"
             label="Enter a email"
           // onSubmit={handleLogin}
           />
           <br />
-          <TextField
+          <StyledTextField
             name="username"
             type="username"
             label="Username"
           />
           <br />
-          <TextField
+          <StyledTextField
             name="password"
             type="password"
             label="Choose a password"
@@ -78,6 +79,7 @@ const SignUp = ({ history }) => {
     </ButtonStyled>
         </FormControl>
       </form>
+      </StyledForm>
     </StyledBoxContainer>
 
 
