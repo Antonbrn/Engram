@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
-import CardContent from "@material-ui/core/CardContent";
-
 
 //Backend
 import { db } from "../../base";
@@ -16,69 +14,80 @@ import {
   TypographyStyled,
   ButtonStyled,
   AlbumDiv,
-  Title,
-  StyledCardMedia
+  Title
 } from "./StylesAlbums";
 
-const MyAlbums = () => {
+export const AlbumContext = React.createContext();
+
+const MyAlbums = ({ children }) => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
   const [currentAlbum, setCurrentAlbum] = useState("");
 
   //Get currentAlbum
-  const getCurrentAlbum = (e) => {
-    e.preventDefault();
-    db.collection("albums")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.id);
-        });
-      });
+  const getCurrentAlbum = (albumId) => {
+    console.log(albumId);
+    setCurrentAlbum(albumId);
+    console.log(currentAlbum);
   };
 
   //Get Albums
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
-      .onSnapshot((snapshot) => {
-        const newAlbums = snapshot.docs.map((doc) => ({
+      .onSnapshot(snapshot => {
+        const newAlbums = snapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
         setAlbums(newAlbums);
       });
   }, []);
 
   return (
-    <ContainerStyled>
-      <Title variant="h4">My Albums</Title>
-      <Box borderBottom={1} />
-      {/* Box för display flex */}
-      <BoxContainer>
-        {/* Loopar ut alla albums i ett card med title */}
-        {albums.map((album) => (
-          <AlbumDiv key={album.id}>
-            <CardContainer>
-              <CardActionArea>
-                <StyledCardMedia
-                  // style={{height: 120}}
-                  component="img"
-                  src={album.url}
-                />
-              </CardActionArea>
-            </CardContainer>
-            <TypographyStyled>{album.title}</TypographyStyled>
-          </AlbumDiv>
-        ))}
-      </BoxContainer>
+    <>
+      <AlbumContext.Provider value={{ currentAlbum }}>
+        {children}
+      </AlbumContext.Provider>
+
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
-      <ButtonStyled variant="outlined" component={Link} to="/album">
-        To album
-      </ButtonStyled>
-    </ContainerStyled>
+      <ContainerStyled>
+        <Title variant="h4">Private Albums</Title>
+        <Box borderBottom={1} />
+        {/* Box för display flex */}
+        <BoxContainer>
+          {/* Loopar ut alla albums i ett card med title */}
+          {albums.map((album) => (
+            <AlbumDiv key={album.id}>
+              <CardContainer>
+                <CardActionArea
+                  component={Link}
+                  to="/album"
+                  onClick={() => {
+                    getCurrentAlbum(album.id);
+                  }}
+                >
+                  <img
+                    style={{ width: "100%", height: "100%" }}
+                    src={album.url}
+                  />
+                </CardActionArea>
+              </CardContainer>
+              <TypographyStyled>{album.title}</TypographyStyled>
+            </AlbumDiv>
+          ))}
+        </BoxContainer>
+
+        <ButtonStyled variant="outlined" component={Link} to="/createalbums">
+          Create album
+        </ButtonStyled>
+
+        <Typography variant="h5">Shared Albums</Typography>
+        <Box borderBottom={1} />
+      </ContainerStyled>
+    </>
   );
 };
 

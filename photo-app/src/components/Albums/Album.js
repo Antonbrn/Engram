@@ -8,6 +8,9 @@ import {
   IconButton,
   Input,
   Tooltip,
+  Grid,
+  GridList,
+  Paper
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -25,16 +28,12 @@ import { storage } from "../../base";
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
-    justifyContent: "flex-end",
+    justifyContent: "flex-end"
   },
   boxflex: {
-    display: "flex",
-  },
+    display: "flex"
+  }
 });
-
-//------
-// tooltip fungerar inte annu, inte heller placeringen av iconerna
-//------
 
 const Album = () => {
   //Context for getting userid
@@ -45,21 +44,21 @@ const Album = () => {
   const [photo, setPhoto] = useState(null);
 
   //Get photofile
-  const getPhotoFile = (e) => {
+  const getPhotoFile = e => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = (e) => {
+  const addPhotos = e => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
-      (error) => {
+      snapshot => {},
+      error => {
         console.log(error);
       },
       () => {
@@ -67,12 +66,12 @@ const Album = () => {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then((url) => {
+          .then(url => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: "",
+              albumId: ""
             });
           });
         setUrl(url);
@@ -81,12 +80,13 @@ const Album = () => {
   };
 
   const classes = useStyles();
+
   return (
     <Container maxWidth="md">
       <Box
         style={{ background: "white", height: "100vh", paddingTop: "100px" }}
       >
-        <Box className={classes.boxflex}>
+        <Box>
           <Typography
             variant="h1"
             style={{ textAlign: "center", fontSize: "50px" }}
@@ -114,10 +114,14 @@ const Album = () => {
             </IconButton>
           </Tooltip>
         </Box>
-        <Box border={1} />
-
         <Input type="file" onChange={getPhotoFile} />
+        <Box border={1} />
       </Box>
+      <GridList>
+        <Grid item sm>
+          <Paper>placeholder</Paper>
+        </Grid>
+      </GridList>
     </Container>
   );
 };

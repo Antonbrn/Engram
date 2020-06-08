@@ -7,11 +7,8 @@ import logo from "../../engramLogo.png";
 //backend
 import fire from "../../base";
 import {
-  ButtonStyled, StyledBoxContainer, StyledForm
+  ButtonStyled, StyledBoxContainer, StyledForm, StyledTextField, label, FormControlStyled
 } from "./LoginSignupStyles";
-import TextField from '@material-ui/core/TextField';
-var bg=require('../LoginSignup/hejhej2.jpg');
-
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -37,23 +34,22 @@ const Login = ({ history }) => {
   }
 
   return (
-      <StyledBoxContainer className='background-image' style ={ { backgroundImage: "url("+bg+")" } }>
+      <StyledBoxContainer>
         <StyledForm>
         <img src={logo} />
         <form onSubmit={handleLogin}>
-          <FormControl>
-            <TextField
-
-            style={{color: 'black'}}
+      
+          <FormControlStyled>
+            <StyledTextField
+            
             name="email"
               label="Username/Email"
               hintText="Enter Your Username/Email"
-              color="secondary"
               floatingLabelText="Email/Username"
               onSubmit={handleLogin}
             />
             <br />
-            <TextField
+            <StyledTextField
             name="password"
               label="Password"
               hintText="Enter your password"
@@ -70,7 +66,8 @@ const Login = ({ history }) => {
               component={Link} to="/signup"
             >Signup
         </ButtonStyled>
-          </FormControl>
+          </FormControlStyled>
+        
         </form>
         </StyledForm>
       </StyledBoxContainer>
