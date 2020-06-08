@@ -36,8 +36,8 @@ export const CardContainer = styled(Card)`
 
   /* VH = 200px */
   @media only screen and (min-width: 768px) {
-    height: 21.34471718249733vh;
-    width: 21.34471718249733vh;
+    min-height: 21.34471718249733vh;
+    max-width: 200px;
   }
 `;
 export const TypographyStyled = styled(Typography)`

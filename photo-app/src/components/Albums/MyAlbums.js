@@ -59,24 +59,25 @@ const MyAlbums = () => {
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
           <AlbumDiv key={album.id}>
-          <CardContainer>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                style={{ height: 170 }}
-                // alt=""
-                // style={{ width: "100%", height: "100%" }}
-                src={album.url}
-              />
-            </CardActionArea>
+            <CardContainer>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  style={{ height: 170 }}
+                  src={album.url}
+                />
+              </CardActionArea>
+            </CardContainer>
             <TypographyStyled>{album.title}</TypographyStyled>
-          </CardContainer>
-         </AlbumDiv>
+          </AlbumDiv>
         ))}
       </BoxContainer>
 
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
+      </ButtonStyled>
+      <ButtonStyled variant="outlined" component={Link} to="/album">
+        To album
       </ButtonStyled>
       <Title variant="h4">Shared Albums</Title>
       <Box borderBottom={1} />
