@@ -127,9 +127,9 @@ const Album = () => {
       <Box border={1} />
       <div className={classes.root}>
         <GridList cellHeight={200} className={classes.gridList} cols={3}>
-          {pictureData.map((tile) => (
+          {pictureData.map((tile, index) => (
             <GridListTile
-              key={tile.img}
+              key={index}
               cols={tile.featured ? 2 : 1}
               rows={tile.featured ? 2 : 1}
             >
