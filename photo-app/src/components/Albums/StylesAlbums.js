@@ -24,35 +24,36 @@ export const ContainerStyled = styled(Container)`
   padding-top: 100px;
 `;
 export const BoxContainer = styled(Box)`
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   padding: 10px 0 10px 0;
 `;
 export const CardContainer = styled(Card)`
-  height: 100px;
-  width: 100px;
+   max-width: 120px;
+   border: solid 1px #bc5100;
+    border-radius: 5px;
 
+  /* VH = 200px */
   @media only screen and (min-width: 768px) {
-    height: 200px;
-    width: 200px;
+    height: 21.34471718249733vh;
+    width: 21.34471718249733vh;
   }
 `;
 export const TypographyStyled = styled(Typography)`
   text-align: center;
-  max-width: 100px;
-  color: black;
-
-  margin-top: 5px;
-  border-radius: 5px;
+  /* max-width: 100px;
+  color: black; */
+  
   font-family: "Viga";
-  @media only screen and (min-width: 768px) {
-    padding: 5px;
+  /* @media only screen and (min-width: 768px) {
     justify-content: center;
-  }
+  } */
 `;
 
 export const Title = styled(Typography)`
   font-family: "Viga";
+  text-align: center;
 `;
 
 export const AlbumDiv = styled.div`

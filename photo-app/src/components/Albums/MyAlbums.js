@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+
 
 //Backend
 import { db } from "../../base";
@@ -42,16 +45,19 @@ const MyAlbums = (props) => {
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
           <AlbumDiv key={album.id}>
-            <CardContainer>
-              <CardActionArea>
-                <img
-                  style={{ width: "100%", height: "100%" }}
-                  src={album.url}
-                />
-              </CardActionArea>
-            </CardContainer>
+          <CardContainer>
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                style={{ height: 170 }}
+                // alt=""
+                // style={{ width: "100%", height: "100%" }}
+                src={album.url}
+              />
+            </CardActionArea>
             <TypographyStyled>{album.title}</TypographyStyled>
-          </AlbumDiv>
+          </CardContainer>
+         </AlbumDiv>
         ))}
       </BoxContainer>
 
@@ -61,8 +67,7 @@ const MyAlbums = (props) => {
       <ButtonStyled component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
-
-      <Typography variant="h5">Shared Albums</Typography>
+      <Title variant="h4">Shared Albums</Title>
       <Box borderBottom={1} />
     </ContainerStyled>
   );
