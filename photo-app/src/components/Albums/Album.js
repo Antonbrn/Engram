@@ -9,14 +9,18 @@ import {
   Input,
   Tooltip,
   Grid,
-  GridList,
   Paper
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import { ContainerStyled } from "./StylesAlbums";
+import { CardContainer } from "./StylesAlbums";
+import pictureData from "../Feed/pictureData";
 
 //CONTEXT
 import { AuthContext } from "../../Auth";
@@ -30,8 +34,16 @@ const useStyles = makeStyles({
     fontSize: 30,
     justifyContent: "flex-end"
   },
-  boxflex: {
-    display: "flex"
+  root: {
+    paddingTop: 20,
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden"
+  },
+  gridList: {
+    width: 500,
+    height: 450
   }
 });
 
@@ -82,9 +94,9 @@ const Album = () => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="md">
+    <ContainerStyled maxWidth="md">
       <Box
-        style={{ background: "white", height: "100vh", paddingTop: "100px" }}
+        style={{ background: "#f57f17", height: "100vh", paddingTop: "100px" }}
       >
         <Box>
           <Typography
@@ -116,13 +128,21 @@ const Album = () => {
         </Box>
         <Input type="file" onChange={getPhotoFile} />
         <Box border={1} />
+        <div className={classes.root}>
+          <GridList cellHeight={200} className={classes.gridList} cols={3}>
+            {pictureData.map(tile => (
+              <GridListTile
+                key={tile.img}
+                cols={tile.featured ? 2 : 1}
+                rows={tile.featured ? 2 : 1}
+              >
+                <img src={"https://picsum.photos/200"} alt={"hejsan"} />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
       </Box>
-      <GridList>
-        <Grid item sm>
-          <Paper>placeholder</Paper>
-        </Grid>
-      </GridList>
-    </Container>
+    </ContainerStyled>
   );
 };
 export default Album;
