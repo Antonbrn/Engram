@@ -16,10 +16,24 @@ import {
   AlbumDiv,
 } from "./StylesAlbums";
 
-const MyAlbums = (props) => {
+const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const [currentAlbum, setCurrentAlbum] = useState("");
 
+  //Get currentAlbum
+  const getCurrentAlbum = (e) => {
+    e.preventDefault();
+    db.collection("albums")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          console.log(doc.id);
+        });
+      });
+  };
+
+  //Get Albums
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
@@ -41,20 +55,23 @@ const MyAlbums = (props) => {
         {/* Loopar ut alla albums i ett card med title */}
         {albums.map((album) => (
           <AlbumDiv key={album.id}>
-          <CardContainer >
-
-            <CardActionArea>
-              <img style={{ width: "100%", height: "100%" }} src={album.url} />
-            </CardActionArea>
-          </CardContainer>
+            <CardContainer>
+              <CardActionArea
+                component={Link}
+                to="/album"
+                onClick={getCurrentAlbum}
+              >
+                <img
+                  style={{ width: "100%", height: "100%" }}
+                  src={album.url}
+                />
+              </CardActionArea>
+            </CardContainer>
             <TypographyStyled>{album.title}</TypographyStyled>
           </AlbumDiv>
         ))}
       </BoxContainer>
-      
-      <ButtonStyled variant="outlined" component={Link} to="/album">
-        to album
-      </ButtonStyled>
+
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
