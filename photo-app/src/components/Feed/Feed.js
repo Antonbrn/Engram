@@ -21,11 +21,13 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     background: '#f57f17',
     height: '100vh',
+    
   },
   gridList: {
     width: 400,
     height: '100%',
     transform: 'translateZ(0)',
+    
   },
   titleBar: {
     background:
@@ -40,7 +42,7 @@ export default function FeedList() {
   return (
     <ContainerStyled>
     <div className={classes.feed}>
-      <GridList cellHeight={200} spacing={1} className={classes.gridList}>
+      <GridList cellHeight={200} spacing={5} className={classes.gridList}>
         {pictureData.map((picture) => (
           <GridListTile key={picture.img} cols={picture.featured ? 2 : 1} rows={picture.featured ? 2 : 1}>
             <img src={picture.img} alt={picture.title} />
