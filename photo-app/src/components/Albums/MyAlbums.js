@@ -15,7 +15,7 @@ import {
   ButtonStyled,
   AlbumDiv,
   Title,
-  StyledCardMedia
+  StyledCardMedia,
 } from "./StylesAlbums";
 
 export const AlbumContext = React.createContext();
@@ -29,17 +29,16 @@ const MyAlbums = ({ children }) => {
   const getCurrentAlbum = (albumId) => {
     console.log(albumId);
     setCurrentAlbum(albumId);
-    console.log(currentAlbum);
   };
 
   //Get Albums
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
-      .onSnapshot(snapshot => {
-        const newAlbums = snapshot.docs.map(doc => ({
+      .onSnapshot((snapshot) => {
+        const newAlbums = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setAlbums(newAlbums);
       });
@@ -47,10 +46,6 @@ const MyAlbums = ({ children }) => {
 
   return (
     <>
-      <AlbumContext.Provider value={{ currentAlbum }}>
-        {children}
-      </AlbumContext.Provider>
-
       <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
@@ -70,10 +65,7 @@ const MyAlbums = ({ children }) => {
                     getCurrentAlbum(album.id);
                   }}
                 >
-                  <StyledCardMedia
-                  component="img"
-                  src={album.url}
-                />
+                  <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
               <TypographyStyled>{album.title}</TypographyStyled>

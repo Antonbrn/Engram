@@ -9,7 +9,7 @@ import {
   Input,
   Tooltip,
   Grid,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -32,19 +32,19 @@ import { storage } from "../../base";
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   root: {
     paddingTop: 20,
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    overflow: "hidden"
+    overflow: "hidden",
   },
   gridList: {
     width: 500,
-    height: 450
-  }
+    height: 450,
+  },
 });
 
 const Album = () => {
@@ -56,21 +56,21 @@ const Album = () => {
   const [photo, setPhoto] = useState(null);
 
   //Get photofile
-  const getPhotoFile = e => {
+  const getPhotoFile = (e) => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = e => {
+  const addPhotos = (e) => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -78,12 +78,12 @@ const Album = () => {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: ""
+              albumId: "",
             });
           });
         setUrl(url);
@@ -130,7 +130,7 @@ const Album = () => {
         <Box border={1} />
         <div className={classes.root}>
           <GridList cellHeight={200} className={classes.gridList} cols={3}>
-            {pictureData.map(tile => (
+            {pictureData.map((tile) => (
               <GridListTile
                 key={tile.img}
                 cols={tile.featured ? 2 : 1}
