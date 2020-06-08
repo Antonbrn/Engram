@@ -4,11 +4,13 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
 
 export const ButtonStyled = styled(Button)`
-  background: #0e973c;
-  color: #ffff;
+  font-family: "Viga";
+  background: #bc5100;
+  border: 1px solid #000;
+  color: #f57f17;
   margin: 10px 0 0 5px;
   &:hover {
-    background: #54c969;
+    background: #ffffff;
     color: black;
     transition: 0.7s ease;
   }
@@ -17,7 +19,7 @@ export const ButtonStyled = styled(Button)`
   }
 `;
 export const ContainerStyled = styled(Container)`
-  background: #f57f17;
+  // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
   height: 100vh;
   padding-top: 100px;
 `;
@@ -38,14 +40,19 @@ export const CardContainer = styled(Card)`
 export const TypographyStyled = styled(Typography)`
   text-align: center;
   max-width: 100px;
-  color: white;
-  background: #0e973c;
+  color: black;
+
   margin-top: 5px;
   border-radius: 5px;
+  font-family: "Viga";
   @media only screen and (min-width: 768px) {
     padding: 5px;
     justify-content: center;
   }
+`;
+
+export const Title = styled(Typography)`
+  font-family: "Viga";
 `;
 
 export const AlbumDiv = styled.div`
@@ -61,5 +68,5 @@ export default {
   BoxContainer,
   CardContainer,
   TypographyStyled,
-  AlbumDiv
+  AlbumDiv,
 };

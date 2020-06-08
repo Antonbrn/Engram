@@ -14,6 +14,7 @@ import {
   TypographyStyled,
   ButtonStyled,
   AlbumDiv,
+  Title,
 } from "./StylesAlbums";
 
 const MyAlbums = () => {
@@ -48,7 +49,7 @@ const MyAlbums = () => {
 
   return (
     <ContainerStyled>
-      <Typography variant="h5">Private Albums</Typography>
+      <Title variant="h4">Private Albums</Title>
       <Box borderBottom={1} />
       {/* Box för display flex */}
       <BoxContainer>
