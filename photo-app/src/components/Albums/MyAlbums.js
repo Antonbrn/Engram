@@ -17,10 +17,19 @@ import {
   Title,
 } from "./StylesAlbums";
 
-const MyAlbums = (props) => {
+const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
+  const [currentAlbum, setCurrentAlbum] = useState("");
 
+  //Get currentAlbum
+  const getCurrentAlbum = (albumId) => {
+    console.log(albumId);
+    setCurrentAlbum(albumId);
+    console.log(currentAlbum);
+  };
+
+  //Get Albums
   useEffect(() => {
     db.collection("albums")
       .where("userId", "==", currentUser.id)
@@ -43,7 +52,13 @@ const MyAlbums = (props) => {
         {albums.map((album) => (
           <AlbumDiv key={album.id}>
             <CardContainer>
-              <CardActionArea>
+              <CardActionArea
+                component={Link}
+                to="/album"
+                onClick={() => {
+                  getCurrentAlbum(album.id);
+                }}
+              >
                 <img
                   style={{ width: "100%", height: "100%" }}
                   src={album.url}
@@ -55,10 +70,7 @@ const MyAlbums = (props) => {
         ))}
       </BoxContainer>
 
-      <ButtonStyled component={Link} to="/album">
-        to album
-      </ButtonStyled>
-      <ButtonStyled component={Link} to="/createalbums">
+      <ButtonStyled variant="outlined" component={Link} to="/createalbums">
         Create album
       </ButtonStyled>
 
