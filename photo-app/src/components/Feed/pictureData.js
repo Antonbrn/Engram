@@ -1,48 +1,61 @@
 import image from "./lulea.png";
+import React from "react";
+
+const FeedImage = () => { 
+  pictureData.map((picture, index) => (
+    <ImageCard>
+    <img 
+    key={index} 
+    src={picture.img} 
+    title={picture.title} 
+    author={picture.author}
+    />
+    
+    </ImageCard>
+));
+
+};
 
 const pictureData = [
   {
     img: image,
     title: "Titel",
     author: "Anton",
-    featured: true
+    
   },
   {
     img: image,
     title: "Lulea",
     author: "Mattias",
-    featured: false
+    
   },
   {
     img: image,
     title: "Min stad",
     author: "Daniel",
-    featured: false
+    
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: true
+    
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: false
+    
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: true
-  },
-  {
-    img: image,
-    title: "Ketchup?",
-    author: "Agust",
-    featured: true
+    
   }
 ];
 
-export default pictureData;
+export default {
+   pictureData,
+   FeedImage
+};
