@@ -4,21 +4,38 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
 import CardMedia from "@material-ui/core/CardMedia";
 
+// export const ButtonStyled = styled(Button)`
+//   font-family: "Viga";
+//   background: #bc5100;
+//   border: 1px solid #000;
+//   color: #f57f17;
+//   margin: 10px 0 0 5px;
+//   &:hover {
+//     background: #ffffff;
+//     color: black;
+//     transition: 0.7s ease;
+//   }
+//   @media only screen and (min-width: 768px) {
+//     margin: 10px;
+//   }
+// `;
+
 export const ButtonStyled = styled(Button)`
   font-family: "Viga";
   background: #bc5100;
-  border: 1px solid #000;
-  color: #f57f17;
-  margin: 10px 0 0 5px;
+  color: #ffff;
+  border: solid 1px #bc5100;
   &:hover {
-    background: #ffffff;
-    color: black;
-    transition: 0.7s ease;
+  color: #bc5100;
+  border: solid 1px #bc5100;
+  transition: 0.7s ease;
+  margin: 10px 0 0 5px;
   }
   @media only screen and (min-width: 768px) {
     margin: 10px;
   }
 `;
+
 export const ContainerStyled = styled(Container)`
   // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
   /* height: 100vh; */
@@ -38,7 +55,7 @@ export const CardContainer = styled(Card)`
 
   @media only screen and (min-width: 768px) {
 
-    max-width: 200px;
+    /* max-width: 200px; */
   }
 `;
 export const TypographyStyled = styled(Typography)`
@@ -59,15 +76,16 @@ export const Title = styled(Typography)`
 
 export const AlbumDiv = styled.div`
   margin: 10px;
+
   @media only screen and (min-width: 768px) {
     margin: 10px;
   }
 `;
 export const StyledCardMedia = styled(CardMedia)`
- height: 150px;
-
+  height: 150px;
+  
  @media only screen and (min-width: 768px) {
-  height: 300px;
+  height: 200px;
  }
 `
 

@@ -5,7 +5,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 
 //---- SLIDER ----
 export const StyledDiv = styled.div`
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   justify-content: space-between;
 `;
