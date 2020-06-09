@@ -59,6 +59,9 @@ const SignUp = ({ history }) => {
               type="password"
             />
             <br />
+            <ButtonStyled type="submit" size="large">
+              Create Account
+            </ButtonStyled>
             <ButtonStyled
               type="submit"
               size="large"
@@ -66,9 +69,6 @@ const SignUp = ({ history }) => {
               to="/login"
             >
               Back
-            </ButtonStyled>
-            <ButtonStyled type="submit" size="large">
-              Create Account
             </ButtonStyled>
           </FormControlStyled>
         </form>
