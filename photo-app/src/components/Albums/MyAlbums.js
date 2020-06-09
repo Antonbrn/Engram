@@ -26,6 +26,9 @@ const MyAlbums = () => {
   const [currentAlbum, setCurrentAlbum] = useState("");
 
   //Get currentAlbum
+
+  //Skicka AlbumId till currentAlbum och sedan till AlbumComponenten
+  //så vi kan ladda upp foton
   const getCurrentAlbum = (albumId) => {
     console.log(albumId);
     setCurrentAlbum(albumId);

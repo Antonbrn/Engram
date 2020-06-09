@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
           const userData = doc.data();
           userData.id = user.uid;
           setCurrentUser(userData);
+          //Loopas hela tiden på login eftersom att den aldrig får tag i någon currentUSer.
           setPending(false);
         });
     });
