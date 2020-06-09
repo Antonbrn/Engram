@@ -8,15 +8,15 @@ import logo from "../../engramLogo.png";
 //backend
 import { db } from "../../base";
 import {
-  ButtonStyled, StyledBoxContainer, StyledForm, StyledTextField
+  ButtonStyled,
+  StyledBoxContainer,
+  StyledForm,
+  StyledTextField,
+  FormControlStyled,
 } from "./LoginSignupStyles";
-import TextField from '@material-ui/core/TextField';
-
-
-
+import TextField from "@material-ui/core/TextField";
 
 const SignUp = ({ history }) => {
-
   const handleSignUp = useCallback(
     async (event) => {
       event.preventDefault();
@@ -38,52 +38,42 @@ const SignUp = ({ history }) => {
     [history]
   );
   return (
-
-
-
     <StyledBoxContainer>
       <StyledForm>
-      <img src={logo} />
-      <form onSubmit={handleSignUp}>
-        <FormControl>
-          <StyledTextField
-            name="email"
-            type="email"
-            label="Enter a email"
-          // onSubmit={handleLogin}
-          />
-          <br />
-          <StyledTextField
-            name="username"
-            type="username"
-            label="Username"
-          />
-          <br />
-          <StyledTextField
-            name="password"
-            type="password"
-            label="Choose a password"
-            type="password"
-          />
-          <br />
-          <ButtonStyled
-            type="submit"
-            size="large"
-            component={Link} to="/login"
-          >Back
-     </ButtonStyled>
-          <ButtonStyled
-            type="submit"
-            size="large"
-          >Create Account
-    </ButtonStyled>
-        </FormControl>
-      </form>
+        <img src={logo} />
+        <form onSubmit={handleSignUp}>
+          <FormControlStyled>
+            <StyledTextField
+              name="email"
+              type="email"
+              label="Enter a email"
+              // onSubmit={handleLogin}
+            />
+            <br />
+            <StyledTextField name="username" type="username" label="Username" />
+            <br />
+            <StyledTextField
+              name="password"
+              type="password"
+              label="Choose a password"
+              type="password"
+            />
+            <br />
+            <ButtonStyled
+              type="submit"
+              size="large"
+              component={Link}
+              to="/login"
+            >
+              Back
+            </ButtonStyled>
+            <ButtonStyled type="submit" size="large">
+              Create Account
+            </ButtonStyled>
+          </FormControlStyled>
+        </form>
       </StyledForm>
     </StyledBoxContainer>
-
-
-
 
     // <Box className={classes.signUpPage}>
     //   <img src={logo} />
