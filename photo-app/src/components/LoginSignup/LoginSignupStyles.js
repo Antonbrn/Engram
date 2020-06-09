@@ -18,7 +18,7 @@ export const StyledBoxContainer = styled(Box)`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(160deg, #f57f17 40%, #fab30a);
+  background: linear-gradient(160deg, #daecf0 20%, #fff);
   @media only screen and (min-width: 768px) {
     background-image: url(${background});
     background-repeat: no-repeat;
@@ -45,9 +45,7 @@ export const StyledForm = styled.div`
   border: 5px solid;
   border-image-source: linear-gradient(-30deg, #ff341a, #f7d10a);
   border-image-slice: 1;
-  @media only screen and (min-width: 768px) {
-    background-color: white;
-  }
+  background: linear-gradient(-30deg, #f5bd8e 30%, #ffe5d4);
 `;
 
 export const FormControlStyled = styled(FormControl)`

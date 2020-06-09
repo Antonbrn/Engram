@@ -5,43 +5,50 @@ const pictureData = [
     img: image,
     title: "Titel",
     author: "Anton",
-    featured: true
+    featured: true,
+    cols: 2
   },
   {
     img: image,
     title: "Lulea",
     author: "Mattias",
-    featured: false
+    featured: false,
+    cols: 2
   },
   {
     img: image,
     title: "Min stad",
     author: "Daniel",
-    featured: false
+    featured: false,
+    cols: 1
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: true
+    featured: true,
+    cols: 2
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: false
+    featured: false,
+    cols: 1
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: true
+    featured: true,
+    cols: 2
   },
   {
     img: image,
     title: "Ketchup?",
     author: "Agust",
-    featured: true
+    featured: true,
+    cols: 2
   }
 ];
 
