@@ -11,10 +11,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setPending(false);
-    });
-    fire.auth().onAuthStateChanged((user) => {
       db.collection("users")
         .doc(user.uid)
         .get()
@@ -22,6 +18,7 @@ export const AuthProvider = ({ children }) => {
           const userData = doc.data();
           userData.id = user.uid;
           setCurrentUser(userData);
+          setPending(false);
         });
     });
   }, []);
