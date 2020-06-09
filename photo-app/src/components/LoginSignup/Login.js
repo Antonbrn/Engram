@@ -7,7 +7,12 @@ import logo from "../../engramLogo.png";
 //backend
 import fire from "../../base";
 import {
-  ButtonStyled, StyledBoxContainer, StyledForm, StyledTextField, label, FormControlStyled
+  ButtonStyled,
+  StyledBoxContainer,
+  StyledForm,
+  StyledTextField,
+  label,
+  FormControlStyled,
 } from "./LoginSignupStyles";
 
 const Login = ({ history }) => {
@@ -20,6 +25,9 @@ const Login = ({ history }) => {
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
+        if (currentUser) {
+          return <Redirect to="/" />;
+        }
       } catch (error) {
         alert(error);
       }
@@ -34,15 +42,13 @@ const Login = ({ history }) => {
   }
 
   return (
-      <StyledBoxContainer>
-        <StyledForm>
+    <StyledBoxContainer>
+      <StyledForm>
         <img src={logo} />
         <form onSubmit={handleLogin}>
-      
           <FormControlStyled>
             <StyledTextField
-            
-            name="email"
+              name="email"
               label="Username/Email"
               hintText="Enter Your Username/Email"
               floatingLabelText="Email/Username"
@@ -50,27 +56,22 @@ const Login = ({ history }) => {
             />
             <br />
             <StyledTextField
-            name="password"
+              name="password"
               label="Password"
               hintText="Enter your password"
               type="password"
               floatingLabelText="Password"
             />
-            <ButtonStyled
-              type="submit"
-              size="large"
-            >Login
-         </ButtonStyled>
-            <ButtonStyled
-              size="large"
-              component={Link} to="/signup"
-            >Signup
-        </ButtonStyled>
+            <ButtonStyled type="submit" size="large">
+              Login
+            </ButtonStyled>
+            <ButtonStyled size="large" component={Link} to="/signup">
+              Signup
+            </ButtonStyled>
           </FormControlStyled>
-        
         </form>
-        </StyledForm>
-      </StyledBoxContainer>
+      </StyledForm>
+    </StyledBoxContainer>
   );
 };
 
