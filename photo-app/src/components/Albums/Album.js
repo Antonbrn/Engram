@@ -9,42 +9,41 @@ import {
   Input,
   Tooltip,
   Grid,
-  Paper,
+  Paper
 } from "@material-ui/core";
+import {
+  ContainerStyled,
+  BoxContainer,
+  CardContainer,
+  TypographyStyled,
+  ButtonStyled,
+  AlbumDiv,
+  Title,
+  IconButtonStyled,
+  StyledCardMedia,
+  TitleDiv
+} from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import { ContainerStyled } from "./StylesAlbums";
-import { CardContainer } from "./StylesAlbums";
-import pictureData from "../Feed/pictureData";
-
+import { Link } from "react-router-dom";
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
 //BACKEND
 import { db } from "../../base";
 import { storage } from "../../base";
+import { nominalTypeHack } from "prop-types";
+import { flexbox } from "@material-ui/system";
 
 const useStyles = makeStyles({
   albumButton: {
     fontSize: 30,
-    justifyContent: "flex-end",
-  },
-  root: {
-    paddingTop: 20,
     display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    overflow: "hidden",
-  },
-  gridList: {
-    width: 500,
-    height: 300,
-  },
+    padding: 0,
+    alignItems: "flex-end"
+  }
 });
 
 const Album = () => {
@@ -56,21 +55,21 @@ const Album = () => {
   const [photo, setPhoto] = useState(null);
 
   //Get photofile
-  const getPhotoFile = (e) => {
+  const getPhotoFile = e => {
     if (e.target.files[0]) {
       setPhoto(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = (e) => {
+  const addPhotos = e => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
-      (error) => {
+      snapshot => {},
+      error => {
         console.log(error);
       },
       () => {
@@ -78,12 +77,12 @@ const Album = () => {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then((url) => {
+          .then(url => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: "",
+              albumId: ""
             });
           });
         setUrl(url);
@@ -94,51 +93,40 @@ const Album = () => {
   const classes = useStyles();
 
   return (
-    <ContainerStyled maxWidth="md">
-      <Box>
-        <Typography
-          variant="h1"
-          style={{ textAlign: "center", fontSize: "50px" }}
-        >
-          albumName
-        </Typography>
-
-        <Tooltip title="Add Photo" placement="bottom">
-          <IconButton
-            className={classes.albumButton}
-            aria-label="Add Photo"
-            onClick={addPhotos}
-          >
-            <AddPhotoAlternateIcon fontSize="large" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Add Friend">
-          <IconButton className={classes.albumButton}>
-            <PersonAddIcon fontSize="large" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Delete Photo">
-          <IconButton className={classes.albumButton}>
-            <DeleteIcon fontSize="large" />
-          </IconButton>
-        </Tooltip>
-      </Box>
-      <Input type="file" onChange={getPhotoFile} />
-      <Box border={1} />
-      <div className={classes.root}>
-        <GridList cellHeight={200} className={classes.gridList} cols={3}>
-          {pictureData.map((tile, index) => (
-            <GridListTile
-              key={index}
-              cols={tile.featured ? 2 : 1}
-              rows={tile.featured ? 2 : 1}
-            >
-              <img src={"https://picsum.photos/200"} alt={"hejsan"} />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
-    </ContainerStyled>
+    <>
+      <ContainerStyled maxWidth="md">
+        <TitleDiv>
+          <Title variant="h5">Fridas midsommarfest</Title>
+          <div className={classes.albumButton}>
+            <Tooltip title="Add Photo" placement="bottom">
+              <IconButtonStyled
+                type="file"
+                onChange={getPhotoFile}
+                aria-label="Add Photo"
+                onClick={addPhotos}
+              >
+                <AddPhotoAlternateIcon />
+              </IconButtonStyled>
+            </Tooltip>
+            <Tooltip title="Add Friend">
+              <IconButtonStyled>
+                <PersonAddIcon />
+              </IconButtonStyled>
+            </Tooltip>
+            <Tooltip title="Delete Photo">
+              <IconButtonStyled>
+                <DeleteIcon />
+              </IconButtonStyled>
+            </Tooltip>
+          </div>
+        </TitleDiv>
+        <Box borderBottom={1} />
+      </ContainerStyled>
+      <ContainerStyled>
+        {/* Box för display flex */}
+        <BoxContainer></BoxContainer>
+      </ContainerStyled>
+    </>
   );
 };
 export default Album;
