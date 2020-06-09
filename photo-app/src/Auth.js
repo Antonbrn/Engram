@@ -24,7 +24,19 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   if (pending) {
-    return <CircularProgress />;
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress style={{ color: "#bc5100" }} size={150} />;
+      </div>
+    );
   }
 
   return (
