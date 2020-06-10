@@ -2,32 +2,33 @@ import styled from "styled-components";
 import { Typography, Box, Container, Grid, Card } from "@material-ui/core";
 
 export const FeedBox = styled(Container)`
-    background-color: green;
-    height: 100vh;
-    position: relative;
+  height: 150vh;
 `;
 
-export const FeedContainer = styled(Grid)`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  background-color: wheat;
-  overflow: scroll;
-  scroll-behavior: smooth;
-  height: 100vh;
-  position: relative;
+
+export const ImageCard = styled(Grid)`
+display: flex;
+flex-flow: column nowrap;
+align-items: center;
+justify-content: center;
+scroll-behavior: smooth;
+`
+export const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+margin-top: 50px;
+height: 60%;
+width: 40%;
 `
 
-export const ImageCard = styled(Card)`
-   width: 150px;
-   border: solid 1px #bc5100;
-   border-radius: 5px;
-   max-height: 21.34471718249733vh;
+export const ImageStyle = styled.img`
+ height: 100%;
+ border: solid 4px orange;
+ border-radius: 8px;
+`;
+
+export const ImageInfo = styled(Typography)`
+max-height: 20%;
+border: solid 2px orange;
 `
 
- export default {
-     FeedBox,
-     FeedContainer,
-     ImageCard,
-    
- }

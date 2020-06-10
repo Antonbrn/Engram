@@ -1,22 +1,12 @@
 import React from "react";
-import { Container, Box, Typography, Button} from "@material-ui/core";
-import { FeedBox, FeedContainer, ImageCard} from "./FeedStyle";
-import pictureData from "./pictureData";
+import { FeedBox } from "./FeedStyle";
 import FeedImage from "./pictureData";
-
 
 export default function FeedList() {
 
-
   return (
-    <FeedBox>
-          <FeedContainer>
-           <FeedImage>
-             <ImageCard>
-               
-             </ImageCard>
-           </FeedImage>
-          </FeedContainer>
+    <FeedBox> 
+      <FeedImage />
    </FeedBox>
    
   );

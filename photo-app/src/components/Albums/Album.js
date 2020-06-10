@@ -20,7 +20,7 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import { ContainerStyled } from "./StylesAlbums";
 import { CardContainer } from "./StylesAlbums";
-import pictureData from "../Feed/pictureData";
+import { pictureData } from "../Feed/pictureData";
 
 //CONTEXT
 import { AuthContext } from "../../Auth";
