@@ -1,17 +1,46 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FeedBox } from "./FeedStyle";
+import { AuthContext } from "../../Auth";
+import { db } from "../../base";
 import FeedImage from "./pictureData";
 
 export default function FeedList() {
+  const { currentUser } = useContext(AuthContext);
+  const [photos, setPhotos] = useState([]);
+
+  //Get Photos
+  useEffect(() => {
+    db.collection("photos")
+      .where("userId", "==", currentUser.id)
+      .onSnapshot((snapshot) => {
+        const newPhotos = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPhotos(newPhotos);
+      });
+  }, []);
+  console.log(photos);
 
   return (
-    <FeedBox> 
-      <FeedImage />
-   </FeedBox>
-   
+    <FeedBox
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {photos.map((photo, index) => (
+        <div key={index}>
+          <img src={photo.url} />
+        </div>
+      ))}
+    </FeedBox>
   );
 }
 
+//    <FeedImage />
 
 /* {pictureData.map((picture, index) => (          
              <Image>
