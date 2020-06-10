@@ -5,8 +5,10 @@ import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useMediaQuery } from "@material-ui/core";
-import {BottomNavigationActionStyled,
-        BottomNavigationStyled} from "./NavbarStyles";
+import {
+  BottomNavigationActionStyled,
+  BottomNavigationStyled
+} from "./NavbarStyles";
 
 //const isActive = useMediaQuery("(min-width: 600px)");
 
@@ -24,13 +26,21 @@ const BottomBar = () => {
     <BottomNavigationStyled
       value={value}
       onChange={handleChange}
-      
+
     >
       <BottomNavigationActionStyled
         component={Link}
         to="/myalbums"
         value="myalbums"
         label="Albums"
+        icon={<PhotoAlbum />}
+      />
+
+      <BottomNavigationActionStyled
+        component={Link}
+        to="/profilepage"
+        value="profilepage"
+        label="ProfilePage"
         icon={<PhotoAlbum />}
       />
 
