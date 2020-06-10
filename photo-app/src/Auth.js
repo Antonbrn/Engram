@@ -10,10 +10,14 @@ export const AuthProvider = ({ children }) => {
 
   //Pending fungerar men ej signOut, då den inte får någon currentUser antar jag.
 
-  //const [pending, setPending] = useState(true);
+  const [pending, setPending] = useState(true);
 
   useEffect(() => {
     fire.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        setPending(false);
+      }
+
       db.collection("users")
         .doc(user.uid)
         .get()
@@ -21,25 +25,26 @@ export const AuthProvider = ({ children }) => {
           const userData = doc.data();
           userData.id = user.uid;
           setCurrentUser(userData);
+          setPending(false);
         });
     });
   }, []);
 
-  // if (pending) {
-  //   return (
-  //     <div
-  //       style={{
-  //         height: "100vh",
-  //         display: "flex",
-  //         flexDirection: "column",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //       }}
-  //     >
-  //       <CircularProgress style={{ color: "#bc5100" }} size={150} />;
-  //     </div>
-  //   );
-  // }
+  if (pending) {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress style={{ color: "#bc5100" }} size={150} />;
+      </div>
+    );
+  }
 
   return (
     <AuthContext.Provider value={{ currentUser }}>
