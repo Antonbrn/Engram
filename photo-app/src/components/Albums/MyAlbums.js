@@ -44,39 +44,9 @@ const MyAlbums = () => {
       });
   }, []);
 
-  // var getId = db.collection("albums").doc().id;
-  // console.log(getId);
-  // //Delete Album
-  // const deleteAlbum = (albumId) => {
-  //   db.collection("albums")
-  //     .where("albumId", "==", albumId)
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.forEach((doc) => {
-  //         doc.ref.delete();
-  //       });
-  //     });
-  // };
-
-  //Delete Album
-  // const deleteAlbum = (albumId) => {
-  //   db.collection("albums")
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.forEach((doc) => {
-  //         const docId = doc.id;
-  //       });
-  //     });
-
-  //   db.collection("albums")
-  //     .where(docId, "==", albumId)
-  //     .get()
-  //     .then((snapshot) => {
-  //       snapshot.forEach((doc) => {
-  //         doc.ref.delete();
-  //       });
-  //     });
-  // };
+  const deleteAlbum = (albumId) => {
+    db.collection("albums").doc(albumId).delete();
+  };
 
   return (
     <>
@@ -95,7 +65,11 @@ const MyAlbums = () => {
               </CardContainer>
               <TypographyStyled>
                 {album.title}
-                <IconButton>
+                <IconButton
+                  onClick={(e) => {
+                    deleteAlbum(album.id);
+                  }}
+                >
                   <HighlightOffIcon style={{ color: "red" }} />
                 </IconButton>
               </TypographyStyled>
