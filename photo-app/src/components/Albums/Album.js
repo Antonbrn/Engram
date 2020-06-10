@@ -9,26 +9,27 @@ import {
   Input,
   Tooltip,
   Grid,
-  Paper,
+  Paper
 } from "@material-ui/core";
 import {
   ContainerStyled,
   BoxContainer,
-  CardActionArea,
   CardContainer,
   TypographyStyled,
   ButtonStyled,
+  albumBackgroundDiv,
   AlbumDiv,
   Title,
   IconButtonStyled,
   StyledCardMedia,
-  TitleDiv,
+  TitleDiv
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
+import CardActionArea from "@material-ui/core/CardActionArea";
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -43,11 +44,11 @@ const useStyles = makeStyles({
     fontSize: 30,
     display: "flex",
     padding: 0,
-    alignItems: "flex-end",
-  },
+    alignItems: "flex-end"
+  }
 });
 
-const Album = (props) => {
+const Album = props => {
   //Context for getting userid
   const { currentUser } = useContext(AuthContext);
   const albumId = props.match.params.id;
@@ -56,21 +57,21 @@ const Album = (props) => {
   const [photos, setPhotos] = useState([]);
   const [photoFile, setPhotoFile] = useState([]);
   //Get photofile
-  const getPhotoFile = (e) => {
+  const getPhotoFile = e => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = (e) => {
+  const addPhotos = e => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
-      (error) => {
+      snapshot => {},
+      error => {
         console.log(error);
       },
       () => {
@@ -78,12 +79,12 @@ const Album = (props) => {
           .ref("photos")
           .child(photoFile.name)
           .getDownloadURL()
-          .then((url) => {
+          .then(url => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: albumId,
+              albumId: albumId
             });
           });
         setUrl(url);
@@ -95,10 +96,10 @@ const Album = (props) => {
   useEffect(() => {
     db.collection("photos")
       .where("albumId", "==", albumId)
-      .onSnapshot((snapshot) => {
-        const newPhotos = snapshot.docs.map((doc) => ({
+      .onSnapshot(snapshot => {
+        const newPhotos = snapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
         setPhotos(newPhotos);
       });
@@ -108,7 +109,7 @@ const Album = (props) => {
   console.log(photos);
 
   return (
-    <>
+    <div>
       <ContainerStyled maxWidth="md">
         <input type="file" onChange={getPhotoFile} />
 
@@ -117,34 +118,38 @@ const Album = (props) => {
           <div className={classes.albumButton}>
             <Tooltip title="Add Photo" placement="bottom">
               <IconButtonStyled aria-label="Add Photo" onClick={addPhotos}>
-                <AddPhotoAlternateIcon />
+                <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
               <IconButtonStyled>
-                <PersonAddIcon />
+                <PersonAddIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
               <IconButtonStyled>
-                <DeleteIcon />
+                <DeleteIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
       </ContainerStyled>
-      <ContainerStyled>
+      <ContainerStyled style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
-        <BoxContainer>
+        <BoxContainer style={{ justifyContent: "flex-start" }}>
           {photos.map((photo, index) => (
-            <div key={index}>
-              <img src={photo.url} />
-            </div>
+            <AlbumDiv key={index}>
+              <CardContainer>
+                <CardActionArea>
+                  <StyledCardMedia component="img" src={photo.url} />
+                </CardActionArea>
+              </CardContainer>
+            </AlbumDiv>
           ))}
         </BoxContainer>
       </ContainerStyled>
-    </>
+    </div>
   );
 };
 export default Album;
