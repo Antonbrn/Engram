@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Typography,
   Box,
@@ -9,11 +9,12 @@ import {
   Input,
   Tooltip,
   Grid,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import {
   ContainerStyled,
   BoxContainer,
+  CardActionArea,
   CardContainer,
   TypographyStyled,
   ButtonStyled,
@@ -21,7 +22,7 @@ import {
   Title,
   IconButtonStyled,
   StyledCardMedia,
-  TitleDiv
+  TitleDiv,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -42,34 +43,34 @@ const useStyles = makeStyles({
     fontSize: 30,
     display: "flex",
     padding: 0,
-    alignItems: "flex-end"
-  }
+    alignItems: "flex-end",
+  },
 });
 
-const Album = () => {
+const Album = (props) => {
   //Context for getting userid
   const { currentUser } = useContext(AuthContext);
-
+  const albumId = props.match.params.id;
   //State for photos
   const [url, setUrl] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [photo, setPhotos] = useState([]);
 
   //Get photofile
-  const getPhotoFile = e => {
+  const getPhotoFile = (e) => {
     if (e.target.files[0]) {
-      setPhoto(e.target.files[0]);
+      setPhotos(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = e => {
+  const addPhotos = (e) => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -77,12 +78,12 @@ const Album = () => {
           .ref("photos")
           .child(photo.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: ""
+              albumId: albumId,
             });
           });
         setUrl(url);
@@ -90,21 +91,31 @@ const Album = () => {
     );
   };
 
+  //Get Photos
+  useEffect(() => {
+    db.collection("photos")
+      .where("albumId", "==", albumId)
+      .onSnapshot((snapshot) => {
+        const newPhotos = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPhotos(newPhotos);
+      });
+  }, []);
+
   const classes = useStyles();
 
   return (
     <>
       <ContainerStyled maxWidth="md">
+        <input type="file" onChange={getPhotoFile} />
+
         <TitleDiv>
           <Title variant="h5">Fridas midsommarfest</Title>
           <div className={classes.albumButton}>
             <Tooltip title="Add Photo" placement="bottom">
-              <IconButtonStyled
-                type="file"
-                onChange={getPhotoFile}
-                aria-label="Add Photo"
-                onClick={addPhotos}
-              >
+              <IconButtonStyled aria-label="Add Photo" onClick={addPhotos}>
                 <AddPhotoAlternateIcon />
               </IconButtonStyled>
             </Tooltip>
@@ -124,7 +135,13 @@ const Album = () => {
       </ContainerStyled>
       <ContainerStyled>
         {/* Box för display flex */}
-        <BoxContainer></BoxContainer>
+        <BoxContainer>
+          {photo.map((photo, index) => (
+            <div key={index}>
+              <img src={photo.url} />
+            </div>
+          ))}
+        </BoxContainer>
       </ContainerStyled>
     </>
   );
