@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Typography, Box, Container, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
@@ -23,13 +23,6 @@ export const AlbumContext = React.createContext();
 const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
-  const [currentAlbum, setCurrentAlbum] = useState("");
-
-  //Get currentAlbum
-  const getCurrentAlbum = (albumId) => {
-    console.log(albumId);
-    setCurrentAlbum(albumId);
-  };
 
   //Get Albums
   useEffect(() => {
@@ -55,13 +48,7 @@ const MyAlbums = () => {
           {albums.map((album) => (
             <AlbumDiv key={album.id}>
               <CardContainer>
-                <CardActionArea
-                  component={Link}
-                  to="/album"
-                  onClick={() => {
-                    getCurrentAlbum(album.id);
-                  }}
-                >
+                <CardActionArea component={Link} to={"/album/" + album.id}>
                   <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
