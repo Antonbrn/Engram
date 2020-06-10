@@ -3,7 +3,9 @@ import {
   Box,
   Container,
   Button,
-  IconButton
+  IconButton,
+  Input,
+  TextField
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -47,7 +49,6 @@ export const ButtonStyled = styled(Button)`
     color: #bc5100;
     border: solid 1px #bc5100;
     transition: 0.7s ease;
-    margin: 10px 0 0 5px;
   }
   @media only screen and (min-width: 768px) {
     margin: 10px;
@@ -105,6 +106,67 @@ export const StyledCardMedia = styled(CardMedia)`
     height: 200px;
   }
 `;
+
+
+export const InputStyled = styled(Input)`
+
+border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px; 
+
+
+`;
+
+export const TextFieldInputStyled = styled.label`
+margin-top: 10px;
+padding: 5px;
+background-color: #bc5100;
+color: #ffff;
+border: solid 1px #bc5100;
+  cursor: pointer;
+  
+  font-family: "Viga";
+  display: inline-block;
+  &:hover {
+    background-color: white;
+    color: #bc5100;
+    border: solid 1px #bc5100;
+    transition: 0.7s ease;
+  }
+
+
+`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default {
   ButtonStyled,

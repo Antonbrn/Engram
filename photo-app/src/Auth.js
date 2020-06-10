@@ -7,11 +7,17 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+
+  //Pending fungerar men ej signOut, då den inte får någon currentUser antar jag.
+
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    fire.auth().onAuthStateChanged(setCurrentUser);
     fire.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        setPending(false);
+      }
+
       db.collection("users")
         .doc(user.uid)
         .get()
@@ -19,7 +25,6 @@ export const AuthProvider = ({ children }) => {
           const userData = doc.data();
           userData.id = user.uid;
           setCurrentUser(userData);
-          //Loopas hela tiden på login eftersom att den aldrig får tag i någon currentUSer.
           setPending(false);
         });
     });

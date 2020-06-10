@@ -14,7 +14,7 @@ import { ArrowForward } from "@material-ui/icons";
 import { db } from "../../base";
 import { storage } from "../../base";
 import { AuthContext } from "../../Auth";
-import { ContainerStyled, ButtonStyled } from "./StylesAlbums";
+import { ContainerStyled, ButtonStyled, InputStyled, TextFieldInputStyled } from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
@@ -71,9 +71,11 @@ const CreateAlbums = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Typography variant="h5">Thumbnail</Typography>
         <Box>
-          <Input type="file" onChange={getThumbnailFile} />
+          <TextFieldInputStyled>
+            Upload Thumbnail
+          <InputStyled type="file" onChange={getThumbnailFile} />
+          </TextFieldInputStyled>
           <Box>
             <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
           </Box>
