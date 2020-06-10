@@ -53,12 +53,12 @@ const Album = (props) => {
   const albumId = props.match.params.id;
   //State for photos
   const [url, setUrl] = useState("");
-  const [photo, setPhotos] = useState([]);
-
+  const [photos, setPhotos] = useState([]);
+  const [photoFile, setPhotoFile] = useState([]);
   //Get photofile
   const getPhotoFile = (e) => {
     if (e.target.files[0]) {
-      setPhotos(e.target.files[0]);
+      setPhotoFile(e.target.files[0]);
     }
   };
 
@@ -66,7 +66,7 @@ const Album = (props) => {
   const addPhotos = (e) => {
     e.preventDefault();
     //Upload photofile to firebase storage
-    const uploadTask = storage.ref(`photos/${photo.name}`).put(photo);
+    const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
       (snapshot) => {},
@@ -76,7 +76,7 @@ const Album = (props) => {
       () => {
         storage
           .ref("photos")
-          .child(photo.name)
+          .child(photoFile.name)
           .getDownloadURL()
           .then((url) => {
             //Add url, userId to database
@@ -105,6 +105,7 @@ const Album = (props) => {
   }, []);
 
   const classes = useStyles();
+  console.log(photos);
 
   return (
     <>
@@ -136,7 +137,7 @@ const Album = (props) => {
       <ContainerStyled>
         {/* Box för display flex */}
         <BoxContainer>
-          {photo.map((photo, index) => (
+          {photos.map((photo, index) => (
             <div key={index}>
               <img src={photo.url} />
             </div>
