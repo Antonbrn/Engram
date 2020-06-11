@@ -167,11 +167,14 @@ border: solid 1px #bc5100;
 
 
 export const BoxBorder = styled(Box)`
-padding: 100px;
+padding:20px;
 border: solid 2px #bc5100;
 display: flex;
   justify-content: top;
-  flex-direction: column;
+  flex-direction: column; 
+  @media only screen and (min-width: 768px) {
+    padding: 150px;
+  }
 `;
 
 
