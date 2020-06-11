@@ -1,28 +1,46 @@
-import React, { Component } from 'react'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import React, { Component } from 'react';
+import { Box, Avatar } from '@material-ui/core';
+
+import {
+    BoxContainer,
+    StyledTextField,
+    ButtonStyled
+} from './ProfilePageStyling';
 
 
-import { Box, Typography } from "@material-ui/core";
-import { BoxContainer } from './ProfilePageStyling';
 
 export class ProfilePage extends Component {
     render() {
         return (
-            <>
             <BoxContainer>
-                <MenuList>
-                    <MenuItem>Profile</MenuItem>
-                    <Divider />
-                    <MenuItem>My Account</MenuItem>
-                </MenuList>
+                <StyledTextField
+                    name="ChangeEmail"
+                    label="Change Email (coming soon)"
+                    type="text"
+                    InputProps={{ disableUnderline: true }}
+                />
+                <StyledTextField
+                    name="ChangeUsername"
+                    label="Change Username (Coming soon)"
+                    type="text"
+                    InputProps={{ disableUnderline: true }}
+                />
+                <StyledTextField
+                    name="ChangePassword"
+                    label="Change Password (coming soon)"
+                    type="text"
+                    InputProps={{ disableUnderline: true }}
+                />
+
+                <Box>
+                    <ButtonStyled
+                        type="submit">
+                        Add Avatar
+                </ButtonStyled>
+                    <Avatar>
+                    </Avatar>
+                </Box>
             </BoxContainer>
-            </>
         )
     }
 }
