@@ -23,6 +23,8 @@ import {
   IconButtonStyled,
   StyledCardMedia,
   TitleDiv,
+  TextFieldInputStyled,
+  InputStyled,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -114,10 +116,10 @@ const Album = (props) => {
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
-          <TextFieldInputStyled>
-          Add Photo
-        <InputStyled type="file" onChange={getPhotoFile} />
-        </TextFieldInputStyled>
+            <TextFieldInputStyled>
+              Add Photo
+              <InputStyled type="file" onChange={getPhotoFile} />
+            </TextFieldInputStyled>
             <Tooltip title="Add Photo" placement="bottom">
               <IconButtonStyled aria-label="Add Photo" onClick={addPhotos}>
                 <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
@@ -150,8 +152,12 @@ const Album = (props) => {
             </AlbumDiv>
           ))}
         </BoxContainer>
-        <ButtonStyled component={Link} to="/myalbums" style={{float: "right"}}>
-                  My Albums
+        <ButtonStyled
+          component={Link}
+          to="/myalbums"
+          style={{ float: "right" }}
+        >
+          My Albums
         </ButtonStyled>
       </ContainerStyled>
     </div>
