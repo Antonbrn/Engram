@@ -17,15 +17,16 @@ export const LoggedUser = styled.h4`
 
 ///---------------BOTTOMBAR-----------------------------------------------------------------------
 export const BottomNavigationActionStyled = styled(BottomNavigationAction)`
+  color: #bc5100 !important;
   &:visited {
-    color: #bc5100;
+    color: #bc5100 !important;
   }
   font-size: 30px;
 
   @media only screen and (min-width: 768px) {
-    color: #ffb04c;
+    color: #ffb04c !important;
     &:visited {
-      color: #ffb04c;
+      color: #ffb04c !important;
     }
   }
 `;

@@ -1,9 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Typography, Box, Container, Button } from "@material-ui/core";
+import {
+  Typography,
+  Box,
+  Container,
+  Button,
+  IconButton,
+} from "@material-ui/core";
 import { Link, useHistory } from "react-router-dom";
 import addAlbum from "../Assets/addAlbum.png";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 //Backend
 import { db } from "../../base";
@@ -37,6 +44,10 @@ const MyAlbums = () => {
       });
   }, []);
 
+  const deleteAlbum = (albumId) => {
+    db.collection("albums").doc(albumId).delete();
+  };
+
   return (
     <>
       <ContainerStyled>
@@ -52,7 +63,16 @@ const MyAlbums = () => {
                   <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
-              <TypographyStyled>{album.title}</TypographyStyled>
+              <TypographyStyled>
+                {album.title}
+                <IconButton
+                  onClick={(e) => {
+                    deleteAlbum(album.id);
+                  }}
+                >
+                  <HighlightOffIcon style={{ color: "red" }} />
+                </IconButton>
+              </TypographyStyled>
             </AlbumDiv>
           ))}
         </BoxContainer>

@@ -7,15 +7,12 @@ import styled from "styled-components";
 import { useMediaQuery } from "@material-ui/core";
 import {
   BottomNavigationActionStyled,
-  BottomNavigationStyled
+  BottomNavigationStyled,
 } from "./NavbarStyles";
 
 //const isActive = useMediaQuery("(min-width: 600px)");
 
-
-
 const BottomBar = () => {
-
   const [value, setValue] = React.useState("feed");
 
   const handleChange = (event, newValue) => {
@@ -23,11 +20,7 @@ const BottomBar = () => {
   };
 
   return (
-    <BottomNavigationStyled
-      value={value}
-      onChange={handleChange}
-
-    >
+    <BottomNavigationStyled value={value} onChange={handleChange}>
       <BottomNavigationActionStyled
         component={Link}
         to="/myalbums"
