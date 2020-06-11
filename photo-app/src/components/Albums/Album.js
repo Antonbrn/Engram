@@ -30,6 +30,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import Modal from "@material-ui/core/Modal";
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -45,6 +46,12 @@ const useStyles = makeStyles({
     display: "flex",
     padding: 0,
     alignItems: "flex-end"
+  },
+  paper: {
+    position: "absolute",
+    border: "2px solid #000",
+    display: "flex",
+    justifyContent: "center"
   }
 });
 
@@ -108,6 +115,38 @@ const Album = props => {
   const classes = useStyles();
   console.log(photos);
 
+  //Modal for images
+  function rand() {
+    return Math.round(Math.random() * 20) - 10;
+  }
+
+  function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
+
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`
+    };
+  }
+
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClosed = () => {
+    setOpen(false);
+  };
+  const body = (
+    <div style={modalStyle} className={classes.paper}>
+      asd
+    </div>
+  );
+
   return (
     <div>
       <ContainerStyled maxWidth="md">
@@ -135,13 +174,34 @@ const Album = props => {
         </TitleDiv>
         <Box borderBottom={1} />
       </ContainerStyled>
+      <Button type="button" variant="outlined" onClick={handleOpen}>
+        TEST
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClosed}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        <div>
+          {photos.map((photo, index) => (
+            <AlbumDiv key={index}>
+              <CardContainer>
+                <CardActionArea onClick={handleOpen}>
+                  <StyledCardMedia component="img" src={photo.url} />
+                </CardActionArea>
+              </CardContainer>
+            </AlbumDiv>
+          ))}
+        </div>
+      </Modal>
       <ContainerStyled style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer style={{ justifyContent: "flex-start" }}>
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
               <CardContainer>
-                <CardActionArea>
+                <CardActionArea onClick={handleOpen}>
                   <StyledCardMedia component="img" src={photo.url} />
                 </CardActionArea>
               </CardContainer>
