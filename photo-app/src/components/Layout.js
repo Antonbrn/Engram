@@ -19,7 +19,7 @@ const Layout = () => {
       <Route path="/myalbums" component={MyAlbums} />
       <Route path="/createalbums" component={CreateAlbums} />
       <Route path="/notifications" component={Notifications} />
-      <Route path="/album/:id" component={Album} />
+      <Route path="/album/:id/:title" component={Album} />
       {isActive && <BottomBar />}
     </div>
   );

@@ -46,6 +46,16 @@ const MyAlbums = () => {
 
   const deleteAlbum = (albumId) => {
     db.collection("albums").doc(albumId).delete();
+    db.collection("photos")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          const albumIdfromPhotos = doc.data().albumId;
+          if (albumIdfromPhotos === albumId) {
+            db.collection("photos").doc(doc).delete();
+          }
+        });
+      });
   };
 
   return (
@@ -59,7 +69,10 @@ const MyAlbums = () => {
           {albums.map((album) => (
             <AlbumDiv key={album.id}>
               <CardContainer>
-                <CardActionArea component={Link} to={"/album/" + album.id}>
+                <CardActionArea
+                  component={Link}
+                  to={"/album/" + album.id + "/" + album.title}
+                >
                   <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
@@ -85,7 +98,6 @@ const MyAlbums = () => {
         >
           Create album
         </ButtonStyled>
-
         <Typography variant="h5">Shared Albums</Typography>
         <Box borderBottom={1} />
       </ContainerStyled>
