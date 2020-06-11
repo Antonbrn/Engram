@@ -7,6 +7,8 @@ import {
   ListItemText,
   List,
   Typography,
+  CardMedia,
+  CardActionArea,
 } from "@material-ui/core";
 //Logo for navbar
 import logo from "../../engramLogo.png";
@@ -97,8 +99,13 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-          <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
-          {isActive && <BottomBar />}
+        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} component={Link} to="/">
+            <img src={logo} 
+              style={{ marginRight: "auto", maxWidth: 180 }} 
+               />
+               </CardActionArea>
+          {isActive && <BottomBar
+          />}
           <IconButton onClick={toggleSlider("right", true)}>
             <StyledSettingsIcon />
           </IconButton>
