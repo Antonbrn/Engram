@@ -11,7 +11,7 @@ import {
   Backdrop,
   Tooltip,
   Grid,
-  Paper
+  Paper,
 } from "@material-ui/core";
 import {
   ContainerStyled,
@@ -26,7 +26,8 @@ import {
   StyledCardMedia,
   TitleDiv,
   TextFieldInputStyled,
-  InputStyled
+  InputStyled,
+  ModalDiv,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -49,12 +50,12 @@ const useStyles = makeStyles({
     fontSize: 30,
     display: "flex",
     padding: 0,
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
-  modal: {}
+  modal: {},
 });
 
-const Album = props => {
+const Album = (props) => {
   //Context for getting userid
 
   const classes = useStyles();
@@ -65,25 +66,27 @@ const Album = props => {
   const [url, setUrl] = useState("");
   const [photos, setPhotos] = useState([]);
   const [photoFile, setPhotoFile] = useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [openPhoto, setOpenPhoto] = React.useState(false);
+
   const [clickedPhoto, setClickedPhoto] = useState([]);
+  const [openPhotoModal, setOpenPhotoModal] = useState(false);
 
   //Get photofile
-  const getPhotoFile = e => {
+  const getPhotoFile = (e) => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
     }
   };
 
   //Add photos function
-  const addPhotos = e => {
+  const addPhotos = (e) => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -91,12 +94,12 @@ const Album = props => {
           .ref("photos")
           .child(photoFile.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: albumId
+              albumId: albumId,
             });
           });
         setUrl(url);
@@ -108,10 +111,10 @@ const Album = props => {
   useEffect(() => {
     db.collection("photos")
       .where("albumId", "==", albumId)
-      .onSnapshot(snapshot => {
-        const newPhotos = snapshot.docs.map(doc => ({
+      .onSnapshot((snapshot) => {
+        const newPhotos = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setPhotos(newPhotos);
       });
@@ -119,13 +122,21 @@ const Album = props => {
 
   //Modal for images
 
-  const handleOpen = photoUrl => {
-    setOpen(true);
+  const handleOpen = (photoUrl) => {
+    setOpenPhoto(true);
     setClickedPhoto(photoUrl);
   };
 
   const handleClosed = () => {
-    setOpen(false);
+    setOpenPhoto(false);
+  };
+
+  const handleOpenPhotoModal = () => {
+    setOpenPhotoModal(true);
+  };
+
+  const handleClosedPhotoModal = () => {
+    setOpenPhotoModal(false);
   };
 
   return (
@@ -134,33 +145,65 @@ const Album = props => {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
-        open={open}
+        open={openPhoto}
         onClose={handleClosed}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000
+          timeout: 1000,
         }}
       >
-        <Fade in={open}>
+        <Fade in={openPhoto}>
           <img src={clickedPhoto} style={{ width: "70%" }} />
         </Fade>
       </Modal>
+      {/* Add Photo Modal */}
+      <Modal
+        style={{
+          display: "flex",
+
+          justifyContent: "center",
+          alignItems: "center",
+          color: "black",
+        }}
+        open={openPhotoModal}
+        onClose={handleClosedPhotoModal}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 1000,
+        }}
+      >
+        <Fade in={openPhotoModal}>
+          <ModalDiv>
+            <h2>Add Photo</h2>
+            <TextFieldInputStyled>
+              Choose File
+              <InputStyled type="file" onChange={getPhotoFile} />
+            </TextFieldInputStyled>
+            <br />
+            <TextFieldInputStyled onClick={addPhotos}>Add</TextFieldInputStyled>
+          </ModalDiv>
+        </Fade>
+      </Modal>
+
+      {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
-            <TextFieldInputStyled>
-              Add Photo
-              <InputStyled type="file" onChange={getPhotoFile} />
-            </TextFieldInputStyled>
             <Tooltip title="Add Photo" placement="bottom">
-              <IconButtonStyled aria-label="Add Photo" onClick={addPhotos}>
+              <IconButtonStyled
+                aria-label="Add Photo"
+                onClick={handleOpenPhotoModal}
+              >
                 <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
@@ -185,7 +228,7 @@ const Album = props => {
             <AlbumDiv key={index}>
               <CardContainer>
                 <CardActionArea
-                  onClick={e => {
+                  onClick={(e) => {
                     handleOpen(photo.url);
                   }}
                 >
