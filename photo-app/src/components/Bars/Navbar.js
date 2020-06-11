@@ -84,7 +84,11 @@ const Navbar = () => {
           </ListItem>
         ))}
 
-        <button onClick={() => fire.auth().signOut()}>Log out</button>
+        <button
+          onClick={() => fire.auth().signOut().then(window.location.reload())}
+        >
+          Log out
+        </button>
       </List>
     </BoxSlider>
   );
@@ -93,10 +97,8 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-            <img src={logo}
-              style={{ marginRight: "auto", maxWidth: 180 }} />
-          {isActive && <BottomBar
-          />}
+          <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
+          {isActive && <BottomBar />}
           <IconButton onClick={toggleSlider("right", true)}>
             <StyledSettingsIcon />
           </IconButton>
