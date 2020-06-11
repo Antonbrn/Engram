@@ -62,6 +62,10 @@ const CreateAlbums = () => {
   return (
     <ContainerStyled>
       <Typography variant="h4">Create Album</Typography>
+      
+      <ButtonStyled component={Link} to="/myalbums" style={{float: "right"}}>
+                  My Albums
+        </ButtonStyled>
       <Box borderBottom={1} />
       <div>
         <TextField
@@ -73,7 +77,7 @@ const CreateAlbums = () => {
         />
         <Box>
           <TextFieldInputStyled>
-            Upload Thumbnail
+            Add Thumbnail
           <InputStyled type="file" onChange={getThumbnailFile} />
           </TextFieldInputStyled>
           <Box>
@@ -84,6 +88,7 @@ const CreateAlbums = () => {
           <ButtonStyled variant="outlined" onClick={addAlbum}>
             Create Album
           </ButtonStyled>
+          
           <IconButton component={Link} to="/myalbums">
             <ArrowForward />
           </IconButton>

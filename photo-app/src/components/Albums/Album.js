@@ -111,11 +111,13 @@ const Album = (props) => {
   return (
     <div>
       <ContainerStyled maxWidth="md">
-        <input type="file" onChange={getPhotoFile} />
-
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
+          <TextFieldInputStyled>
+          Add Photo
+        <InputStyled type="file" onChange={getPhotoFile} />
+        </TextFieldInputStyled>
             <Tooltip title="Add Photo" placement="bottom">
               <IconButtonStyled aria-label="Add Photo" onClick={addPhotos}>
                 <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
@@ -148,6 +150,9 @@ const Album = (props) => {
             </AlbumDiv>
           ))}
         </BoxContainer>
+        <ButtonStyled component={Link} to="/myalbums" style={{float: "right"}}>
+                  My Albums
+        </ButtonStyled>
       </ContainerStyled>
     </div>
   );
