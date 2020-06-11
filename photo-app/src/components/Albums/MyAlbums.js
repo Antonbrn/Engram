@@ -70,6 +70,7 @@ const MyAlbums = () => {
             <AlbumDiv key={album.id}>
               <CardContainer>
                 <CardActionArea
+                  style={{width: "100%", height: "100%",}}
                   component={Link}
                   to={"/album/" + album.id + "/" + album.title}
                 >
@@ -83,7 +84,7 @@ const MyAlbums = () => {
                     deleteAlbum(album.id);
                   }}
                 >
-                  <HighlightOffIcon style={{ color: "red" }} />
+                  <HighlightOffIcon style={{ color: "#ffb04c" }} />
                 </IconButton>
               </TypographyStyled>
             </AlbumDiv>

@@ -69,12 +69,13 @@ export const BoxContainer = styled(Box)`
 `;
 export const CardContainer = styled(Card)`
   width: 150px;
+  height: 150px;
   border: solid 1px #bc5100;
   border-radius: 5px;
-  max-height: 21.34471718249733vh;
 
   @media only screen and (min-width: 768px) {
-    /* max-width: 200px; */
+    max-width: 200px;
+    max-height: 200px;
   }
 `;
 export const TypographyStyled = styled(Typography)`
@@ -95,10 +96,10 @@ export const AlbumDiv = styled.div`
   }
 `;
 export const StyledCardMedia = styled(CardMedia)`
-  height: 150px;
 
   @media only screen and (min-width: 768px) {
-    height: 200px;
+    width: 100%;
+    height: 100%;
   }
 `;
 
