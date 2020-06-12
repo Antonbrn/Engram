@@ -65,26 +65,41 @@ const MyAlbums = () => {
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
           {albums.map((album) => (
-            <AlbumDiv key={album.id}>
+            <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
               <CardContainer>
                 <CardActionArea
-                  style={{ width: "100%", height: "100%" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
                   component={Link}
                   to={"/album/" + album.id + "/" + album.title}
                 >
                   <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
-              <TypographyStyled>
+              <TypographyStyled
+                style={{
+                  display: "inline-block",
+                }}
+              >
                 {album.title}
-                <IconButton
-                  onClick={(e) => {
-                    deleteAlbum(album.id);
-                  }}
-                >
-                  <HighlightOffIcon style={{ color: "#ffb04c" }} />
-                </IconButton>
               </TypographyStyled>
+              <IconButton
+                style={{ padding: 0, float: "right" }}
+                onClick={(e) => {
+                  deleteAlbum(album.id);
+                }}
+              >
+                <HighlightOffIcon
+                  style={{
+                    color: "#ffb04c",
+                    display: "inline-block",
+                  }}
+                />
+              </IconButton>
             </AlbumDiv>
           ))}
         </BoxContainer>

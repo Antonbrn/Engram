@@ -28,6 +28,7 @@ import {
   TextFieldInputStyled,
   InputStyled,
   ModalDiv,
+  ImgModal,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -177,7 +178,7 @@ const Album = (props) => {
         }}
       >
         <Fade in={openPhoto}>
-          <img src={clickedPhoto} style={{ width: "70%" }} />
+          <ImgModal src={clickedPhoto} />
         </Fade>
       </Modal>
       {/* Add Photo Modal */}
@@ -207,7 +208,13 @@ const Album = (props) => {
               <InputStyled type="file" onChange={getPhotoFile} />
             </TextFieldInputStyled>
             <br />
-            <TextFieldInputStyled onClick={addPhotos}>Add</TextFieldInputStyled>
+            <TextFieldInputStyled
+              onClick={addPhotos}
+              type="submit"
+              data-dismiss="modal"
+            >
+              Add
+            </TextFieldInputStyled>
           </ModalDiv>
         </Fade>
       </Modal>
@@ -277,12 +284,12 @@ const Album = (props) => {
         </TitleDiv>
         <Box borderBottom={1} />
       </ContainerStyled>
-      <ContainerStyled style={{ paddingBottom: "60px" }}>
+      <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer style={{ justifyContent: "flex-start" }}>
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
-              <CardContainer>
+              <CardContainer style={{ display: "flex", alignItems: "center" }}>
                 <CardActionArea
                   onClick={(e) => {
                     handleOpen(photo.url);
@@ -301,7 +308,7 @@ const Album = (props) => {
         >
           My Albums
         </ButtonStyled>
-      </ContainerStyled>
+      </Container>
     </div>
   );
 };
