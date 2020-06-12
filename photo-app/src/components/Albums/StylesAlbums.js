@@ -80,7 +80,6 @@ export const CardContainer = styled(Card)`
   }
 `;
 export const TypographyStyled = styled(Typography)`
-  text-align: center;
   font-family: "Viga";
 `;
 
@@ -189,6 +188,13 @@ export const ModalDiv = styled.div`
   width: 60vw;
   text-align: center;
   font-family: "Viga";
+`;
+
+export const ImgModal = styled.img`
+  width: 70%;
+  @media only screen and (min-width: 768px) {
+    width: 40%;
+  }
 `;
 
 export default {
