@@ -46,16 +46,14 @@ const MyAlbums = () => {
 
   const deleteAlbum = (albumId) => {
     db.collection("albums").doc(albumId).delete();
-    db.collection("photos")
-      .get()
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          const albumIdfromPhotos = doc.data().albumId;
-          if (albumIdfromPhotos === albumId) {
-            db.collection("photos").doc(doc).delete();
-          }
-        });
+    const deletePhotos = db
+      .collection("photos")
+      .where("albumId", "==", albumId);
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
       });
+    });
   };
 
   return (
@@ -70,7 +68,7 @@ const MyAlbums = () => {
             <AlbumDiv key={album.id}>
               <CardContainer>
                 <CardActionArea
-                  style={{width: "100%", height: "100%",}}
+                  style={{ width: "100%", height: "100%" }}
                   component={Link}
                   to={"/album/" + album.id + "/" + album.title}
                 >
