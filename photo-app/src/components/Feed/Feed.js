@@ -20,7 +20,6 @@ export default function FeedList() {
         setPhotos(newPhotos);
       });
   }, []);
-  console.log(photos);
 
   return (
     <FeedBox

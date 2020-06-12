@@ -56,8 +56,6 @@ const useStyles = makeStyles({
 });
 
 const Album = (props) => {
-  //Context for getting userid
-
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext);
   const albumId = props.match.params.id;
@@ -66,10 +64,13 @@ const Album = (props) => {
   const [url, setUrl] = useState("");
   const [photos, setPhotos] = useState([]);
   const [photoFile, setPhotoFile] = useState([]);
-  const [openPhoto, setOpenPhoto] = React.useState(false);
+  const [inviteMember, setInviteMember] = useState([]);
+  const [memberId, setMemberId] = useState("");
 
+  const [openPhoto, setOpenPhoto] = React.useState(false);
   const [clickedPhoto, setClickedPhoto] = useState([]);
   const [openPhotoModal, setOpenPhotoModal] = useState(false);
+  const [openInviteModal, setOpenInviteModal] = useState(false);
 
   //Get photofile
   const getPhotoFile = (e) => {
@@ -120,8 +121,18 @@ const Album = (props) => {
       });
   }, []);
 
-  //Modal for images
+  const inviteMemberFunc = () => {
+    const getMemberId = db
+      .collection("users")
+      .where("username", "==", inviteMember);
+    getMemberId.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        console.log(doc.id);
+      });
+    });
+  };
 
+  //Modals
   const handleOpen = (photoUrl) => {
     setOpenPhoto(true);
     setClickedPhoto(photoUrl);
@@ -137,6 +148,14 @@ const Album = (props) => {
 
   const handleClosedPhotoModal = () => {
     setOpenPhotoModal(false);
+  };
+
+  const handleOpenInviteModal = () => {
+    setOpenInviteModal(true);
+  };
+
+  const handleClosedInviteModal = () => {
+    setOpenInviteModal(false);
   };
 
   return (
@@ -193,6 +212,43 @@ const Album = (props) => {
         </Fade>
       </Modal>
 
+      {/* Invite members to Album modal*/}
+      <Modal
+        style={{
+          display: "flex",
+
+          justifyContent: "center",
+          alignItems: "center",
+          color: "black",
+        }}
+        open={openInviteModal}
+        onClose={handleClosedInviteModal}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 1000,
+        }}
+      >
+        <Fade in={openInviteModal}>
+          <ModalDiv>
+            <h4>Invite members to album</h4>
+            <TextField
+              error={false}
+              required
+              label="Email"
+              onChange={(e) => {
+                setInviteMember(e.target.value);
+              }}
+            />
+            <TextFieldInputStyled onClick={inviteMemberFunc}>
+              Invite member
+            </TextFieldInputStyled>
+          </ModalDiv>
+        </Fade>
+      </Modal>
+
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
@@ -208,7 +264,7 @@ const Album = (props) => {
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
-              <IconButtonStyled>
+              <IconButtonStyled onClick={handleOpenInviteModal}>
                 <PersonAddIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
