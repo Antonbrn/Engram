@@ -14,7 +14,16 @@ import { ArrowForward } from "@material-ui/icons";
 import { db } from "../../base";
 import { storage } from "../../base";
 import { AuthContext } from "../../Auth";
-import { ContainerStyled, ButtonStyled, InputStyled, TextFieldInputStyled } from "./StylesAlbums";
+import {
+  ContainerStyled,
+  ButtonStyled,
+  InputStyled,
+  TextFieldInputStyled,
+  ContainerStyledCreateAlbum,
+  TypographyStyled,
+  BoxBorder,
+  HideButton,
+} from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
@@ -52,6 +61,7 @@ const CreateAlbums = () => {
               url: url,
               title: title,
               userId: currentUser.id,
+              invited: "",
             });
             setUrl(url);
           });
@@ -61,34 +71,42 @@ const CreateAlbums = () => {
 
   return (
     <ContainerStyled>
-      <Typography variant="h4">Create Album</Typography>
-      <Box borderBottom={1} />
-      <div>
-        <TextField
-          error={false}
-          required
-          label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <Box>
+      <ButtonStyled component={Link} to="/myalbums" style={{ float: "right" }}>
+        My Albums
+      </ButtonStyled>
+
+      <ContainerStyledCreateAlbum>
+        <BoxBorder>
+          <TypographyStyled variant="h4">Create Album</TypographyStyled>
+          <TextField
+            error={false}
+            required
+            label="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+
           <TextFieldInputStyled>
-            Upload Thumbnail
-          <InputStyled type="file" onChange={getThumbnailFile} />
+            <InputStyled type="file" onChange={getThumbnailFile} />
+            Add Thumbnail
           </TextFieldInputStyled>
-          <Box>
-            <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
-          </Box>
-        </Box>
-        <Box>
-          <ButtonStyled variant="outlined" onClick={addAlbum}>
-            Create Album
+          <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
+
+          <ButtonStyled
+            variant="outlined"
+            onClick={addAlbum}
+            style={{ margin: 20 }}
+          >
+            <HideButton
+              component={Link}
+              to="/myalbums"
+              style={{ color: "white" }}
+            >
+              Create Album
+            </HideButton>
           </ButtonStyled>
-          <IconButton component={Link} to="/myalbums">
-            <ArrowForward />
-          </IconButton>
-        </Box>
-      </div>
+        </BoxBorder>
+      </ContainerStyledCreateAlbum>
     </ContainerStyled>
   );
 };

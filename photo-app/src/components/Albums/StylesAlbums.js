@@ -5,7 +5,7 @@ import {
   Button,
   IconButton,
   Input,
-  TextField
+  TextField,
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -45,6 +45,7 @@ export const ButtonStyled = styled(Button)`
   background: #bc5100;
   color: #ffff;
   border: solid 1px #bc5100;
+  margin: 10px;
   &:hover {
     color: #bc5100;
     border: solid 1px #bc5100;
@@ -57,7 +58,8 @@ export const ButtonStyled = styled(Button)`
 
 export const ContainerStyled = styled(Container)`
   // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
-  /* height: 100vh; */
+
+  font-family: "Viga";
   padding-top: 100px;
 `;
 export const BoxContainer = styled(Box)`
@@ -68,23 +70,17 @@ export const BoxContainer = styled(Box)`
 `;
 export const CardContainer = styled(Card)`
   width: 150px;
+  height: 150px;
   border: solid 1px #bc5100;
   border-radius: 5px;
-  max-height: 21.34471718249733vh;
 
   @media only screen and (min-width: 768px) {
-    /* max-width: 200px; */
+    max-width: 200px;
+    max-height: 200px;
   }
 `;
 export const TypographyStyled = styled(Typography)`
-  text-align: center;
-  /* max-width: 100px;
-  color: black; */
-
   font-family: "Viga";
-  /* @media only screen and (min-width: 768px) {
-    justify-content: center;
-  } */
 `;
 
 export const Title = styled(Typography)`
@@ -100,36 +96,33 @@ export const AlbumDiv = styled.div`
   }
 `;
 export const StyledCardMedia = styled(CardMedia)`
-  height: 150px;
-
   @media only screen and (min-width: 768px) {
-    height: 200px;
+    width: 100%;
+    height: 100%;
   }
 `;
 
-
 export const InputStyled = styled(Input)`
-
-border: 0;
+  border: 0;
   clip: rect(0, 0, 0, 0);
   height: 1px;
   overflow: hidden;
   padding: 0;
   position: absolute !important;
   white-space: nowrap;
-  width: 1px; 
-
-
+  width: 1px;
 `;
 
 export const TextFieldInputStyled = styled.label`
-margin-top: 10px;
-padding: 5px;
-background-color: #bc5100;
-color: #ffff;
-border: solid 1px #bc5100;
+  margin-top: 20px;
+  padding: 5px;
+  text-align: center;
+  background-color: #bc5100;
+  color: #ffff;
+  border: solid 1px #bc5100;
+  border-radius: 5px;
   cursor: pointer;
-  
+
   font-family: "Viga";
   display: inline-block;
   &:hover {
@@ -138,35 +131,71 @@ border: solid 1px #bc5100;
     border: solid 1px #bc5100;
     transition: 0.7s ease;
   }
-
-
 `;
 
+export const ContainerStyledCreateAlbum = styled(Container)`
+  padding-top: 50px;
+  display: flex;
+  flex-flow: column wrap;
+  font-family: "Viga";
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+`;
 
+export const StyledIconButton = styled(IconButton)`
+  font-family: "Viga";
+  background: #bc5100;
+  color: #ffff;
+  border: solid 1px #bc5100;
+  &:hover {
+    color: #bc5100;
+    border: solid 1px #bc5100;
+    transition: 0.7s ease;
+  }
+`;
 
+export const BoxBorder = styled(Box)`
+  padding: 20px;
+  border: solid 2px #bc5100;
+  display: flex;
+  justify-content: top;
+  flex-direction: column;
+  @media only screen and (min-width: 768px) {
+    padding: 150px;
+  }
+`;
 
+export const HideButton = styled(Button)`
+  font-family: "Viga";
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  &:hover {
+    background-color: Transparent;
+    color: #bc5100;
+    border: none;
+    transition: 0.7s ease;
+  }
+`;
 
+export const ModalDiv = styled.div`
+  background: white;
+  border: 2px solid #bc5100;
+  padding: 20px;
+  height: 50vh;
+  width: 60vw;
+  text-align: center;
+  font-family: "Viga";
+`;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export const ImgModal = styled.img`
+  width: 70%;
+  @media only screen and (min-width: 768px) {
+    width: 40%;
+  }
+`;
 
 export default {
   ButtonStyled,
@@ -174,5 +203,5 @@ export default {
   BoxContainer,
   CardContainer,
   TypographyStyled,
-  AlbumDiv
+  AlbumDiv,
 };
