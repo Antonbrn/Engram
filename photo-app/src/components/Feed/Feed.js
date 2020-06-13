@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { FeedBox } from "./FeedStyle";
 import { AuthContext } from "../../Auth";
 import { db } from "../../base";
-import FeedImage from "./pictureData";
+import { ImageStyle, Wrapper } from "./FeedStyle";
 
 export default function FeedList() {
   const { currentUser } = useContext(AuthContext);
@@ -23,33 +23,12 @@ export default function FeedList() {
   console.log(photos);
 
   return (
-    <FeedBox
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <FeedBox>
       {photos.map((photo, index) => (
-        <div key={index}>
-          <img src={photo.url} />
-        </div>
+        <Wrapper key={index}>
+          <ImageStyle src={photo.url} />
+        </Wrapper>
       ))}
     </FeedBox>
   );
 }
-
-//    <FeedImage />
-
-/* {pictureData.map((picture, index) => (          
-             <Image>
-               <img
-            key={index}
-            src={picture.img}
-            alt={picture.title}
-            width={350}
-            height={350} />
-            </Image>  
-          ))}   
-          <Typography variant="h5">{picture.title}</Typography>*/

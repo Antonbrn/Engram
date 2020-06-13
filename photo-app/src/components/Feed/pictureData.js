@@ -41,36 +41,36 @@ const pictureData = [
   }
 ];
 
-const FeedImage = (props) => { 
-  return (
+// const FeedImage = (props) => { 
+//   return (
     
-    <ImageCard>
-      {
-        pictureData.map((picture, index) => (
-         <Wrapper>
-          <ImageStyle
-          key={index} 
-          src={picture.img} 
-          title={picture.title} 
-          author={picture.author}
-          description={picture.description}
-          />
+//     <ImageCard>
+//       {
+//         pictureData.map((picture, index) => (
+//          <Wrapper>
+//           <ImageStyle
+//           key={index} 
+//           src={picture.img} 
+//           title={picture.title} 
+//           author={picture.author}
+//           description={picture.description}
+//           />
            
-           <ImageInfo>
-             <h2>{picture.title}</h2>
-             <h5>Uploaded by: {picture.author}</h5>
-             <p>{picture.description}</p>
-            </ImageInfo>
-         </Wrapper>
-        ))
+//            <ImageInfo>
+//              <h2>{picture.title}</h2>
+//              <h5>Uploaded by: {picture.author}</h5>
+//              <p>{picture.description}</p>
+//             </ImageInfo>
+//          </Wrapper>
+//         ))
         
         
-      }
+//       }
      
-    </ImageCard>
-  )
-};
+//     </ImageCard>
+//   )
+// };
 
-export default FeedImage;
+// export default FeedImage;
 
 export { pictureData };
