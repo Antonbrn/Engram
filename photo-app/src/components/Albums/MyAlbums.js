@@ -33,6 +33,7 @@ const MyAlbums = () => {
 
   //Get Albums
   useEffect(() => {
+    //get albums for currentuser
     db.collection("albums")
       .where("userId", "==", currentUser.id)
       .onSnapshot((snapshot) => {
@@ -42,6 +43,8 @@ const MyAlbums = () => {
         }));
         setAlbums(newAlbums);
       });
+
+    //get albums for invited user;
   }, []);
 
   return (

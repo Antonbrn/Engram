@@ -61,7 +61,6 @@ const CreateAlbums = () => {
               url: url,
               title: title,
               userId: currentUser.id,
-              invited: "",
             });
             setUrl(url);
           });

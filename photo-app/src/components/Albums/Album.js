@@ -155,13 +155,16 @@ const Album = (props) => {
       });
   }, []);
 
+  //Lägger in invitade memberns userId in i invite propertyn i albumet
+  //Går bara att lägga in en, måste fixas,
+  //Måste fixas i myAlbums så att även den invitade usern kan se albumet
   const inviteMemberFunc = () => {
     const getMemberId = db
       .collection("users")
       .where("username", "==", inviteMember);
     getMemberId.get().then((snapshot) => {
       snapshot.forEach((doc) => {
-        console.log(doc.id);
+        db.collection("albums").doc(albumId).update({ invited: doc.id });
       });
     });
   };
