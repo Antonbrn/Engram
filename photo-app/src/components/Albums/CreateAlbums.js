@@ -100,7 +100,13 @@ const CreateAlbums = () => {
 
           <ButtonStyled
             variant="outlined"
-            onClick={addAlbum}
+            onClick={(e) => {
+              if (title) {
+                return addAlbum(e);
+              } else {
+                alert("Title is required");
+              }
+            }}
             style={{ margin: 20 }}
           >
             <HideButton
