@@ -11,7 +11,7 @@ import {
   Backdrop,
   Tooltip,
   Grid,
-  Paper,
+  Paper
 } from "@material-ui/core";
 import {
   ContainerStyled,
@@ -28,7 +28,7 @@ import {
   TextFieldInputStyled,
   InputStyled,
   ModalDiv,
-  ImgModal,
+  ImgModal
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -51,12 +51,12 @@ const useStyles = makeStyles({
     fontSize: 30,
     display: "flex",
     padding: 0,
-    alignItems: "flex-end",
+    alignItems: "flex-end"
   },
-  modal: {},
+  modal: {}
 });
 
-const Album = (props) => {
+const Album = props => {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext);
   const albumId = props.match.params.id;
@@ -75,7 +75,7 @@ const Album = (props) => {
 
   const [stateRedirect, setStateRedirect] = useState(false);
   //Get photofile
-  const getPhotoFile = (e) => {
+  const getPhotoFile = e => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
     }
@@ -83,12 +83,14 @@ const Album = (props) => {
 
   //delete albums and photos
   const deleteAlbum = () => {
-    db.collection("albums").doc(albumId).delete();
+    db.collection("albums")
+      .doc(albumId)
+      .delete();
     const deletePhotos = db
       .collection("photos")
       .where("albumId", "==", albumId);
-    deletePhotos.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
+    deletePhotos.get().then(snapshot => {
+      snapshot.forEach(doc => {
         doc.ref.delete();
       });
     });
@@ -114,14 +116,14 @@ const Album = (props) => {
   };
 
   //Add photos function
-  const addPhotos = (e) => {
+  const addPhotos = e => {
     e.preventDefault();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
-      (error) => {
+      snapshot => {},
+      error => {
         console.log(error);
       },
       () => {
@@ -129,12 +131,12 @@ const Album = (props) => {
           .ref("photos")
           .child(photoFile.name)
           .getDownloadURL()
-          .then((url) => {
+          .then(url => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: albumId,
+              albumId: albumId
             });
           });
         setUrl(url);
@@ -146,10 +148,10 @@ const Album = (props) => {
   useEffect(() => {
     db.collection("photos")
       .where("albumId", "==", albumId)
-      .onSnapshot((snapshot) => {
-        const newPhotos = snapshot.docs.map((doc) => ({
+      .onSnapshot(snapshot => {
+        const newPhotos = snapshot.docs.map(doc => ({
           id: doc.id,
-          ...doc.data(),
+          ...doc.data()
         }));
         setPhotos(newPhotos);
       });
@@ -159,15 +161,15 @@ const Album = (props) => {
     const getMemberId = db
       .collection("users")
       .where("username", "==", inviteMember);
-    getMemberId.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
+    getMemberId.get().then(snapshot => {
+      snapshot.forEach(doc => {
         console.log(doc.id);
       });
     });
   };
 
   //Modals
-  const handleOpen = (photoUrl) => {
+  const handleOpen = photoUrl => {
     setOpenPhoto(true);
     setClickedPhoto(photoUrl);
   };
@@ -199,7 +201,7 @@ const Album = (props) => {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "center"
         }}
         open={openPhoto}
         onClose={handleClosed}
@@ -208,7 +210,7 @@ const Album = (props) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000,
+          timeout: 1000
         }}
       >
         <Fade in={openPhoto}>
@@ -222,7 +224,7 @@ const Album = (props) => {
 
           justifyContent: "center",
           alignItems: "center",
-          color: "black",
+          color: "black"
         }}
         open={openPhotoModal}
         onClose={handleClosedPhotoModal}
@@ -231,7 +233,7 @@ const Album = (props) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000,
+          timeout: 1000
         }}
       >
         <Fade in={openPhotoModal}>
@@ -260,7 +262,7 @@ const Album = (props) => {
 
           justifyContent: "center",
           alignItems: "center",
-          color: "black",
+          color: "black"
         }}
         open={openInviteModal}
         onClose={handleClosedInviteModal}
@@ -269,7 +271,7 @@ const Album = (props) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000,
+          timeout: 1000
         }}
       >
         <Fade in={openInviteModal}>
@@ -279,7 +281,7 @@ const Album = (props) => {
               error={false}
               required
               label="Email"
-              onChange={(e) => {
+              onChange={e => {
                 setInviteMember(e.target.value);
               }}
             />
@@ -320,12 +322,12 @@ const Album = (props) => {
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
-        <BoxContainer style={{ justifyContent: "flex-start" }}>
+        <BoxContainer>
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
-              <CardContainer style={{ display: "flex", alignItems: "center" }}>
+              <CardContainer>
                 <CardActionArea
-                  onClick={(e) => {
+                  onClick={e => {
                     handleOpen(photo.url);
                   }}
                 >
