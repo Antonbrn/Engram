@@ -34,7 +34,7 @@ import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { makeStyles } from "@material-ui/styles";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
 //CONTEXT
@@ -73,10 +73,43 @@ const Album = (props) => {
   const [openPhotoModal, setOpenPhotoModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
 
+  const [stateRedirect, setStateRedirect] = useState(false);
   //Get photofile
   const getPhotoFile = (e) => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
+    }
+  };
+
+  //delete albums and photos
+  const deleteAlbum = () => {
+    db.collection("albums").doc(albumId).delete();
+    const deletePhotos = db
+      .collection("photos")
+      .where("albumId", "==", albumId);
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
+      });
+    });
+  };
+
+  const setRedirect = () => {
+    setStateRedirect(true);
+  };
+
+  const renderRedirect = () => {
+    if (stateRedirect) {
+      return <Redirect to="/myalbums" />;
+    }
+  };
+  const confirmDelete = () => {
+    var shouldDelete = window.confirm(
+      "Do you really want to delete this album?"
+    );
+    if (shouldDelete) {
+      deleteAlbum();
+      setRedirect();
     }
   };
 
@@ -161,6 +194,7 @@ const Album = (props) => {
 
   return (
     <div>
+      {renderRedirect()}
       <Modal
         style={{
           display: "flex",
@@ -276,7 +310,7 @@ const Album = (props) => {
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
-              <IconButtonStyled>
+              <IconButtonStyled onClick={confirmDelete}>
                 <DeleteIcon style={{ color: "#bc5100" }} />
               </IconButtonStyled>
             </Tooltip>
