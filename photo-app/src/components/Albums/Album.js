@@ -323,20 +323,28 @@ const Album = (props) => {
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
-        <BoxContainer style={{ justifyContent: "flex-start" }}>
-          {photos.map((photo, index) => (
-            <AlbumDiv key={index}>
-              <CardContainer style={{ display: "flex", alignItems: "center" }}>
-                <CardActionArea
-                  onClick={(e) => {
-                    handleOpen(photo.url);
-                  }}
-                >
-                  <StyledCardMedia component="img" src={photo.url} />
-                </CardActionArea>
-              </CardContainer>
-            </AlbumDiv>
-          ))}
+        <BoxContainer>
+          <div
+            style={{
+              display: "flex",
+              justfiyContent: "flex-start",
+              flexWrap: "wrap",
+            }}
+          >
+            {photos.map((photo, index) => (
+              <AlbumDiv key={index}>
+                <CardContainer>
+                  <CardActionArea
+                    onClick={(e) => {
+                      handleOpen(photo.url);
+                    }}
+                  >
+                    <StyledCardMedia component="img" src={photo.url} />
+                  </CardActionArea>
+                </CardContainer>
+              </AlbumDiv>
+            ))}
+          </div>
         </BoxContainer>
         <ButtonStyled
           component={Link}

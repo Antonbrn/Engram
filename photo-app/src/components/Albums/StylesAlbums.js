@@ -63,9 +63,8 @@ export const ContainerStyled = styled(Container)`
   padding-top: 100px;
 `;
 export const BoxContainer = styled(Box)`
-  justify-content: center;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
   padding: 10px 0 10px 0;
 `;
 export const CardContainer = styled(Card)`
