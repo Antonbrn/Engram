@@ -39,6 +39,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
+
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -300,13 +301,12 @@ const Album = (props) => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
-        <IconButtonStyled
-          component={Link}
-          to="/myalbums"
-          style={{ paddingBottom: "30px" }}
-        >
-          <ArrowBackIcon style={{ color: "#bc5100" }} />
-        </IconButtonStyled>
+        <Button 
+      component={Link}
+      to="/myalbums">
+      <ArrowBackIcon 
+      style={{ color: "#bc5100",}}/>
+      </Button>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>

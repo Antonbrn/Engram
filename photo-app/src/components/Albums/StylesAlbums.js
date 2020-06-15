@@ -57,8 +57,6 @@ export const ButtonStyled = styled(Button)`
 `;
 
 export const ContainerStyled = styled(Container)`
-  // background: linear-gradient(160deg, #f57f17 50%, #fab30a);
-
   font-family: "Viga";
   padding-top: 100px;
 `;
