@@ -197,6 +197,8 @@ const Album = (props) => {
     setOpenInviteModal(false);
   };
 
+  const photoCounter = photos.length;
+
   return (
     <div>
       {renderRedirect()}
@@ -329,6 +331,7 @@ const Album = (props) => {
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
+        <p>Photos: {photoCounter}</p>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
