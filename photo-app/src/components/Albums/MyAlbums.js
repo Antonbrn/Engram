@@ -52,39 +52,39 @@ const MyAlbums = () => {
         {/* Box för display flex */}
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-          {albums.map((album) => (
-            <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
-              <CardContainer>
-                <CardActionArea
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              flexWrap: "wrap",
+            }}
+          >
+            {albums.map((album) => (
+              <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
+                <CardContainer>
+                  <CardActionArea
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                    component={Link}
+                    to={"/album/" + album.id + "/" + album.title}
+                  >
+                    <StyledCardMedia component="img" src={album.url} />
+                  </CardActionArea>
+                </CardContainer>
+                <TypographyStyled
                   style={{
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                  component={Link}
-                  to={"/album/" + album.id + "/" + album.title}
-                >
-                  <StyledCardMedia component="img" src={album.url} />
-                </CardActionArea>
-              </CardContainer>
-              <TypographyStyled
-                style={{
-                  display: "inline-block",
-                }}
-              >
-                {album.title}
-              </TypographyStyled>
-              <IconButton style={{ padding: 0, float: "right" }}>
-                <HighlightOffIcon
-                  style={{
-                    color: "#ffb04c",
                     display: "inline-block",
                   }}
-                />
-              </IconButton>
-            </AlbumDiv>
-          ))}
+                >
+                  {album.title}
+                </TypographyStyled>
+              </AlbumDiv>
+            ))}
+          </div>
         </BoxContainer>
 
         <ButtonStyled
