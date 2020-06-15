@@ -37,6 +37,8 @@ import { makeStyles } from "@material-ui/styles";
 import { Link, Redirect } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -295,6 +297,13 @@ const Album = props => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
+        <IconButtonStyled
+          component={Link}
+          to="/myalbums"
+          style={{ paddingBottom: "30px" }}
+        >
+          <ArrowBackIcon style={{ color: "#bc5100" }} />
+        </IconButtonStyled>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
@@ -337,13 +346,6 @@ const Album = props => {
             </AlbumDiv>
           ))}
         </BoxContainer>
-        <ButtonStyled
-          component={Link}
-          to="/myalbums"
-          style={{ float: "right" }}
-        >
-          My Albums
-        </ButtonStyled>
       </Container>
     </div>
   );
