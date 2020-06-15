@@ -1,8 +1,9 @@
-import { Box, FormControl, TextField, Button } from "@material-ui/core";
+import { Box, FormControl, TextField, Button, Avatar } from "@material-ui/core";
 import styled from "styled-components";
 
 
-
+export const AvatarStyled = styled(Avatar)`
+`;
 
 export const ButtonStyled = styled(Button)`
   width: 50%;

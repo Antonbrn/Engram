@@ -4,8 +4,10 @@ import { Box, Avatar } from '@material-ui/core';
 import {
     BoxContainer,
     StyledTextField,
-    ButtonStyled
+    ButtonStyled,
+    AvatarStyled
 } from './ProfilePageStyling';
+
 
 
 
@@ -32,14 +34,15 @@ export class ProfilePage extends Component {
                     InputProps={{ disableUnderline: true }}
                 />
 
-                <Box>
+                <BoxContainer>
+                    <AvatarStyled>
+                    </AvatarStyled>
                     <ButtonStyled
                         type="submit">
                         Add Avatar
                 </ButtonStyled>
-                    <Avatar>
-                    </Avatar>
-                </Box>
+
+                </BoxContainer>
             </BoxContainer>
         )
     }
