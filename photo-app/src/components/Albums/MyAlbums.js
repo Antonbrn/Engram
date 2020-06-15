@@ -46,6 +46,14 @@ const MyAlbums = () => {
 
   const deleteAlbum = (albumId) => {
     db.collection("albums").doc(albumId).delete();
+    const deletePhotos = db
+      .collection("photos")
+      .where("albumId", "==", albumId);
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
+      });
+    });
   };
 
   return (
@@ -57,22 +65,41 @@ const MyAlbums = () => {
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
           {albums.map((album) => (
-            <AlbumDiv key={album.id}>
+            <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
               <CardContainer>
-                <CardActionArea component={Link} to={"/album/" + album.id}>
+                <CardActionArea
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  component={Link}
+                  to={"/album/" + album.id + "/" + album.title}
+                >
                   <StyledCardMedia component="img" src={album.url} />
                 </CardActionArea>
               </CardContainer>
-              <TypographyStyled>
+              <TypographyStyled
+                style={{
+                  display: "inline-block",
+                }}
+              >
                 {album.title}
-                <IconButton
-                  onClick={(e) => {
-                    deleteAlbum(album.id);
-                  }}
-                >
-                  <HighlightOffIcon style={{ color: "red" }} />
-                </IconButton>
               </TypographyStyled>
+              <IconButton
+                style={{ padding: 0, float: "right" }}
+                onClick={(e) => {
+                  deleteAlbum(album.id);
+                }}
+              >
+                <HighlightOffIcon
+                  style={{
+                    color: "#ffb04c",
+                    display: "inline-block",
+                  }}
+                />
+              </IconButton>
             </AlbumDiv>
           ))}
         </BoxContainer>
@@ -85,7 +112,6 @@ const MyAlbums = () => {
         >
           Create album
         </ButtonStyled>
-
         <Typography variant="h5">Shared Albums</Typography>
         <Box borderBottom={1} />
       </ContainerStyled>

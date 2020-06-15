@@ -7,6 +7,8 @@ import {
   ListItemText,
   List,
   Typography,
+  CardMedia,
+  CardActionArea,
 } from "@material-ui/core";
 //Logo for navbar
 import logo from "../../engramLogo.png";
@@ -84,7 +86,11 @@ const Navbar = () => {
           </ListItem>
         ))}
 
-        <button onClick={() => fire.auth().signOut()}>Log out</button>
+        <button
+          onClick={() => fire.auth().signOut().then(window.location.reload())}
+        >
+          Log out
+        </button>
       </List>
     </BoxSlider>
   );
@@ -93,8 +99,11 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-            <img src={logo}
-              style={{ marginRight: "auto", maxWidth: 180 }} />
+        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} component={Link} to="/">
+            <img src={logo} 
+              style={{ marginRight: "auto", maxWidth: 180 }} 
+               />
+               </CardActionArea>
           {isActive && <BottomBar
           />}
           <IconButton onClick={toggleSlider("right", true)}>

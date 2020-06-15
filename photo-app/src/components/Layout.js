@@ -21,7 +21,7 @@ const Layout = () => {
       <Route path="/createalbums" component={CreateAlbums} />
       <Route path="/profilepage" component={ProfilePage} />
       <Route path="/notifications" component={Notifications} />
-      <Route path="/album/:id" component={Album} />
+      <Route path="/album/:id/:title" component={Album} />
       {isActive && <BottomBar />}
     </div>
   );

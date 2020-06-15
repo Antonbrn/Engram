@@ -1,32 +1,52 @@
 import styled from "styled-components";
-import { Typography, Box, Container, Grid, Card } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 export const FeedBox = styled(Container)`
-  height: 100vh;
-`;
-
-export const ImageCard = styled(Grid)`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  scroll-behavior: smooth;
-`;
-export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
-  height: 60%;
-  width: 40%;
+  justify-content: center;
+  align-items: center;
+  padding-top: 85px;
+
+  @media only screen and (max-width: 500px){
+    padding-bottom: 85px;
+}
+`;
+
+export const Wrapper = styled.div`
+    height: 400px;
+    width: 600px;
+
+    @media only screen and (max-width: 700px){
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      margin-bottom: 30px;
+  }
+  
+  @media only screen and (max-width: 500px){
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      margin-bottom: 30px;
+  }
 `;
 
 export const ImageStyle = styled.img`
-  height: 100%;
   border: solid 4px orange;
   border-radius: 8px;
-`;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  
+@media only screen and (max-width: 700px){
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
 
-export const ImageInfo = styled(Typography)`
-  max-height: 20%;
-  border: solid 2px orange;
+@media only screen and (max-width: 500px){
+    width: 100%;
+    height: auto;
+}
 `;

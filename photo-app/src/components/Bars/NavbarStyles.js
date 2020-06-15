@@ -23,21 +23,21 @@ export const BottomNavigationActionStyled = styled(BottomNavigationAction)`
   }
   font-size: 30px;
 
-  @media only screen and (min-width: 768px) {
-    color: #ffb04c !important;
-    &:visited {
-      color: #ffb04c !important;
-    }
+  // @media only screen and (min-width: 768px) {
+  //   color: #ffb04c !important;
+  //   &:visited {
+  //     color: #ffb04c !important;
+  //   }
   }
 `;
 
 export const BottomNavigationStyled = styled(BottomNavigation)`
-  background: #bc5100;
+  background: rgba(0, 0, 0, 0);
   height: 70px;
   padding-top: 10px;
 
   @media only screen and (max-width: 767px) {
-    background: #ffb04c;
+    background: linear-gradient(180deg, #ffb04c 50%, #ffcf8a);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -53,7 +53,7 @@ export const BoxSlider = styled(Box)`
 export const StyledAppbar = styled(AppBar)`
   height: 70px;
   position: fixed;
-  background: #bc5100;
+  background: linear-gradient(90deg, #bc5100, #ffb04c);
 `;
 
 export const StyledSettingsIcon = styled(SettingsIcon)`
