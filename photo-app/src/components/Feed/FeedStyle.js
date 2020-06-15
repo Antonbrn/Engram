@@ -7,39 +7,48 @@ export const FeedBox = styled(Container)`
   justify-content: center;
   align-items: center;
   padding-top: 85px;
+  padding-bottom: 85px;
 
-  @media only screen and (max-width: 500px){
-    padding-bottom: 85px;
+
+  @media only screen and (min-width: 768px) {
+
 }
 `;
 
 export const Wrapper = styled.div`
+
+      margin-top: 20px;
+      margin-bottom: 30px;
+      height: 200px;
+      width: 300px;
+
+    @media only screen and (min-width: 768px) {
     height: 400px;
     width: 600px;
 
-    @media only screen and (max-width: 700px){
+}
+    /* @media only screen and (max-width: 700px){
       width: 100%;
       height: auto;
-      margin-top: 20px;
-      margin-bottom: 30px;
   }
-  
-  @media only screen and (max-width: 500px){
-      width: 100%;
-      height: auto;
-      margin-top: 20px;
-      margin-bottom: 30px;
-  }
+*/
 `;
 
 export const ImageStyle = styled.img`
-  border: solid 4px orange;
-  border-radius: 8px;
-  max-width: 100%;
-  max-height: 100%;
+  border: solid 2px orange;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+
+
+
   
-@media only screen and (max-width: 700px){
+@media only screen and (min-width: 768px) {
+
+}
+  
+/* @media only screen and (max-width: 700px){
     width: 100%;
     height: auto;
     margin-top: 10px;
@@ -48,5 +57,6 @@ export const ImageStyle = styled.img`
 @media only screen and (max-width: 500px){
     width: 100%;
     height: auto;
-}
+} */
 `;
+
