@@ -44,18 +44,6 @@ const MyAlbums = () => {
       });
   }, []);
 
-  const deleteAlbum = (albumId) => {
-    db.collection("albums").doc(albumId).delete();
-    const deletePhotos = db
-      .collection("photos")
-      .where("albumId", "==", albumId);
-    deletePhotos.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
-        doc.ref.delete();
-      });
-    });
-  };
-
   return (
     <>
       <ContainerStyled>
@@ -87,12 +75,7 @@ const MyAlbums = () => {
               >
                 {album.title}
               </TypographyStyled>
-              <IconButton
-                style={{ padding: 0, float: "right" }}
-                onClick={(e) => {
-                  deleteAlbum(album.id);
-                }}
-              >
+              <IconButton style={{ padding: 0, float: "right" }}>
                 <HighlightOffIcon
                   style={{
                     color: "#ffb04c",
