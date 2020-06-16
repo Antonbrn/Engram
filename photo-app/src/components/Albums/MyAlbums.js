@@ -108,7 +108,7 @@ const MyAlbums = () => {
         >
           Create album
         </ButtonStyled>
-        <Typography variant="h5">Shared Albums</Typography>
+        <Title variant="h4">Shared Albums</Title>
         <Box borderBottom={1} />
 
         <BoxContainer>

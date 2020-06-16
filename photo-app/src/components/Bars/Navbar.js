@@ -99,7 +99,7 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} component={Link} to="/">
+        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} onClick={ () => document.querySelector("#goHome").click() }>
             <img src={logo} 
               style={{ marginRight: "auto", maxWidth: 180 }} 
                />
