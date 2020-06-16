@@ -39,7 +39,6 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
-
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -116,35 +115,6 @@ const Album = (props) => {
     }
   };
 
-  //Add photos function
-  const addPhotos = (e) => {
-    e.preventDefault();
-    //Upload photofile to firebase storage
-    const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {},
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref("photos")
-          .child(photoFile.name)
-          .getDownloadURL()
-          .then((url) => {
-            //Add url, userId to database
-            db.collection("photos").add({
-              url: url,
-              userId: currentUser.id,
-              albumId: albumId,
-            });
-          });
-        setUrl(url);
-      }
-    );
-  };
-
   //Get Photos
   useEffect(() => {
     db.collection("photos")
@@ -167,11 +137,14 @@ const Album = (props) => {
       .where("username", "==", inviteMember);
     getMemberId.get().then((snapshot) => {
       snapshot.forEach((user) => {
-        db.collection("albums").doc(albumId).get().then(doc => {
-          const invited = doc.data().invited || [];
-          invited.push(user.id);
-          db.collection("albums").doc(albumId).update({ invited: invited });
-        });
+        db.collection("albums")
+          .doc(albumId)
+          .get()
+          .then((doc) => {
+            const invited = doc.data().invited || [];
+            invited.push(user.id);
+            db.collection("albums").doc(albumId).update({ invited: invited });
+          });
       });
     });
   };
@@ -202,6 +175,36 @@ const Album = (props) => {
     setOpenInviteModal(false);
   };
 
+  //Add photos function
+  const addPhotos = (e) => {
+    e.preventDefault();
+    handleClosedPhotoModal();
+    //Upload photofile to firebase storage
+    const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        storage
+          .ref("photos")
+          .child(photoFile.name)
+          .getDownloadURL()
+          .then((url) => {
+            //Add url, userId to database
+            db.collection("photos").add({
+              url: url,
+              userId: currentUser.id,
+              albumId: albumId,
+            });
+          });
+        setUrl(url);
+      }
+    );
+  };
+
   const photoCounter = photos.length;
 
   return (
@@ -223,19 +226,26 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
-          <Box style={{display: "flex", flexDirection: "column", justifyContent: "top", margin: 10}}>
-            <Box style={{background: "white", height: "25vh"}}>
-          <TextField 
-          label="comments..." 
-          style={{background: "white", width: "25%"}}
-          multiline
-          rows={2}
-          rowsMax={4}
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "top",
+            margin: 10,
+          }}
+        >
+          <Box style={{ background: "white", height: "25vh" }}>
+            <TextField
+              label="comments..."
+              style={{ background: "white", width: "25%" }}
+              multiline
+              rows={2}
+              rowsMax={4}
             />
           </Box>
-        <Fade in={openPhoto}>
-          <ImgModal src={clickedPhoto} style={{width: 250, height: 200,}} />
-        </Fade>
+          <Fade in={openPhoto}>
+            <ImgModal src={clickedPhoto} style={{ width: 250, height: 200 }} />
+          </Fade>
         </Box>
       </Modal>
       {/* Add Photo Modal */}
@@ -264,10 +274,16 @@ const Album = (props) => {
               Choose File
               <InputStyled type="file" onChange={getPhotoFile} />
             </TextFieldInputStyled>
+
+            <br />
+            <label style={{ paddingTop: "3px" }}>
+              {photoFile && photoFile.name}
+            </label>
             <br />
             <TextFieldInputStyled
+              style={{ margin: 0, paddingTop: "3px" }}
               onClick={addPhotos}
-              type="submit"
+              type="button"
               data-dismiss="modal"
             >
               Add
@@ -316,12 +332,9 @@ const Album = (props) => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
-        <Button 
-      component={Link}
-      to="/myalbums">
-      <ArrowBackIcon 
-      style={{ color: "#bc5100",}}/>
-      </Button>
+        <Button component={Link} to="/myalbums">
+          <ArrowBackIcon style={{ color: "#bc5100" }} />
+        </Button>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
