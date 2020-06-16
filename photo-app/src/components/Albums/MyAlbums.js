@@ -29,6 +29,7 @@ export const AlbumContext = React.createContext();
 
 const MyAlbums = () => {
   const [albums, setAlbums] = useState([]);
+  const [sharedAlbums, setSharedAlbums] = useState([]);
   const { currentUser } = useContext(AuthContext);
 
   //Get Albums
@@ -45,6 +46,15 @@ const MyAlbums = () => {
       });
 
     //get albums for invited user;
+    db.collection("albums")
+      .where("invited", "array-contains", currentUser.id)
+      .onSnapshot((snapshot) => {
+        const newAlbums = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setSharedAlbums(newAlbums);
+      });
   }, []);
 
   return (
@@ -98,8 +108,45 @@ const MyAlbums = () => {
         >
           Create album
         </ButtonStyled>
-        <Typography variant="h5">Shared Albums</Typography>
+        <Title variant="h4">Shared Albums</Title>
         <Box borderBottom={1} />
+
+        <BoxContainer>
+          {/* Loopar ut alla albums i ett card med title */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              flexWrap: "wrap",
+            }}
+          >
+            {sharedAlbums.map((album) => (
+              <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
+                <CardContainer>
+                  <CardActionArea
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                    component={Link}
+                    to={"/album/" + album.id + "/" + album.title}
+                  >
+                    <StyledCardMedia component="img" src={album.url} />
+                  </CardActionArea>
+                </CardContainer>
+                <TypographyStyled
+                  style={{
+                    display: "inline-block",
+                  }}
+                >
+                  {album.title}
+                </TypographyStyled>
+              </AlbumDiv>
+            ))}
+          </div>
+        </BoxContainer>
       </ContainerStyled>
     </>
   );

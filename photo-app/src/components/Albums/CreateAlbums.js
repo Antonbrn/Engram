@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
   IconButton,
-  Input
+  Input,
 } from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -24,7 +24,7 @@ import {
   TypographyStyled,
   BoxBorder,
   HideButton,
-  IconButtonStyled
+  IconButtonStyled,
 } from "./StylesAlbums";
 
 const CreateAlbums = () => {
@@ -33,7 +33,7 @@ const CreateAlbums = () => {
   const [thumbnail, setThumbnail] = useState(null);
 
   //function for getting the img file
-  const getThumbnailFile = e => {
+  const getThumbnailFile = (e) => {
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
     }
@@ -41,15 +41,15 @@ const CreateAlbums = () => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const addAlbum = e => {
+  const addAlbum = (e) => {
     e.preventDefault();
 
     //Upload the imagefile to firebase storage
     const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -57,13 +57,13 @@ const CreateAlbums = () => {
           .ref("images")
           .child(thumbnail.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //add url and title to the database, Albums collection
             db.collection("albums").add({
               url: url,
               title: title,
               userId: currentUser.id,
-              invited: ""
+              invited: [],
             });
             setUrl(url);
           });
@@ -89,13 +89,16 @@ const CreateAlbums = () => {
             required
             label="Title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
           <TextFieldInputStyled>
             <InputStyled type="file" onChange={getThumbnailFile} />
             Add Thumbnail
           </TextFieldInputStyled>
+          <br />
+          <label>{thumbnail && thumbnail.name}</label>
+          <br />
           <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
 
           <ButtonStyled

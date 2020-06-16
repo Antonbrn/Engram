@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
-import { Home, NotificationsActive, PhotoAlbum } from "@material-ui/icons";
+import { Home, NotificationsActive, PhotoAlbum, Create } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useMediaQuery } from "@material-ui/core";
@@ -9,6 +9,7 @@ import {
   BottomNavigationActionStyled,
   BottomNavigationStyled,
 } from "./NavbarStyles";
+
 
 //const isActive = useMediaQuery("(min-width: 600px)");
 
@@ -31,9 +32,18 @@ const BottomBar = () => {
 
       <BottomNavigationActionStyled
         component={Link}
+        to="/profilepage"
+        value="profilepage"
+        label="ProfilePage"
+        icon={<Create />}
+      />
+
+      <BottomNavigationActionStyled
+        component={Link}
         to="/"
         value="feed"
         label="Home"
+        id="goHome"
         icon={<Home />}
       />
 
