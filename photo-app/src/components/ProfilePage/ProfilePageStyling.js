@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 export const AvatarStyled = styled(Avatar)`
-  /* align-self: center; */
+  align-self: center;
   margin-top: 20px;
 `;
 
