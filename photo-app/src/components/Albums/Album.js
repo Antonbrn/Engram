@@ -37,6 +37,9 @@ import { makeStyles } from "@material-ui/styles";
 import { Link, Redirect } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+
+
 //CONTEXT
 import { AuthContext } from "../../Auth";
 
@@ -155,13 +158,16 @@ const Album = (props) => {
       });
   }, []);
 
+  //Lägger in invitade memberns userId in i invite propertyn i albumet
+  //Går bara att lägga in en, måste fixas,
+  //Måste fixas i myAlbums så att även den invitade usern kan se albumet
   const inviteMemberFunc = () => {
     const getMemberId = db
       .collection("users")
       .where("username", "==", inviteMember);
     getMemberId.get().then((snapshot) => {
       snapshot.forEach((doc) => {
-        console.log(doc.id);
+        db.collection("albums").doc(albumId).update({ invited: doc.id });
       });
     });
   };
@@ -191,6 +197,8 @@ const Album = (props) => {
   const handleClosedInviteModal = () => {
     setOpenInviteModal(false);
   };
+
+  const photoCounter = photos.length;
 
   return (
     <div>
@@ -293,6 +301,12 @@ const Album = (props) => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
+        <Button 
+      component={Link}
+      to="/myalbums">
+      <ArrowBackIcon 
+      style={{ color: "#bc5100",}}/>
+      </Button>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
@@ -317,31 +331,33 @@ const Album = (props) => {
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
+        <p>Photos: {photoCounter}</p>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
-        <BoxContainer style={{ justifyContent: "flex-start" }}>
-          {photos.map((photo, index) => (
-            <AlbumDiv key={index}>
-              <CardContainer style={{ display: "flex", alignItems: "center" }}>
-                <CardActionArea
-                  onClick={(e) => {
-                    handleOpen(photo.url);
-                  }}
-                >
-                  <StyledCardMedia component="img" src={photo.url} />
-                </CardActionArea>
-              </CardContainer>
-            </AlbumDiv>
-          ))}
+        <BoxContainer>
+          <div
+            style={{
+              display: "flex",
+              justfiyContent: "flex-start",
+              flexWrap: "wrap",
+            }}
+          >
+            {photos.map((photo, index) => (
+              <AlbumDiv key={index}>
+                <CardContainer>
+                  <CardActionArea
+                    onClick={(e) => {
+                      handleOpen(photo.url);
+                    }}
+                  >
+                    <StyledCardMedia component="img" src={photo.url} />
+                  </CardActionArea>
+                </CardContainer>
+              </AlbumDiv>
+            ))}
+          </div>
         </BoxContainer>
-        <ButtonStyled
-          component={Link}
-          to="/myalbums"
-          style={{ float: "right" }}
-        >
-          My Albums
-        </ButtonStyled>
       </Container>
     </div>
   );
