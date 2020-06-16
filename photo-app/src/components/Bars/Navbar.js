@@ -19,16 +19,17 @@ import { AuthContext } from "../../Auth";
 //Imported icons
 import { ArrowBack } from "@material-ui/icons";
 import BottomBar from "./BottomBar";
-import { useMediaQuery } from "@material-ui/core";
+import { useMediaQuery, Avatar } from "@material-ui/core";
 import {
   BoxSlider,
   StyledAppbar,
   StyledSettingsIcon,
   LoggedUser,
   StyledDiv,
+  AvatarStyledBar
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
-
+import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
 //Navbarlinks Array
 const menuLinks = [
   {
@@ -106,9 +107,13 @@ const Navbar = () => {
                </CardActionArea>
           {isActive && <BottomBar
           />}
-          <IconButton onClick={toggleSlider("right", true)}>
-            <StyledSettingsIcon />
-          </IconButton>
+         
+          <AvatarStyledBar
+        component={Link}
+        to="/profilepage"
+        value="profile"
+        icon={<Avatar />}
+      />
           <RightMenuSlider
             anchor="right"
             open={state.right}

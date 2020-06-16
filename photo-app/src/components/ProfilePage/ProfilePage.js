@@ -1,51 +1,67 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useContext } from 'react';
 import { Box, Avatar } from '@material-ui/core';
-
+import fire from "../../base";
 import {
     BoxContainer,
     StyledTextField,
     ButtonStyled,
-    AvatarStyled
+    AvatarStyled,
+    LoggedUser
 } from './ProfilePageStyling';
+//Authcontext, userdata
+import { AuthContext } from "../../Auth";
 
 
 
 
-export class ProfilePage extends Component {
-    render() {
-        return (
-            <BoxContainer>
-                <StyledTextField
-                    name="ChangeEmail"
-                    label="Change Email (coming soon)"
-                    type="text"
-                    InputProps={{ disableUnderline: true }}
-                />
-                <StyledTextField
-                    name="ChangeUsername"
-                    label="Change Username (Coming soon)"
-                    type="text"
-                    InputProps={{ disableUnderline: true }}
-                />
-                <StyledTextField
-                    name="ChangePassword"
-                    label="Change Password (coming soon)"
-                    type="text"
-                    InputProps={{ disableUnderline: true }}
-                />
+// export class ProfilePage extends Component 
 
-                <BoxContainer>
-                    <AvatarStyled>
-                    </AvatarStyled>
-                    <ButtonStyled
-                        type="submit">
-                        Add Avatar
+
+const ProfilePage = () =>{
+
+    const { currentUser } = useContext(AuthContext);
+  //currentUser context
+
+
+    return (
+        <BoxContainer>
+            <AvatarStyled>
+            </AvatarStyled>
+            <LoggedUser>{`${currentUser.username}`}</LoggedUser>
+            <ButtonStyled
+                type="submit">
+                Add Avatar
                 </ButtonStyled>
+            <StyledTextField
+                disabled
+                name="ChangeEmail"
+                label="Change Email (coming soon)"
+                type="text"
+                InputProps={{ disableUnderline: true }}
+            />
+            <StyledTextField
+                disabled
+                name="ChangeUsername"
+                label="Change Username (Coming soon)"
+                type="text"
+                InputProps={{ disableUnderline: true }}
+            />
+            <StyledTextField
+                disabled
+                name="ChangePassword"
+                label="Change Password (coming soon)"
+                type="text"
+                InputProps={{ disableUnderline: true }}
+            />
 
-                </BoxContainer>
-            </BoxContainer>
-        )
-    }
+            <ButtonStyled
+                onClick={() => fire.auth().signOut().then(window.location.reload())}
+            >
+                Log out
+        </ButtonStyled>
+        </BoxContainer>
+    )
+
 }
 
 export default ProfilePage

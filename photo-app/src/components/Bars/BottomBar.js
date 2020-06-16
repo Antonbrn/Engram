@@ -29,15 +29,7 @@ const BottomBar = () => {
         label="Albums"
         icon={<PhotoAlbum />}
       />
-
-      <BottomNavigationActionStyled
-        component={Link}
-        to="/profilepage"
-        value="profilepage"
-        label="ProfilePage"
-        icon={<Create />}
-      />
-
+      
       <BottomNavigationActionStyled
         component={Link}
         to="/"

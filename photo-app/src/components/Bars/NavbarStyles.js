@@ -23,12 +23,15 @@ export const BottomNavigationActionStyled = styled(BottomNavigationAction)`
   }
   font-size: 30px;
 
-  // @media only screen and (min-width: 768px) {
-  //   color: #ffb04c !important;
-  //   &:visited {
-  //     color: #ffb04c !important;
-  //   }
-  }
+   /* @media only screen and (min-width: 768px) {
+     color: #ffb04c !important;
+     &:visited {
+      color: #ffb04c !important;
+     }
+  } */
+`;
+export const AvatarStyledBar = styled(BottomNavigationAction)`
+ 
 `;
 
 export const BottomNavigationStyled = styled(BottomNavigation)`
