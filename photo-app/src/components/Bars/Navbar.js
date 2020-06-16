@@ -10,6 +10,7 @@ import {
   CardMedia,
   CardActionArea,
 } from "@material-ui/core";
+
 //Logo for navbar
 import logo from "../../engramLogo.png";
 //backend
@@ -26,7 +27,7 @@ import {
   StyledSettingsIcon,
   LoggedUser,
   StyledDiv,
-  AvatarStyledBar
+  AvatarStyledBar,
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
 import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
@@ -100,27 +101,27 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} onClick={ () => document.querySelector("#goHome").click() }>
-            <img src={logo} 
-              style={{ marginRight: "auto", maxWidth: 180 }} 
-               />
-               </CardActionArea>
-          {isActive && <BottomBar
-          />}
-         
+          <CardActionArea
+            style={{ marginRight: "auto", maxWidth: 180 }}
+            onClick={() => document.querySelector("#goHome").click()}
+          >
+            <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
+          </CardActionArea>
+          {isActive && <BottomBar />}
+
           <AvatarStyledBar
-        component={Link}
-        to="/profilepage"
-        value="profile"
-        icon={<Avatar />}
-      />
-          <RightMenuSlider
+            component={Link}
+            to="/profilepage"
+            value="profile"
+            icon={<Avatar style={{ backgroundColor: "black" }} />}
+          />
+          {/* <RightMenuSlider
             anchor="right"
             open={state.right}
             onClose={toggleSlider("right", false)}
           >
             {slideList("right")}
-          </RightMenuSlider>
+          </RightMenuSlider> */}
         </Toolbar>
       </StyledAppbar>
     </>

@@ -6,6 +6,7 @@ import styled from "styled-components";
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
   margin-top: 20px;
+  background-color: black;
 `;
 
 export const LoggedUser = styled.h4`
@@ -14,6 +15,7 @@ export const LoggedUser = styled.h4`
 
 export const ButtonStyled = styled(Button)`
   align-self: center;
+  font-family: "Viga";
   background: #bc5100;
   color: #ffff;
   border: solid 1px #bc5100;
@@ -23,6 +25,8 @@ export const ButtonStyled = styled(Button)`
     border: solid 1px #bc5100;
     transition: 0.7s ease;
   }
+
+  
 `;
 
 

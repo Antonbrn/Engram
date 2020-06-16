@@ -343,23 +343,23 @@ const Album = (props) => {
                 aria-label="Add Photo"
                 onClick={handleOpenPhotoModal}
               >
-                <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
+                <AddPhotoAlternateIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon style={{ color: "#bc5100" }} />
+                <PersonAddIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
               <IconButtonStyled onClick={confirmDelete}>
-                <DeleteIcon style={{ color: "#bc5100" }} />
+                <DeleteIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
-        <p>Photos: {photoCounter}</p>
+        <h3>Photos: {photoCounter}</h3>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
