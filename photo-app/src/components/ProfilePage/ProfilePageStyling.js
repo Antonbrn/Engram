@@ -1,10 +1,15 @@
 import { Box, FormControl, TextField, Button, Avatar } from "@material-ui/core";
+
 import styled from "styled-components";
 
 
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
-  margin: 30px;
+  margin-top: 20px;
+`;
+
+export const LoggedUser = styled.h4`
+  color: #f57f17;
 `;
 
 export const ButtonStyled = styled(Button)`
