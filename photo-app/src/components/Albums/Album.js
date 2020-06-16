@@ -68,7 +68,7 @@ const Album = (props) => {
   const [photos, setPhotos] = useState([]);
   const [photoFile, setPhotoFile] = useState([]);
   const [inviteMember, setInviteMember] = useState([]);
-  const [memberId, setMemberId] = useState("");
+  const [inviteCount, setInviteCount] = useState([]);
 
   const [openPhoto, setOpenPhoto] = React.useState(false);
   const [clickedPhoto, setClickedPhoto] = useState([]);
@@ -148,6 +148,13 @@ const Album = (props) => {
       });
     });
   };
+
+  db.collection("albums")
+    .doc(albumId)
+    .get()
+    .then((doc) => {
+      setInviteCount(doc.data().invited.length);
+    });
 
   //Modals
   const handleOpen = (photoUrl) => {
@@ -359,7 +366,10 @@ const Album = (props) => {
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
-        <p>Photos: {photoCounter}</p>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <p>Photos: {photoCounter}</p>
+          <p>Invited: {inviteCount}</p>
+        </div>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
