@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 export const AvatarStyled = styled(Avatar)`
-  align-self: center;
+  /* align-self: center; */
   margin-top: 20px;
 `;
 
@@ -27,7 +27,6 @@ export const ButtonStyled = styled(Button)`
 
 
 export const BoxContainer = styled(Box)`
-    background-color: white;
     padding-Top: 70px;
     padding-bottom: 70px;
     text-align: center;
