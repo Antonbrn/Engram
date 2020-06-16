@@ -166,8 +166,12 @@ const Album = (props) => {
       .collection("users")
       .where("username", "==", inviteMember);
     getMemberId.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
-        db.collection("albums").doc(albumId).update({ invited: doc.id });
+      snapshot.forEach((user) => {
+        db.collection("albums").doc(albumId).get().then(doc => {
+          const invited = doc.data().invited || [];
+          invited.push(user.id);
+          db.collection("albums").doc(albumId).update({ invited: invited });
+        });
       });
     });
   };
@@ -219,9 +223,20 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
+          <Box style={{display: "flex", flexDirection: "column", justifyContent: "top", margin: 10}}>
+            <Box style={{background: "white", height: "25vh"}}>
+          <TextField 
+          label="comments..." 
+          style={{background: "white", width: "25%"}}
+          multiline
+          rows={2}
+          rowsMax={4}
+            />
+          </Box>
         <Fade in={openPhoto}>
-          <ImgModal src={clickedPhoto} />
+          <ImgModal src={clickedPhoto} style={{width: 250, height: 200,}} />
         </Fade>
+        </Box>
       </Modal>
       {/* Add Photo Modal */}
       <Modal
