@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Container, Grid } from "@material-ui/core";
+import { Box, Typography, Container, Grid, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -22,69 +22,123 @@ const useStyles = makeStyles({
 const Notifications = () => {
   const classes = useStyles();
   return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <TitleDiv style={{ paddingTop: 100, paddingBottom: 50 }}>
+    <div style={{}}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <TitleDiv style={{ marginTop: 100, paddingBottom: 50 }}>
           <Title variant="h4">Notifications</Title>
         </TitleDiv>
       </div>
       <Grid>
         <Container style={{ paddingBottom: 30 }}>
-          <Card className={classes.root}>
+          <Card>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                title="Contemplative Reptile"
-              />
-
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  AlbumName
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Daniel and 4 other people has added photos to AlbumName
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions style={{ justifyContent: "center" }}></CardActions>
-          </Card>
-        </Container>
-        <Container style={{ paddingBottom: 30 }}>
-          <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                title="Contemplative Reptile"
-              />
               <CardContent style={{ paddingBottom: 30 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  AlbumName
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Daniel and 4 other people has added photos to AlbumName
-                </Typography>
+                <div style={{ display: "flex" }}>
+                  <div style={{ paddingRight: 20 }}>
+                    <Avatar
+                      src="https://picsum.photos/200"
+                      style={{
+                        display: "flex",
+                        alignItems: "center"
+                      }}
+                    >
+                      H
+                    </Avatar>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Anton has invited you to join Engram vaccation 2020.
+                    </Typography>
+                  </div>
+                </div>
               </CardContent>
             </CardActionArea>
-            <CardActions style={{ justifyContent: "center" }}></CardActions>
           </Card>
         </Container>
+
         <Container style={{ paddingBottom: 30 }}>
-          <Card className={classes.root}>
+          <Card>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                title="Contemplative Reptile"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  AlbumName
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Daniel and 4 other people has added photos to AlbumName
-                </Typography>
+              <CardContent style={{ paddingBottom: 30 }}>
+                <div style={{ display: "flex" }}>
+                  <div style={{ paddingRight: 20 }}>
+                    <Avatar
+                      src="https://picsum.photos/201"
+                      style={{
+                        display: "flex",
+                        alignItems: "center"
+                      }}
+                    >
+                      D
+                    </Avatar>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Daniel and 16 other people has commented in Agust Wedding.
+                    </Typography>
+                  </div>
+                </div>
               </CardContent>
             </CardActionArea>
-            <CardActions style={{ justifyContent: "center" }}></CardActions>
+          </Card>
+        </Container>
+
+        <Container style={{ paddingBottom: 30 }}>
+          <Card>
+            <CardActionArea>
+              <CardContent style={{ paddingBottom: 30 }}>
+                <div style={{ display: "flex" }}>
+                  <div style={{ paddingRight: 20 }}>
+                    <Avatar
+                      src="https://picsum.photos/202"
+                      style={{
+                        display: "flex",
+                        alignItems: "center"
+                      }}
+                    >
+                      A
+                    </Avatar>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center"
+                    }}
+                  >
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Alex and 4 other people has added photos to Agust Wedding.
+                    </Typography>
+                  </div>
+                </div>
+              </CardContent>
+            </CardActionArea>
           </Card>
         </Container>
       </Grid>

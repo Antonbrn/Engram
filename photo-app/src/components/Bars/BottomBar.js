@@ -35,6 +35,7 @@ const BottomBar = () => {
         to="/"
         value="feed"
         label="Home"
+        id="goHome"
         icon={<Home />}
       />
 
