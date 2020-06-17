@@ -71,7 +71,8 @@ const Notifications = () => {
                       color="textSecondary"
                       component="p"
                     >
-                      Anton has invited you to join Engram vaccation 2020.
+                      Anton has invited you to join the album 'Engram vaccation
+                      2020'.
                     </Typography>
                   </div>
                 </div>
