@@ -1,18 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import {
-  Typography,
   Box,
-  Container,
-  Button,
-  IconButton,
 } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
-import addAlbum from "../Assets/addAlbum.png";
+import { Link, } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-
-//Backend
 import { db } from "../../base";
 import {
   ContainerStyled,
@@ -24,6 +16,7 @@ import {
   Title,
   StyledCardMedia,
 } from "./StylesAlbums";
+
 
 export const AlbumContext = React.createContext();
 

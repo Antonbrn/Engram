@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { AppBar, Box } from "@material-ui/core";
 import { BottomNavigation, BottomNavigationAction,} from "@material-ui/core";
 import SettingsIcon from "@material-ui/icons/Settings";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 //---- SLIDER ----
 export const StyledDiv = styled.div`
@@ -35,7 +34,7 @@ export const AvatarStyledBar = styled(BottomNavigationAction)`
   display: flex;
   flex: 0;
   margin: auto 0 auto 0;
-  color: #BA3009;
+  color: #bc5100;
   
   
 `;

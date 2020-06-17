@@ -196,11 +196,3 @@ export const BoxStyled = styled(Box)`
   }
 `;
 
-export default {
-  ButtonStyled,
-  ContainerStyled,
-  BoxContainer,
-  CardContainer,
-  TypographyStyled,
-  AlbumDiv,
-};

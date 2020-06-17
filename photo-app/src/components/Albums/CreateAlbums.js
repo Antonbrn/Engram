@@ -1,15 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {
-  Typography,
-  Box,
-  Container,
-  TextField,
-  Button,
-  IconButton,
-  Input,
-} from "@material-ui/core";
-import { ArrowForward } from "@material-ui/icons";
+import {TextField,} from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 //backend
 import { db } from "../../base";
@@ -94,7 +85,7 @@ const CreateAlbums = () => {
 
           <TextFieldInputStyled>
             <InputStyled type="file" onChange={getThumbnailFile} />
-            Add Thumbnail
+            ADD THUMBNAIL
           </TextFieldInputStyled>
           <br />
           <label>{thumbnail && thumbnail.name}</label>

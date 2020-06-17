@@ -1,8 +1,6 @@
 import React, { useCallback } from "react";
-import { withRouter, Redirect, Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import fire from "../../base.js";
-import { Typography, Box, FormControl, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 //logo
 import logo from "../../engramLogo.png";
 //backend
