@@ -371,13 +371,6 @@ const Album = (props) => {
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer>
-          <div
-            style={{
-              display: "flex",
-              justfiyContent: "flex-start",
-              flexWrap: "wrap",
-            }}
-          >
             {photos.map((photo, index) => (
               <AlbumDiv key={index}>
                 <CardContainer>
@@ -395,7 +388,6 @@ const Album = (props) => {
                 </CardContainer>
               </AlbumDiv>
             ))}
-          </div>
         </BoxContainer>
       </Container>
     </div>

@@ -59,19 +59,12 @@ const MyAlbums = () => {
 
   return (
     <>
-      <ContainerStyled>
+      <ContainerStyled style={{paddingBottom: 100,}}>
         <Title variant="h4">My Albums</Title>
         <Box borderBottom={1} />
         {/* Box för display flex */}
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              flexWrap: "wrap",
-            }}
-          >
             {albums.map((album) => (
               <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
                 <CardContainer>
@@ -95,7 +88,7 @@ const MyAlbums = () => {
                 </TypographyStyled>
               </AlbumDiv>
             ))}
-          </div>
+        
         </BoxContainer>
 
         <ButtonStyled
@@ -111,13 +104,7 @@ const MyAlbums = () => {
 
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              flexWrap: "wrap",
-            }}
-          >
+          
             {sharedAlbums.map((album) => (
               <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
                 <CardContainer>
@@ -141,7 +128,7 @@ const MyAlbums = () => {
                 </TypographyStyled>
               </AlbumDiv>
             ))}
-          </div>
+          
         </BoxContainer>
       </ContainerStyled>
     </>
