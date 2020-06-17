@@ -168,9 +168,9 @@ export const HideButton = styled(Button)`
 
 export const ModalDiv = styled.div`
   background: white;
-  border: 2px solid #bc5100;
-  padding: 20px;
-  height: 50vh;
+  border: 6px solid #bc5100;
+
+  height: 30vh;
   width: 60vw;
   text-align: center;
   font-family: "Viga";
