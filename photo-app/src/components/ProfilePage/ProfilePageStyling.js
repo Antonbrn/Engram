@@ -6,6 +6,11 @@ import styled from "styled-components";
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
   margin-top: 20px;
+  color: white;
+  background: #BA3009;
+  width: 70px;
+  height: 70px;
+  
 `;
 
 export const LoggedUser = styled.h4`

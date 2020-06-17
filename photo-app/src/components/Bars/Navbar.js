@@ -20,13 +20,15 @@ import { AuthContext } from "../../Auth";
 import { ArrowBack } from "@material-ui/icons";
 import BottomBar from "./BottomBar";
 import { useMediaQuery, Avatar } from "@material-ui/core";
+import FaceIcon from '@material-ui/icons/Face';
 import {
   BoxSlider,
   StyledAppbar,
   StyledSettingsIcon,
   LoggedUser,
   StyledDiv,
-  AvatarStyledBar
+  AvatarStyledBar,
+  
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
 import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
@@ -109,10 +111,11 @@ const Navbar = () => {
           />}
          
           <AvatarStyledBar
+          style={{paddingTop: "8px",}}
         component={Link}
         to="/profilepage"
         value="profile"
-        icon={<Avatar />}
+        icon={<FaceIcon style={{fontSize: "40px",}}/>}
       />
           <RightMenuSlider
             anchor="right"
