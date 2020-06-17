@@ -236,8 +236,8 @@ const Album = (props) => {
       >
         <Box style={{
           background:"white",
-          width: "40vw",
-          height: "80vh",
+          width: "30%",
+          maxHeight: "90vh"
         }}>
           
           <Fade in={openPhoto}>

@@ -56,7 +56,7 @@ export const CardContainer = styled(Card)`
   height: 130px;
   border: solid 1px #bc5100;
   border-radius: 5px;
-
+    overflow: hidden;
   @media only screen and (min-width: 768px) {
     width: 200px;
     height: 200px;
@@ -79,13 +79,14 @@ export const AlbumDiv = styled.div`
   }
 `;
 export const StyledCardMedia = styled.img`
-    width: 100%;
-    height: 100%;
-
+width: 100%;
+position: absolute;
+left: 0;
+top: 0;
+height: auto;
   @media only screen and (min-width: 768px) {
-    width: 100%;
-    height: 100%;
   }
+
 `;
 
 export const InputStyled = styled(Input)`
