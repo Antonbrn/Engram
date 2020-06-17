@@ -26,9 +26,9 @@ const ProfilePage = () =>{
 
     return (
         <BoxContainer>
-            <AvatarStyled>
-            </AvatarStyled>
-            <LoggedUser>{`${currentUser.username}`}</LoggedUser>
+            <AvatarStyled style={{background: "transparent", color: "#bc5100",}}/>
+            
+            <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
             <ButtonStyled
                 type="submit">
                 Add Avatar

@@ -5,20 +5,20 @@ import styled from "styled-components";
 
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
-  margin-top: 20px;
-  color: white;
-  background: #BA3009;
-  width: 70px;
-  height: 70px;
-  
+  margin-top: 25px;
+  height: 3.5rem;
+  width: 3.5rem;
 `;
 
 export const LoggedUser = styled.h4`
-  color: #f57f17;
+  color: #bc5100;
+  font-family: "Viga";
+  font-size: 1.1rem;
 `;
 
 export const ButtonStyled = styled(Button)`
   align-self: center;
+  font-family: "Viga";
   background: #bc5100;
   color: #ffff;
   border: solid 1px #bc5100;
@@ -28,6 +28,8 @@ export const ButtonStyled = styled(Button)`
     border: solid 1px #bc5100;
     transition: 0.7s ease;
   }
+
+  
 `;
 
 

@@ -350,41 +350,35 @@ const Album = (props) => {
                 aria-label="Add Photo"
                 onClick={handleOpenPhotoModal}
               >
-                <AddPhotoAlternateIcon style={{ color: "#bc5100" }} />
+                <AddPhotoAlternateIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon style={{ color: "#bc5100" }} />
+                <PersonAddIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
               <IconButtonStyled onClick={confirmDelete}>
-                <DeleteIcon style={{ color: "#bc5100" }} />
+                <DeleteIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
               </IconButtonStyled>
             </Tooltip>
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <p>Photos: {photoCounter}</p>
-          <p>Invited: {inviteCount}</p>
-        </div>
+        <h3>Photos: {photoCounter}</h3>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer>
-          <div
-            style={{
-              display: "flex",
-              justfiyContent: "flex-start",
-              flexWrap: "wrap",
-            }}
-          >
             {photos.map((photo, index) => (
               <AlbumDiv key={index}>
                 <CardContainer>
                   <CardActionArea
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
                     onClick={(e) => {
                       handleOpen(photo.url);
                     }}
@@ -394,7 +388,6 @@ const Album = (props) => {
                 </CardContainer>
               </AlbumDiv>
             ))}
-          </div>
         </BoxContainer>
       </Container>
     </div>

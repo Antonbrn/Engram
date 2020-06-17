@@ -5,28 +5,12 @@ import {
   Button,
   IconButton,
   Input,
-  TextField,
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import styled from "styled-components";
-import CardMedia from "@material-ui/core/CardMedia";
 
-// export const ButtonStyled = styled(Button)`
-//   font-family: "Viga";
-//   background: #bc5100;
-//   border: 1px solid #000;
-//   color: #f57f17;
-//   margin: 10px 0 0 5px;
-//   &:hover {
-//     background: #ffffff;
-//     color: black;
-//     transition: 0.7s ease;
-//   }
-//   @media only screen and (min-width: 768px) {
-//     margin: 10px;
-//   }
-// `;
+
+
 
 export const IconButtonStyled = styled(IconButton)`
   padding-top: 0px;
@@ -63,17 +47,19 @@ export const ContainerStyled = styled(Container)`
 export const BoxContainer = styled(Box)`
   display: flex;
   justify-content: center;
+  flex-flow: row wrap;
+  
   padding: 10px 0 10px 0;
 `;
 export const CardContainer = styled(Card)`
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   border: solid 1px #bc5100;
   border-radius: 5px;
 
   @media only screen and (min-width: 768px) {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
   }
 `;
 export const TypographyStyled = styled(Typography)`
@@ -86,13 +72,16 @@ export const Title = styled(Typography)`
 `;
 
 export const AlbumDiv = styled.div`
-  margin: 10px;
+  margin: 3px;
 
   @media only screen and (min-width: 768px) {
-    margin: 10px;
+    margin: 2px;
   }
 `;
-export const StyledCardMedia = styled(CardMedia)`
+export const StyledCardMedia = styled.img`
+    width: 100%;
+    height: 100%;
+
   @media only screen and (min-width: 768px) {
     width: 100%;
     height: 100%;
