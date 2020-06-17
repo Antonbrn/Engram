@@ -9,6 +9,8 @@ import {
   Typography,
   CardMedia,
   CardActionArea,
+  BottomNavigationAction,
+  BottomNavigation
 } from "@material-ui/core";
 
 //Logo for navbar
@@ -28,6 +30,8 @@ import {
   LoggedUser,
   StyledDiv,
   AvatarStyledBar,
+  BottomNavigationActionStyled,
+  BottomNavigationStyled,
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
 import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
@@ -108,20 +112,16 @@ const Navbar = () => {
             <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
           </CardActionArea>
           {isActive && <BottomBar />}
-
-          <AvatarStyledBar
+        <BottomNavigation style={{
+  background: "rgba(0, 0, 0, 0)"}}>
+          <BottomNavigationActionStyled
             component={Link}
             to="/profilepage"
             value="profile"
-            icon={<Avatar style={{ backgroundColor: "black" }} />}
+            label="Profile"
+            icon={<Avatar style={{ background: "transparent", color: "#bc5100" }} />}
           />
-          {/* <RightMenuSlider
-            anchor="right"
-            open={state.right}
-            onClose={toggleSlider("right", false)}
-          >
-            {slideList("right")}
-          </RightMenuSlider> */}
+          </BottomNavigation>
         </Toolbar>
       </StyledAppbar>
     </>

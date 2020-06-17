@@ -30,10 +30,6 @@ export const BottomNavigationActionStyled = styled(BottomNavigationAction)`
      }
   } */
 `;
-export const AvatarStyledBar = styled(BottomNavigationAction)`
-   
-}
-`;
 
 export const BottomNavigationStyled = styled(BottomNavigation)`
   background: rgba(0, 0, 0, 0);

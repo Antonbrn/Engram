@@ -25,8 +25,8 @@ const ProfilePage = () =>{
 
     return (
         <BoxContainer>
-            <AvatarStyled>
-            </AvatarStyled>
+            <AvatarStyled style={{background: "transparent", color: "#bc5100",}}/>
+            
             <LoggedUser>{`${currentUser.username}`}</LoggedUser>
             <ButtonStyled
                 type="submit">
