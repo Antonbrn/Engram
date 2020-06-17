@@ -29,8 +29,18 @@ const Notifications = () => {
           justifyContent: "center"
         }}
       >
-        <TitleDiv style={{ marginTop: 100, paddingBottom: 50 }}>
+        <TitleDiv style={{ marginTop: 100, paddingBottom: 10 }}>
           <Title variant="h4">Notifications</Title>
+        </TitleDiv>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <TitleDiv style={{ paddingBottom: 20 }}>
+          <Title variant="h5">(Coming soon)</Title>
         </TitleDiv>
       </div>
       <Grid>
@@ -61,7 +71,8 @@ const Notifications = () => {
                       color="textSecondary"
                       component="p"
                     >
-                      Anton has invited you to join Engram vaccation 2020.
+                      Anton has invited you to join the album 'Engram vaccation
+                      2020'.
                     </Typography>
                   </div>
                 </div>
