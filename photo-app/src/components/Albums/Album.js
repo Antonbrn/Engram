@@ -220,8 +220,9 @@ const Album = (props) => {
       <Modal
         style={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
+          justifyContent: "center",
+          
         }}
         open={openPhoto}
         onClose={handleClosed}
@@ -233,26 +234,24 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
-        <Box
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "top",
-            margin: 10,
-          }}
-        >
-          <Box style={{ background: "white", height: "25vh" }}>
+        <Box style={{
+          background:"white",
+          width: "40vw",
+          height: "80vh",
+        }}>
+          
+          <Fade in={openPhoto}>
+            <ImgModal src={clickedPhoto} style={{}} />
+          </Fade>
+          <Box style={{ background: "white",}}>
             <TextField
               label="comments..."
-              style={{ background: "white", width: "25%" }}
+              style={{ background: "orange", width: "100%"}}
               multiline
-              rows={2}
-              rowsMax={4}
+              rows={1}
+              rowsMax={6}
             />
           </Box>
-          <Fade in={openPhoto}>
-            <ImgModal src={clickedPhoto} style={{ width: 250, height: 200 }} />
-          </Fade>
         </Box>
       </Modal>
       {/* Add Photo Modal */}

@@ -177,9 +177,9 @@ export const ModalDiv = styled.div`
 `;
 
 export const ImgModal = styled.img`
-  width: 70%;
+  width: 100%;
+  height: 100%;
   @media only screen and (min-width: 768px) {
-    width: 40%;
   }
 `;
 
