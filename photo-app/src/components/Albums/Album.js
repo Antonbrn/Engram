@@ -29,6 +29,7 @@ import {
   InputStyled,
   ModalDiv,
   ImgModal,
+  BoxStyled,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -222,7 +223,6 @@ const Album = (props) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          
         }}
         open={openPhoto}
         onClose={handleClosed}
@@ -234,25 +234,22 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
-        <Box style={{
-          background:"white",
-          width: "30%",
-          maxHeight: "90vh"
-        }}>
-          
+        <BoxStyled style={{}}>
           <Fade in={openPhoto}>
             <ImgModal src={clickedPhoto} style={{}} />
           </Fade>
-          <Box style={{ background: "white",}}>
-            <TextField
-              label="comments..."
-              style={{ background: "orange", width: "100%"}}
-              multiline
-              rows={1}
-              rowsMax={6}
-            />
-          </Box>
-        </Box>
+
+          <TextField
+            label="comments..."
+            style={{
+              background: "linear-gradient(90deg, #bc5100, #ffb04c)",
+              width: "100%",
+            }}
+            multiline
+            rows={1}
+            rowsMax={6}
+          />
+        </BoxStyled>
       </Modal>
       {/* Add Photo Modal */}
       <Modal
@@ -349,12 +346,16 @@ const Album = (props) => {
                 aria-label="Add Photo"
                 onClick={handleOpenPhotoModal}
               >
-                <AddPhotoAlternateIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
+                <AddPhotoAlternateIcon
+                  style={{ color: "#bc5100", fontSize: "2.2rem" }}
+                />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
+                <PersonAddIcon
+                  style={{ color: "#bc5100", fontSize: "2.2rem" }}
+                />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
@@ -370,23 +371,23 @@ const Album = (props) => {
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer>
-            {photos.map((photo, index) => (
-              <AlbumDiv key={index}>
-                <CardContainer>
-                  <CardActionArea
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={(e) => {
-                      handleOpen(photo.url);
-                    }}
-                  >
-                    <StyledCardMedia component="img" src={photo.url} />
-                  </CardActionArea>
-                </CardContainer>
-              </AlbumDiv>
-            ))}
+          {photos.map((photo, index) => (
+            <AlbumDiv key={index}>
+              <CardContainer>
+                <CardActionArea
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  onClick={(e) => {
+                    handleOpen(photo.url);
+                  }}
+                >
+                  <StyledCardMedia component="img" src={photo.url} />
+                </CardActionArea>
+              </CardContainer>
+            </AlbumDiv>
+          ))}
         </BoxContainer>
       </Container>
     </div>
