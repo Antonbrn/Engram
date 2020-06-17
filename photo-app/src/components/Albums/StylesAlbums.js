@@ -59,6 +59,7 @@ export const ButtonStyled = styled(Button)`
 export const ContainerStyled = styled(Container)`
   font-family: "Viga";
   padding-top: 100px;
+  padding-bottom: 100px;
 `;
 export const BoxContainer = styled(Box)`
   display: flex;
@@ -72,8 +73,8 @@ export const CardContainer = styled(Card)`
   border-radius: 5px;
 
   @media only screen and (min-width: 768px) {
-    max-width: 200px;
-    max-height: 200px;
+    width: 200px;
+    height: 200px;
   }
 `;
 export const TypographyStyled = styled(Typography)`
@@ -86,13 +87,16 @@ export const Title = styled(Typography)`
 `;
 
 export const AlbumDiv = styled.div`
-  margin: 10px;
+  margin: 3px;
 
   @media only screen and (min-width: 768px) {
-    margin: 10px;
+    margin: 2px;
   }
 `;
-export const StyledCardMedia = styled(CardMedia)`
+export const StyledCardMedia = styled.img`
+    width: 100%;
+    height: 100%;
+
   @media only screen and (min-width: 768px) {
     width: 100%;
     height: 100%;

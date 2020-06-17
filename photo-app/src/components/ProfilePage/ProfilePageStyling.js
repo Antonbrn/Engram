@@ -5,12 +5,15 @@ import styled from "styled-components";
 
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
-  margin-top: 20px;
-  background-color: black;
+  margin-top: 25px;
+  height: 3.5rem;
+  width: 3.5rem;
 `;
 
 export const LoggedUser = styled.h4`
-  color: #f57f17;
+  color: #bc5100;
+  font-family: "Viga";
+  font-size: 1.1rem;
 `;
 
 export const ButtonStyled = styled(Button)`

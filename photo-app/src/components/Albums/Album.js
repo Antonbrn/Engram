@@ -382,6 +382,10 @@ const Album = (props) => {
               <AlbumDiv key={index}>
                 <CardContainer>
                   <CardActionArea
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                    }}
                     onClick={(e) => {
                       handleOpen(photo.url);
                     }}

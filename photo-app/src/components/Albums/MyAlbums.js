@@ -60,7 +60,7 @@ const MyAlbums = () => {
   return (
     <>
       <ContainerStyled>
-        <Title variant="h4">Private Albums</Title>
+        <Title variant="h4">My Albums</Title>
         <Box borderBottom={1} />
         {/* Box för display flex */}
         <BoxContainer>
@@ -79,8 +79,6 @@ const MyAlbums = () => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      display: "flex",
-                      alignItems: "center",
                     }}
                     component={Link}
                     to={"/album/" + album.id + "/" + album.title}
@@ -127,8 +125,6 @@ const MyAlbums = () => {
                     style={{
                       width: "100%",
                       height: "100%",
-                      display: "flex",
-                      alignItems: "center",
                     }}
                     component={Link}
                     to={"/album/" + album.id + "/" + album.title}
