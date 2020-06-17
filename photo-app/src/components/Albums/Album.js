@@ -366,7 +366,10 @@ const Album = (props) => {
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
-        <h3>Photos: {photoCounter}</h3>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <h3>Photos: {photoCounter}</h3>
+          <h3>Invites: {inviteCount}</h3>
+        </div>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
