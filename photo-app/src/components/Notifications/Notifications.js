@@ -29,8 +29,18 @@ const Notifications = () => {
           justifyContent: "center"
         }}
       >
-        <TitleDiv style={{ marginTop: 100, paddingBottom: 50 }}>
+        <TitleDiv style={{ marginTop: 100, paddingBottom: 10 }}>
           <Title variant="h4">Notifications</Title>
+        </TitleDiv>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <TitleDiv style={{ paddingBottom: 20 }}>
+          <Title variant="h5">(Coming soon)</Title>
         </TitleDiv>
       </div>
       <Grid>
