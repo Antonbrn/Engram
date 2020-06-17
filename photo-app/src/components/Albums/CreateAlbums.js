@@ -25,9 +25,13 @@ const CreateAlbums = () => {
 
   //function for getting the img file
   const getThumbnailFile = (e) => {
-    if (e.target.files[0]) {
+    
+    if (e.target.files[0] == 'image/jpeg' && 'image/png') {
       setThumbnail(e.target.files[0]);
+    } else {
+      alert("WRONG FILE TYPE")
     }
+  
   };
 
   const { currentUser } = useContext(AuthContext);
