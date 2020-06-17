@@ -222,7 +222,6 @@ const Album = (props) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          
         }}
         open={openPhoto}
         onClose={handleClosed}
@@ -234,19 +233,20 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
-        <Box style={{
-          background:"white",
-          width: "30%",
-          maxHeight: "90vh"
-        }}>
-          
+        <Box
+          style={{
+            background: "white",
+            width: "30%",
+            maxHeight: "90vh",
+          }}
+        >
           <Fade in={openPhoto}>
             <ImgModal src={clickedPhoto} style={{}} />
           </Fade>
-          <Box style={{ background: "white",}}>
+          <Box style={{ background: "white" }}>
             <TextField
               label="comments..."
-              style={{ background: "orange", width: "100%"}}
+              style={{ background: "orange", width: "100%" }}
               multiline
               rows={1}
               rowsMax={6}
@@ -349,12 +349,16 @@ const Album = (props) => {
                 aria-label="Add Photo"
                 onClick={handleOpenPhotoModal}
               >
-                <AddPhotoAlternateIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
+                <AddPhotoAlternateIcon
+                  style={{ color: "#bc5100", fontSize: "2.2rem" }}
+                />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Add Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon style={{ color: "#bc5100", fontSize: "2.2rem" }} />
+                <PersonAddIcon
+                  style={{ color: "#bc5100", fontSize: "2.2rem" }}
+                />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Photo">
@@ -365,28 +369,31 @@ const Album = (props) => {
           </div>
         </TitleDiv>
         <Box borderBottom={1} />
-        <h3>Photos: {photoCounter}</h3>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <h3>Photos: {photoCounter}</h3>
+          <h3>Invites: {inviteCount}</h3>
+        </div>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>
         {/* Box för display flex */}
         <BoxContainer>
-            {photos.map((photo, index) => (
-              <AlbumDiv key={index}>
-                <CardContainer>
-                  <CardActionArea
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    onClick={(e) => {
-                      handleOpen(photo.url);
-                    }}
-                  >
-                    <StyledCardMedia component="img" src={photo.url} />
-                  </CardActionArea>
-                </CardContainer>
-              </AlbumDiv>
-            ))}
+          {photos.map((photo, index) => (
+            <AlbumDiv key={index}>
+              <CardContainer>
+                <CardActionArea
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  onClick={(e) => {
+                    handleOpen(photo.url);
+                  }}
+                >
+                  <StyledCardMedia component="img" src={photo.url} />
+                </CardActionArea>
+              </CardContainer>
+            </AlbumDiv>
+          ))}
         </BoxContainer>
       </Container>
     </div>
