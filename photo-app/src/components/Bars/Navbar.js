@@ -9,10 +9,7 @@ import {
   Typography,
   CardMedia,
   CardActionArea,
-  BottomNavigationAction,
-  BottomNavigation
 } from "@material-ui/core";
-
 //Logo for navbar
 import logo from "../../engramLogo.png";
 //backend
@@ -23,6 +20,7 @@ import { AuthContext } from "../../Auth";
 import { ArrowBack } from "@material-ui/icons";
 import BottomBar from "./BottomBar";
 import { useMediaQuery, Avatar } from "@material-ui/core";
+import FaceIcon from '@material-ui/icons/Face';
 import {
   BoxSlider,
   StyledAppbar,
@@ -30,8 +28,7 @@ import {
   LoggedUser,
   StyledDiv,
   AvatarStyledBar,
-  BottomNavigationActionStyled,
-  BottomNavigationStyled,
+  
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
 import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
@@ -105,23 +102,28 @@ const Navbar = () => {
     <>
       <StyledAppbar position="static">
         <Toolbar>
-          <CardActionArea
-            style={{ marginRight: "auto", maxWidth: 180 }}
-            onClick={() => document.querySelector("#goHome").click()}
+        <CardActionArea style={{marginRight: "auto", maxWidth: 180}} onClick={ () => document.querySelector("#goHome").click() }>
+            <img src={logo} 
+              style={{ marginRight: "auto", maxWidth: 180 }} 
+               />
+               </CardActionArea>
+          {isActive && <BottomBar
+          />}
+         
+          <AvatarStyledBar
+          style={{paddingTop: "8px",}}
+        component={Link}
+        to="/profilepage"
+        value="profile"
+        icon={<FaceIcon style={{fontSize: "40px",}}/>}
+      />
+          <RightMenuSlider
+            anchor="right"
+            open={state.right}
+            onClose={toggleSlider("right", false)}
           >
-            <img src={logo} style={{ marginRight: "auto", maxWidth: 180 }} />
-          </CardActionArea>
-          {isActive && <BottomBar />}
-        <BottomNavigation style={{
-  background: "rgba(0, 0, 0, 0)"}}>
-          <BottomNavigationActionStyled
-            component={Link}
-            to="/profilepage"
-            value="profile"
-            label="Profile"
-            icon={<Avatar style={{ background: "transparent", color: "#bc5100" }} />}
-          />
-          </BottomNavigation>
+            {slideList("right")}
+          </RightMenuSlider>
         </Toolbar>
       </StyledAppbar>
     </>
