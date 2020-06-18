@@ -9,9 +9,6 @@ import {
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
 
-
-
-
 export const IconButtonStyled = styled(IconButton)`
   padding-top: 0px;
   padding-bottom: 0px;
@@ -48,15 +45,18 @@ export const BoxContainer = styled(Box)`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  
+  margin-bottom: 30px;
   padding: 10px 0 10px 0;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 export const CardContainer = styled(Card)`
   width: 130px;
   height: 130px;
   border: solid 1px #bc5100;
   border-radius: 5px;
-    overflow: hidden;
+  overflow: hidden;
   @media only screen and (min-width: 768px) {
     width: 200px;
     height: 200px;
@@ -79,14 +79,13 @@ export const AlbumDiv = styled.div`
   }
 `;
 export const StyledCardMedia = styled.img`
-width: 100%;
-position: absolute;
-left: 0;
-top: 0;
-height: auto;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: auto;
   @media only screen and (min-width: 768px) {
   }
-
 `;
 
 export const InputStyled = styled(Input)`
@@ -169,9 +168,9 @@ export const HideButton = styled(Button)`
 
 export const ModalDiv = styled.div`
   background: white;
-  border: 2px solid #bc5100;
-  padding: 20px;
-  height: 50vh;
+  border: 6px solid #bc5100;
+
+  height: 30vh;
   width: 60vw;
   text-align: center;
   font-family: "Viga";
@@ -180,15 +179,20 @@ export const ModalDiv = styled.div`
 export const ImgModal = styled.img`
   width: 100%;
   height: 100%;
+
   @media only screen and (min-width: 768px) {
   }
 `;
 
-export default {
-  ButtonStyled,
-  ContainerStyled,
-  BoxContainer,
-  CardContainer,
-  TypographyStyled,
-  AlbumDiv,
-};
+export const BoxStyled = styled(Box)`
+  background: linear-gradient(90deg, #bc5100, #ffb04c);
+  width: 60%;
+  max-height: 90vh;
+  @media only screen and (min-width: 768px) {
+    width: 40%;
+  }
+  @media only screen and (min-width: 1024px) {
+    width: 30%;
+  }
+`;
+

@@ -6,8 +6,6 @@ import {
   IconButton,
   ListItemText,
   List,
-  Typography,
-  CardMedia,
   CardActionArea,
 } from "@material-ui/core";
 //Logo for navbar
@@ -24,32 +22,12 @@ import FaceIcon from '@material-ui/icons/Face';
 import {
   BoxSlider,
   StyledAppbar,
-  StyledSettingsIcon,
   LoggedUser,
   StyledDiv,
   AvatarStyledBar,
   
 } from "./NavbarStyles";
 import { Link } from "react-router-dom";
-import { AvatarStyled } from "../ProfilePage/ProfilePageStyling";
-//Navbarlinks Array
-const menuLinks = [
-  {
-    listText: "Account",
-  },
-  {
-    listText: "Albums",
-  },
-  {
-    listText: "Notifications",
-  },
-  {
-    listText: "Help",
-  },
-  {
-    listText: "About",
-  },
-];
 
 const Navbar = () => {
   const isActive = useMediaQuery("(min-width: 768px)");
@@ -60,43 +38,6 @@ const Navbar = () => {
 
   //currentUser context
   const { currentUser } = useContext(AuthContext);
-
-  //Toggler function for the slider
-  const toggleSlider = (slider, open) => () => {
-    setState({ ...state, [slider]: open });
-  };
-
-  //Function for the slideList
-  const slideList = (slider) => (
-    <BoxSlider>
-      <StyledDiv>
-        <IconButton onClick={toggleSlider(slider, false)}>
-          <ArrowBack />
-        </IconButton>
-        <LoggedUser>{`${currentUser.username}`}</LoggedUser>
-      </StyledDiv>
-
-      <List>
-        {menuLinks.map((Link, key) => (
-          <ListItem button key={key}>
-            <ListItemText
-              style={{
-                color: "black",
-                textAlign: "center",
-              }}
-              primary={Link.listText}
-            />
-          </ListItem>
-        ))}
-
-        <button
-          onClick={() => fire.auth().signOut().then(window.location.reload())}
-        >
-          Log out
-        </button>
-      </List>
-    </BoxSlider>
-  );
 
   return (
     <>
@@ -117,13 +58,7 @@ const Navbar = () => {
         value="profile"
         icon={<FaceIcon style={{fontSize: "40px",}}/>}
       />
-          <RightMenuSlider
-            anchor="right"
-            open={state.right}
-            onClose={toggleSlider("right", false)}
-          >
-            {slideList("right")}
-          </RightMenuSlider>
+         
         </Toolbar>
       </StyledAppbar>
     </>

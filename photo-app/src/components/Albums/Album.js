@@ -1,25 +1,17 @@
 import React, { useState, useContext, useEffect } from "react";
 import {
-  Typography,
   Box,
   Container,
   TextField,
   Button,
-  IconButton,
-  Input,
   Fade,
   Backdrop,
   Tooltip,
-  Grid,
-  Paper,
 } from "@material-ui/core";
 import {
   ContainerStyled,
   BoxContainer,
   CardContainer,
-  TypographyStyled,
-  ButtonStyled,
-  albumBackgroundDiv,
   AlbumDiv,
   Title,
   IconButtonStyled,
@@ -29,6 +21,7 @@ import {
   InputStyled,
   ModalDiv,
   ImgModal,
+  BoxStyled,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -38,15 +31,11 @@ import { Link, Redirect } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import Modal from "@material-ui/core/Modal";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-
 //CONTEXT
 import { AuthContext } from "../../Auth";
-
 //BACKEND
 import { db } from "../../base";
 import { storage } from "../../base";
-import { nominalTypeHack } from "prop-types";
-import { flexbox } from "@material-ui/system";
 
 const useStyles = makeStyles({
   albumButton: {
@@ -233,26 +222,22 @@ const Album = (props) => {
           timeout: 1000,
         }}
       >
-        <Box
-          style={{
-            background: "white",
-            width: "30%",
-            maxHeight: "90vh",
-          }}
-        >
+        <BoxStyled style={{}}>
           <Fade in={openPhoto}>
             <ImgModal src={clickedPhoto} style={{}} />
           </Fade>
-          <Box style={{ background: "white" }}>
-            <TextField
-              label="comments..."
-              style={{ background: "orange", width: "100%" }}
-              multiline
-              rows={1}
-              rowsMax={6}
-            />
-          </Box>
-        </Box>
+
+          <TextField
+            label="comments..."
+            style={{
+              background: "linear-gradient(90deg, #bc5100, #ffb04c)",
+              width: "100%",
+            }}
+            multiline
+            rows={1}
+            rowsMax={6}
+          />
+        </BoxStyled>
       </Modal>
       {/* Add Photo Modal */}
       <Modal
@@ -371,7 +356,7 @@ const Album = (props) => {
         <Box borderBottom={1} />
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           <h3>Photos: {photoCounter}</h3>
-          <h3>Invites: {inviteCount}</h3>
+          <h3>Invited: {inviteCount}</h3>
         </div>
       </ContainerStyled>
       <Container style={{ paddingBottom: "60px" }}>

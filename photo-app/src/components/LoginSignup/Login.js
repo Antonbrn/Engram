@@ -11,7 +11,6 @@ import {
   StyledBoxContainer,
   StyledForm,
   StyledTextField,
-  label,
   FormControlStyled,
 } from "./LoginSignupStyles";
 

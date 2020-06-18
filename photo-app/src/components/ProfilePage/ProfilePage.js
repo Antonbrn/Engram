@@ -1,6 +1,4 @@
-import React, { Component, useState, useContext } from 'react';
-import { Box, Avatar } from '@material-ui/core';
-
+import React, { useContext } from 'react';
 import fire from "../../base";
 import {
     BoxContainer,
@@ -13,16 +11,9 @@ import {
 import { AuthContext } from "../../Auth";
 
 
-
-
-// export class ProfilePage extends Component 
-
-
 const ProfilePage = () =>{
 
     const { currentUser } = useContext(AuthContext);
-  //currentUser context
-
 
     return (
         <BoxContainer>
