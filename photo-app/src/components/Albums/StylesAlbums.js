@@ -206,3 +206,11 @@ export const BoxStyled = styled(Box)`
     width: 30%;
   }
 `;
+
+export const DeletePhotoButton = styled(IconButton)`
+  color: transparent;
+  &:hover {
+    color: red;
+    border: 2px solid black;
+  }
+`;
