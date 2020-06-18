@@ -53,7 +53,18 @@ const MyAlbums = () => {
   return (
     <>
       <ContainerStyled style={{paddingBottom: 100,}}>
-        <Title variant="h4">My Albums</Title>
+        <Box style={{display: "flex", flexDirection:"row", justifyContent: "space-between"}}>
+        <Title variant="h4"
+          style={{}}>My Albums</Title>
+        <ButtonStyled
+          variant="outlined"
+          component={Link}
+          to="/createalbums"
+          style={{margin: 3}}
+        >
+          Create album
+        </ButtonStyled>
+        </Box>
         <Box borderBottom={1} />
         {/* Box för display flex */}
         <BoxContainer>
@@ -84,14 +95,7 @@ const MyAlbums = () => {
         
         </BoxContainer>
 
-        <ButtonStyled
-          variant="outlined"
-          component={Link}
-          to="/createalbums"
-          style={{ marginBottom: "50px" }}
-        >
-          Create album
-        </ButtonStyled>
+        
         <Title variant="h4">Shared Albums</Title>
         <Box borderBottom={1} />
 

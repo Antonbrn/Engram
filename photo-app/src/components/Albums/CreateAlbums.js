@@ -16,6 +16,7 @@ import {
   BoxBorder,
   HideButton,
   IconButtonStyled,
+  ArrowButtonStyled,
 } from "./StylesAlbums";
 
 const CreateAlbums = () => {
@@ -64,13 +65,13 @@ const CreateAlbums = () => {
 
   return (
     <ContainerStyled>
-      <IconButtonStyled
+      <ArrowButtonStyled
         component={Link}
         to="/myalbums"
         style={{ float: "left" }}
       >
         <ArrowBackIcon style={{ color: "#bc5100" }} />
-      </IconButtonStyled>
+      </ArrowButtonStyled>
 
       <ContainerStyledCreateAlbum>
         <BoxBorder>
