@@ -37,8 +37,7 @@ export const EmailButton = styled(Button)`
   background: #bc5100;
   color: #ffff;
   border: solid 1px #bc5100;
-  margin: 5px;
-  margin-top: 15px;
+  margin: 15px;
   &:hover {
     color: #bc5100;
     border: solid 1px #bc5100;
