@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {TextField,} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 //backend
 import { db } from "../../base";
@@ -25,11 +25,9 @@ const CreateAlbums = () => {
 
   //function for getting the img file
   const getThumbnailFile = (e) => {
-    
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
-    } 
-  
+    }
   };
 
   const { currentUser } = useContext(AuthContext);

@@ -72,19 +72,6 @@ const Album = (props) => {
     }
   };
 
-  //delete albums and photos
-  const deleteAlbum = () => {
-    db.collection("albums").doc(albumId).delete();
-    const deletePhotos = db
-      .collection("photos")
-      .where("albumId", "==", albumId);
-    deletePhotos.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
-        doc.ref.delete();
-      });
-    });
-  };
-
   const setRedirect = () => {
     setStateRedirect(true);
   };
@@ -117,9 +104,7 @@ const Album = (props) => {
       });
   }, []);
 
-  //Lägger in invitade memberns userId in i invite propertyn i albumet
-  //Går bara att lägga in en, måste fixas,
-  //Måste fixas i myAlbums så att även den invitade usern kan se albumet
+  //Invite member to album
   const inviteMemberFunc = () => {
     const getMemberId = db
       .collection("users")
@@ -142,8 +127,24 @@ const Album = (props) => {
     .doc(albumId)
     .get()
     .then((doc) => {
-      setInviteCount(doc.data().invited.length);
+      let data = doc.data();
+      if (data && typeof data.invited !== "undefined") {
+        setInviteCount(data.invited.length);
+      }
     });
+
+  //delete albums and photos
+  const deleteAlbum = () => {
+    db.collection("albums").doc(albumId).delete();
+    const deletePhotos = db
+      .collection("photos")
+      .where("albumId", "==", albumId);
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
+      });
+    });
+  };
 
   //Modals
   const handleOpen = (photoUrl) => {
