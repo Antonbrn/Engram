@@ -1,6 +1,12 @@
-import { Box, FormControl, TextField, Button, Avatar } from "@material-ui/core";
+import {
+  Box,
+  FormControl,
+  TextField,
+  Button,
+  Avatar,
+  Typography,
+} from "@material-ui/core";
 import styled from "styled-components";
-
 
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
@@ -27,8 +33,6 @@ export const ButtonStyled = styled(Button)`
     border: solid 1px #bc5100;
     transition: 0.7s ease;
   }
-
-  
 `;
 
 export const EmailButton = styled(Button)`
@@ -37,48 +41,52 @@ export const EmailButton = styled(Button)`
   background: #bc5100;
   color: #ffff;
   border: solid 1px #bc5100;
-  margin: 15px;
+  margin-bottom: 15px;
   &:hover {
     color: #bc5100;
     border: solid 1px #bc5100;
     transition: 0.7s ease;
   }
-
-  
 `;
 
-
-
 export const BoxContainer = styled(Box)`
-    padding-Top: 70px;
-    padding-bottom: 70px;
-    text-align: center;
-    display: flex;
-    flex: wrap;
-    justify-content: center;
-    flex-direction: column;
-    
+  padding-top: 70px;
+  padding-bottom: 70px;
+  text-align: center;
+  display: flex;
+  flex: wrap;
+  justify-content: center;
+  flex-direction: column;
 
-    @media only screen and (min-width: 768px) {
-      /* border: solid 3px #bc5100;
-      border-radius: 5px; */
-
-    }
+  @media only screen and (min-width: 768px) {
+    // border: solid 3px #bc5100;
+    // border-radius: 5px;
+  }
 `;
 
 export const StyledTextField = styled(TextField)`
-    width: 90%;
-    border: 1px solid #ffb04c;
-    margin: 15px;
-    align-self: center;
-    
-    @media only screen and (min-width: 768px) {
-    width: 30%;
+  width: 90%;
+  border: 1px solid #ffb04c;
+  margin: 15px;
+  align-self: center;
 
-    }
+  @media only screen and (min-width: 768px) {
+    width: 30%;
+  }
 `;
 
 export const FormControlStyled = styled(FormControl)`
   border: 1px solid #ffb04c;
   width: 90%;
+`;
+
+export const TypographyProfile = styled(Typography)`
+  font-family: "viga";
+  font-size: 1.1rem;
+  text-align: center;
+  white-space: nowrap;
+  padding-left: ;
+  line-height: 2;
+
+  color: #f57f17;
 `;

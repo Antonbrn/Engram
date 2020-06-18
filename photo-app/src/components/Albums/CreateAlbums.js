@@ -89,9 +89,11 @@ const CreateAlbums = () => {
             ADD THUMBNAIL
           </TextFieldInputStyled>
           <br />
-          <label>{thumbnail && thumbnail.name}</label>
-          <br />
-          <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} />
+          <label style={{ textAlign: "center" }}>
+            {thumbnail && thumbnail.name}
+          </label>
+
+          {/* <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} /> */}
 
           <ButtonStyled
             variant="outlined"
@@ -102,7 +104,6 @@ const CreateAlbums = () => {
                 alert("Title is required");
               }
             }}
-            style={{ margin: 20 }}
           >
             <HideButton
               component={Link}
