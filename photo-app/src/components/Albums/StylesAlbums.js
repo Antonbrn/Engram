@@ -5,6 +5,8 @@ import {
   Button,
   IconButton,
   Input,
+  CardActionArea,
+  CardContent
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
@@ -18,7 +20,7 @@ export const IconButtonStyled = styled(IconButton)`
 export const ArrowButtonStyled = styled(IconButton)`
   padding: 0;
   display: inline-block;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   margin-top: 10px;
 `;
 
@@ -131,7 +133,7 @@ export const TextFieldInputStyled = styled.label`
 `;
 
 export const ContainerStyledCreateAlbum = styled(Container)`
-  padding-top: 50px;
+  //padding-top: 50px;
   display: flex;
   flex-flow: column wrap;
   font-family: "Viga";

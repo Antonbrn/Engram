@@ -4,10 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import {
-  Title,
-  TitleDiv,
-} from "../Albums/StylesAlbums";
+import { Title, TitleDiv, StyledCardContent } from "../Albums/StylesAlbums";
 
 const useStyles = makeStyles({
   root: {},
@@ -39,10 +36,19 @@ const Notifications = () => {
         </TitleDiv>
       </div>
       <Grid>
-        <Container style={{ paddingBottom: 30 }}>
+        <Container
+          style={{
+            paddingBottom: 30
+          }}
+        >
           <Card>
             <CardActionArea>
-              <CardContent style={{ paddingBottom: 30 }}>
+              <StyledCardContent
+                style={{
+                  paddingBottom: 30,
+                  background: "linear-gradient(160deg,#daecf0 20%,#fff)"
+                }}
+              >
                 <div style={{ display: "flex" }}>
                   <div style={{ paddingRight: 20 }}>
                     <Avatar
@@ -71,7 +77,7 @@ const Notifications = () => {
                     </Typography>
                   </div>
                 </div>
-              </CardContent>
+              </StyledCardContent>
             </CardActionArea>
           </Card>
         </Container>
@@ -79,7 +85,7 @@ const Notifications = () => {
         <Container style={{ paddingBottom: 30 }}>
           <Card>
             <CardActionArea>
-              <CardContent style={{ paddingBottom: 30 }}>
+              <StyledCardContent style={{ paddingBottom: 30 }}>
                 <div style={{ display: "flex" }}>
                   <div style={{ paddingRight: 20 }}>
                     <Avatar
@@ -107,7 +113,7 @@ const Notifications = () => {
                     </Typography>
                   </div>
                 </div>
-              </CardContent>
+              </StyledCardContent>
             </CardActionArea>
           </Card>
         </Container>
@@ -115,7 +121,7 @@ const Notifications = () => {
         <Container style={{ paddingBottom: 30 }}>
           <Card>
             <CardActionArea>
-              <CardContent style={{ paddingBottom: 30 }}>
+              <StyledCardContent style={{ paddingBottom: 30 }}>
                 <div style={{ display: "flex" }}>
                   <div style={{ paddingRight: 20 }}>
                     <Avatar
@@ -143,7 +149,7 @@ const Notifications = () => {
                     </Typography>
                   </div>
                 </div>
-              </CardContent>
+              </StyledCardContent>
             </CardActionArea>
           </Card>
         </Container>
