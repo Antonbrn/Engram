@@ -22,7 +22,6 @@ import {
   ModalDiv,
   ImgModal,
   BoxStyled,
-  ArrowButtonStyled,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -73,43 +72,6 @@ const Album = (props) => {
     }
   };
 
-  const inviteMemberFunc = () => {
-    const getMemberId = db
-      .collection("users")
-      .where("username", "==", inviteMember);
-    getMemberId.get().then((snapshot) => {
-      snapshot.forEach((user) => {
-        db.collection("albums")
-          .doc(albumId)
-          .get()
-          .then((doc) => {
-            const invited = doc.data().invited || [];
-            invited.push(user.id);
-            db.collection("albums").doc(albumId).update({ invited: invited });
-          });
-      });
-    });
-  };
-
-  db.collection("albums")
-    .doc(albumId)
-    .get()
-    .then((doc) => {
-      setInviteCount(doc.data().invited.length);
-    });
-  //delete albums and photos
-  const deleteAlbum = () => {
-    db.collection("albums").doc(albumId).delete();
-    const deletePhotos = db
-      .collection("photos")
-      .where("albumId", "==", albumId);
-    deletePhotos.get().then((snapshot) => {
-      snapshot.forEach((doc) => {
-        doc.ref.delete();
-      });
-    });
-  };
-
   const setRedirect = () => {
     setStateRedirect(true);
   };
@@ -142,9 +104,47 @@ const Album = (props) => {
       });
   }, []);
 
-  //Lägger in invitade memberns userId in i invite propertyn i albumet
-  //Går bara att lägga in en, måste fixas,
-  //Måste fixas i myAlbums så att även den invitade usern kan se albumet
+  //Invite member to album
+  const inviteMemberFunc = () => {
+    const getMemberId = db
+      .collection("users")
+      .where("username", "==", inviteMember);
+    getMemberId.get().then((snapshot) => {
+      snapshot.forEach((user) => {
+        db.collection("albums")
+          .doc(albumId)
+          .get()
+          .then((doc) => {
+            const invited = doc.data().invited || [];
+            invited.push(user.id);
+            db.collection("albums").doc(albumId).update({ invited: invited });
+          });
+      });
+    });
+  };
+
+  db.collection("albums")
+    .doc(albumId)
+    .get()
+    .then((doc) => {
+      let data = doc.data();
+      if (data && typeof data.invited !== "undefined") {
+        setInviteCount(data.invited.length);
+      }
+    });
+
+  //delete albums and photos
+  const deleteAlbum = () => {
+    db.collection("albums").doc(albumId).delete();
+    const deletePhotos = db
+      .collection("photos")
+      .where("albumId", "==", albumId);
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        doc.ref.delete();
+      });
+    });
+  };
 
   //Modals
   const handleOpen = (photoUrl) => {
@@ -324,13 +324,9 @@ const Album = (props) => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
-        <ArrowButtonStyled component={Link} to="/myalbums" style={{}}>
-          <ArrowBackIcon
-            style={{
-              color: "#bc5100",
-            }}
-          />
-        </ArrowButtonStyled>
+        <Button component={Link} to="/myalbums">
+          <ArrowBackIcon style={{ color: "#bc5100" }} />
+        </Button>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
