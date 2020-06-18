@@ -13,6 +13,8 @@ import ProfilePage from "./ProfilePage/ProfilePage";
 const Layout = () => {
   const isActive = useMediaQuery("(max-width: 767px)");
 
+  document.body.style = "background:#daecf0";
+
   return (
     <div>
       <Navbar />
