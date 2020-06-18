@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {TextField,} from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 //backend
 import { db } from "../../base";
@@ -16,6 +16,7 @@ import {
   BoxBorder,
   HideButton,
   IconButtonStyled,
+  ArrowButtonStyled,
 } from "./StylesAlbums";
 
 const CreateAlbums = () => {
@@ -25,11 +26,9 @@ const CreateAlbums = () => {
 
   //function for getting the img file
   const getThumbnailFile = (e) => {
-    
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
-    } 
-  
+    }
   };
 
   const { currentUser } = useContext(AuthContext);
@@ -66,13 +65,13 @@ const CreateAlbums = () => {
 
   return (
     <ContainerStyled>
-      <IconButtonStyled
+      <ArrowButtonStyled
         component={Link}
         to="/myalbums"
         style={{ float: "left" }}
       >
         <ArrowBackIcon style={{ color: "#bc5100" }} />
-      </IconButtonStyled>
+      </ArrowButtonStyled>
 
       <ContainerStyledCreateAlbum>
         <BoxBorder>

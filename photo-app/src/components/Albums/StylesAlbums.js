@@ -12,8 +12,14 @@ import styled from "styled-components";
 export const IconButtonStyled = styled(IconButton)`
   padding-top: 0px;
   padding-bottom: 0px;
-  display: flex;
-  justify-content: space-between;
+  display: inline-block;
+`;
+
+export const ArrowButtonStyled = styled(IconButton)`
+  poadding: 0;
+  display: inline-block;
+  margin-bottom: 30px;
+  margin-top: 10px;
 `;
 
 export const TitleDiv = styled.div`
@@ -39,7 +45,7 @@ export const ButtonStyled = styled(Button)`
 
 export const ContainerStyled = styled(Container)`
   font-family: "Viga";
-  padding-top: 100px;
+  padding-top: 80px;
 `;
 export const BoxContainer = styled(Box)`
   display: flex;
@@ -57,6 +63,7 @@ export const CardContainer = styled(Card)`
   border: solid 1px #bc5100;
   border-radius: 5px;
   overflow: hidden;
+
   @media only screen and (min-width: 768px) {
     width: 200px;
     height: 200px;
@@ -81,9 +88,13 @@ export const AlbumDiv = styled.div`
 export const StyledCardMedia = styled.img`
   width: 100%;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
   height: auto;
+
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   @media only screen and (min-width: 768px) {
   }
 `;
@@ -195,4 +206,3 @@ export const BoxStyled = styled(Box)`
     width: 30%;
   }
 `;
-
