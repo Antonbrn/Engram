@@ -15,6 +15,7 @@ import {
   AlbumDiv,
   Title,
   StyledCardMedia,
+  ArrowButtonStyled
 } from "./StylesAlbums";
 
 
@@ -52,7 +53,7 @@ const MyAlbums = () => {
 
   return (
     <>
-      <ContainerStyled style={{paddingBottom: 100,}}>
+      <ContainerStyled style={{paddingBottom: 100, paddingTop: 130}}>
         <Box style={{display: "flex", flexDirection:"row", justifyContent: "space-between"}}>
         <Title variant="h4"
           style={{}}>My Albums</Title>

@@ -21,7 +21,8 @@ import {
   InputStyled,
   ModalDiv,
   ImgModal,
-  BoxStyled
+  BoxStyled,
+  ArrowButtonStyled
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
