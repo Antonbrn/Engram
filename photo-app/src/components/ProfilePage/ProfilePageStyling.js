@@ -31,6 +31,24 @@ export const ButtonStyled = styled(Button)`
   
 `;
 
+export const EmailButton = styled(Button)`
+  align-self: center;
+  font-family: "Viga";
+  background: #bc5100;
+  color: #ffff;
+  border: solid 1px #bc5100;
+  margin: 5px;
+  margin-top: 15px;
+  &:hover {
+    color: #bc5100;
+    border: solid 1px #bc5100;
+    transition: 0.7s ease;
+  }
+
+  
+`;
+
+
 
 export const BoxContainer = styled(Box)`
     padding-Top: 70px;

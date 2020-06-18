@@ -5,7 +5,8 @@ import {
     StyledTextField,
     ButtonStyled,
     AvatarStyled,
-    LoggedUser
+    LoggedUser,
+    EmailButton
 } from './ProfilePageStyling';
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
@@ -51,6 +52,10 @@ const ProfilePage = () =>{
             >
                 Log out
         </ButtonStyled>
+        <EmailButton
+        a href="mailto:Agust.Ronnback@cmeducations.se?&subject=Feedback&body=We%20apreciate%20you%20taking%20time%20to%20send%20us%20your%20feedback">
+          Send us your Feedback  
+        </EmailButton>
         </BoxContainer>
     )
 
