@@ -324,9 +324,13 @@ const Album = (props) => {
       {/* onClick={addPhotos} should sit inside modal as 'add button' */}
 
       <ContainerStyled maxWidth="md">
-        <Button component={Link} to="/myalbums">
-          <ArrowBackIcon style={{ color: "#bc5100" }} />
-        </Button>
+        <ArrowButtonStyled component={Link} to="/myalbums" style={{}}>
+          <ArrowBackIcon
+            style={{
+              color: "#bc5100",
+            }}
+          />
+        </ArrowButtonStyled>
         <TitleDiv>
           <Title variant="h5">{albumTitle}</Title>
           <div className={classes.albumButton}>
