@@ -16,7 +16,7 @@ export const IconButtonStyled = styled(IconButton)`
 `;
 
 export const ArrowButtonStyled = styled(IconButton)`
-  poadding: 0;
+  padding: 0;
   display: inline-block;
   margin-bottom: 30px;
   margin-top: 10px;
