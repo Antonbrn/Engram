@@ -216,3 +216,6 @@ export const DeletePhotoButton = styled(IconButton)`
     border: 2px solid black;
   }
 `;
+export const StyledCardContent = styled(CardContent)`
+  background: linear-gradient(-360deg, #daecf0 20%, #fff);
+`;
