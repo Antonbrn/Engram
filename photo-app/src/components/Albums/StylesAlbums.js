@@ -5,6 +5,8 @@ import {
   Button,
   IconButton,
   Input,
+  CardActionArea,
+  CardContent
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
@@ -16,7 +18,7 @@ export const IconButtonStyled = styled(IconButton)`
 `;
 
 export const ArrowButtonStyled = styled(IconButton)`
-  poadding: 0;
+  padding: 0;
   display: inline-block;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -205,4 +207,8 @@ export const BoxStyled = styled(Box)`
   @media only screen and (min-width: 1024px) {
     width: 30%;
   }
+`;
+
+export const StyledCardContent = styled(CardContent)`
+  background: linear-gradient(-360deg, #daecf0 20%, #fff);
 `;
