@@ -114,7 +114,7 @@ export const InputStyled = styled(Input)`
 
 export const TextFieldInputStyled = styled.label`
   text-align: center;
-  padding: 15px;
+  padding: 8px;
   border-radius: 5px;
   font-family: "Viga";
   background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
@@ -124,9 +124,6 @@ export const TextFieldInputStyled = styled.label`
   cursor: pointer;
   &:hover {
     transition: 0.7s ease;
-  }
-  @media only screen and (min-width: 768px) {
-    margin: 10px;
   }
 `;
 
@@ -180,19 +177,26 @@ export const HideButton = styled(Button)`
 export const ModalDiv = styled.div`
   background: white;
   border: 6px solid #bc5100;
-
-  height: 30vh;
+  height: 35vh;
   width: 60vw;
   text-align: center;
   font-family: "Viga";
+
+  @media only screen and (min-width: 767px) {
+      height: 25vh;
+      width: 40vw;
+  }
+
+  @media only screen and (min-width: 1200px) {
+      height: 25vh;
+      width: 30vw;
+  }
 `;
 
 export const ImgModal = styled.img`
   width: 100%;
   height: 100%;
 
-  @media only screen and (min-width: 768px) {
-  }
 `;
 
 export const BoxStyled = styled(Box)`

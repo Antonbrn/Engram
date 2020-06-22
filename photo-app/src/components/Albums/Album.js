@@ -193,7 +193,7 @@ const Album = (props) => {
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      (snapshot) => {},
+      (snapshot) => { },
       (error) => {
         console.log(error);
       },
@@ -274,14 +274,16 @@ const Album = (props) => {
               {photoFile && photoFile.name}
             </label>
             <br />
-            <TextFieldInputStyled
-              style={{ margin: 0, paddingTop: "3px" }}
-              onClick={addPhotos}
-              type="button"
-              data-dismiss="modal"
-            >
-              Add
+            <div style={{ marginTop: 10 }}>
+              <TextFieldInputStyled
+                style={{ margin: 0, paddingTop: "3px" }}
+                onClick={addPhotos}
+                type="button"
+                data-dismiss="modal"
+              >
+                Add
             </TextFieldInputStyled>
+            </div>
           </ModalDiv>
         </Fade>
       </Modal>
@@ -308,17 +310,21 @@ const Album = (props) => {
         <Fade in={openInviteModal}>
           <ModalDiv>
             <h4>Invite members to album</h4>
-            <TextField
-              error={false}
-              required
-              label="Username"
-              onChange={(e) => {
-                setInviteMember(e.target.value);
-              }}
-            />
-            <TextFieldInputStyled onClick={inviteMemberFunc}>
-              Invite member
+            <div style={{marginBottom: 30}}>
+              <TextField
+                error={false}
+                required
+                label="Username"
+                onChange={(e) => {
+                  setInviteMember(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <TextFieldInputStyled onClick={inviteMemberFunc}>
+                Invite member
             </TextFieldInputStyled>
+            </div>
           </ModalDiv>
         </Fade>
       </Modal>
