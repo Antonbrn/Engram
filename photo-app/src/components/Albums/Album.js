@@ -93,6 +93,8 @@ const Album = (props) => {
         deleteAlbum();
         setRedirect();
       }
+    } else {
+      alert("You don't have permission to do delete this album!");
     }
   };
 
@@ -138,9 +140,8 @@ const Album = (props) => {
         setAdminId(data.userId);
       }
     });
-  console.log(adminId);
 
-  //delete albums and photos
+  //delete albums
   const deleteAlbum = () => {
     db.collection("albums").doc(albumId).delete();
     const deletePhotos = db
@@ -151,6 +152,11 @@ const Album = (props) => {
         doc.ref.delete();
       });
     });
+  };
+
+  //delete photos
+  const deletePhoto = (x) => {
+    db.collection("photos").doc(x.id).delete();
   };
 
   //Modals
@@ -365,6 +371,14 @@ const Album = (props) => {
         <BoxContainer>
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
+              <DeletePhotoButton>
+                <CloseSharpIcon
+                  style={{ fontSize: 15 }}
+                  onClick={(e) => {
+                    deletePhoto(photo);
+                  }}
+                />
+              </DeletePhotoButton>
               <CardContainer>
                 <CardActionArea
                   style={{
@@ -376,16 +390,6 @@ const Album = (props) => {
                   }}
                 >
                   <StyledCardMedia component="img" src={photo.url} />
-
-                  <DeletePhotoButton
-                    style={{
-                      position: "absolute",
-                      right: 1,
-                      top: 0,
-                    }}
-                  >
-                    <CloseSharpIcon style={{ fontSize: 15 }} />
-                  </DeletePhotoButton>
                 </CardActionArea>
               </CardContainer>
             </AlbumDiv>

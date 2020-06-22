@@ -27,9 +27,6 @@ export default function FeedList() {
     db.collection("albums")
       .where("invited", "array-contains", currentUser.id)
       .onSnapshot((snapshot) => {
-        //const getSharedAlbumsId = snapshot.docs.map((doc) => doc.id);
-        //setSharedAlbumsId(getSharedAlbumsId);
-
         snapshot.docs.forEach((doc) => {
           db.collection("photos")
             .where("albumId", "==", doc.id)
