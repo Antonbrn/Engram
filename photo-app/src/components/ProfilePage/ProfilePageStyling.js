@@ -13,12 +13,28 @@ export const AvatarStyled = styled(Avatar)`
   margin-top: 25px;
   height: 3.5rem;
   width: 3.5rem;
+
+  @media only screen and (min-width: 1200px) {
+    align-self: center;
+    height: 5rem;
+    width: 5rem;
+    margin: 0;
+    
+
+  }
 `;
 
 export const LoggedUser = styled.h4`
   color: #bc5100;
   font-family: "Viga";
   font-size: 1.1rem;
+  margin: 0;
+
+  @media only screen and (min-width: 1200px) {
+    align-self: center;
+    font-size: 2.5vh;
+    margin: 0;
+  }
 `;
 
 export const ButtonStyled = styled(Button)`
@@ -32,8 +48,11 @@ export const ButtonStyled = styled(Button)`
 
     transition: 0.7s ease;
   }
-  @media only screen and (min-width: 768px) {
-    margin: 10px;
+  @media only screen and (min-width: 1200px) {
+    /* height: 100px;
+    text-align: center; */
+    align-self: center;
+    font-size: 2.5vh;
   }
 `;
 
@@ -51,6 +70,12 @@ export const EmailButton = styled(Button)`
   @media only screen and (min-width: 768px) {
     margin: 10px;
   }
+  @media only screen and (min-width: 1200px) {
+    /* height: 100px;
+    text-align: center; */
+    align-self: center;
+    font-size: 2.5vh;
+  }
 `;
 
 export const BoxContainer = styled(Box)`
@@ -61,11 +86,21 @@ export const BoxContainer = styled(Box)`
   flex: wrap;
   justify-content: center;
   flex-direction: column;
-
-  @media only screen and (min-width: 768px) {
-    // border: solid 3px #bc5100;
-    // border-radius: 5px;
+  
+  @media only screen and (min-width: 1200px) {
+    padding-top: 200px;
   }
+`;
+export const ProfileDivContainer = styled.div`
+  padding: 15px;
+  align-self: center;
+  width: 200px;
+
+  @media only screen and (min-width: 1200px) {
+    width: 25vh;
+
+  }
+
 `;
 
 export const StyledTextField = styled(TextField)`
@@ -89,8 +124,13 @@ export const TypographyProfile = styled(Typography)`
   font-size: 1.1rem;
   text-align: center;
   white-space: nowrap;
-  padding-left: ;
   line-height: 2;
-
   color: #f57f17;
+
+  @media only screen and (min-width: 1200px) {
+    font-size: 2.5vh;
+    text-align: center;
+  white-space: nowrap;
+  line-height: 2;
+  }
 `;

@@ -9,6 +9,7 @@ import {
   LoggedUser,
   EmailButton,
   TypographyProfile,
+  ProfileDivContainer
 } from "./ProfilePageStyling";
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
@@ -19,17 +20,8 @@ const ProfilePage = () => {
   return (
     <BoxContainer>
       <AvatarStyled style={{ background: "transparent", color: "#bc5100" }} />
-
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
-
-      {/* <StyledTextField
-                disabled
-                name="ChangeEmail"
-                label="Change Email (coming soon)"
-                type="text"
-                InputProps={{ disableUnderline: true }}
-            /> */}
-      <div style={{ width: "200px", padding: "15px", alignSelf: "center" }}>
+      <ProfileDivContainer >
         <TypographyProfile>
           <Link href="#" style={{ color: "#f57f17" }}>
             Change Avatar
@@ -47,7 +39,7 @@ const ProfilePage = () => {
             Change Password
           </Link>
         </TypographyProfile>
-      </div>
+      </ProfileDivContainer>
 
       <EmailButton
         a
