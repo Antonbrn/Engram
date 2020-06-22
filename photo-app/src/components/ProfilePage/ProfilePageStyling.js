@@ -22,30 +22,34 @@ export const LoggedUser = styled.h4`
 `;
 
 export const ButtonStyled = styled(Button)`
-  align-self: center;
   font-family: "Viga";
-  background: #bc5100;
-  color: #ffff;
-  border: solid 1px #bc5100;
-  margin: 5px;
+  background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
+  color: #bc5100;
+  border: solid 2px #bc5100;
+  margin: 10px;
   &:hover {
     color: #bc5100;
-    border: solid 1px #bc5100;
+
     transition: 0.7s ease;
+  }
+  @media only screen and (min-width: 768px) {
+    margin: 10px;
   }
 `;
 
 export const EmailButton = styled(Button)`
-  align-self: center;
   font-family: "Viga";
-  background: #bc5100;
-  color: #ffff;
-  border: solid 1px #bc5100;
-  margin-bottom: 15px;
+  background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
+  color: #bc5100;
+  border: solid 2px #bc5100;
+  margin: 10px;
   &:hover {
     color: #bc5100;
-    border: solid 1px #bc5100;
+
     transition: 0.7s ease;
+  }
+  @media only screen and (min-width: 768px) {
+    margin: 10px;
   }
 `;
 

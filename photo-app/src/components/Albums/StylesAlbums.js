@@ -6,7 +6,7 @@ import {
   IconButton,
   Input,
   CardActionArea,
-  CardContent
+  CardContent,
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
@@ -31,13 +31,13 @@ export const TitleDiv = styled.div`
 
 export const ButtonStyled = styled(Button)`
   font-family: "Viga";
-  background: #bc5100;
-  color: #ffff;
-  border: solid 1px #bc5100;
+  background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
+  color: #bc5100;
+  border: solid 2px #bc5100;
   margin: 10px;
   &:hover {
     color: #bc5100;
-    border: solid 1px #bc5100;
+
     transition: 0.7s ease;
   }
   @media only screen and (min-width: 768px) {
@@ -113,22 +113,20 @@ export const InputStyled = styled(Input)`
 `;
 
 export const TextFieldInputStyled = styled.label`
-  margin-top: 20px;
-  padding: 5px;
   text-align: center;
-  background-color: #bc5100;
-  color: #ffff;
-  border: solid 1px #bc5100;
+  padding: 15px;
   border-radius: 5px;
-  cursor: pointer;
-
   font-family: "Viga";
-  display: inline-block;
+  background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
+  color: #bc5100;
+  border: solid 2px #bc5100;
+  margin: 10px;
+  cursor: pointer;
   &:hover {
-    background-color: white;
-    color: #bc5100;
-    border: solid 1px #bc5100;
     transition: 0.7s ease;
+  }
+  @media only screen and (min-width: 768px) {
+    margin: 10px;
   }
 `;
 

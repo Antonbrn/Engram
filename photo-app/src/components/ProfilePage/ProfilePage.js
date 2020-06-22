@@ -21,7 +21,7 @@ const ProfilePage = () => {
       <AvatarStyled style={{ background: "transparent", color: "#bc5100" }} />
 
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
-      <ButtonStyled type="submit">Add Avatar</ButtonStyled>
+
       {/* <StyledTextField
                 disabled
                 name="ChangeEmail"
@@ -31,6 +31,10 @@ const ProfilePage = () => {
             /> */}
       <div style={{ width: "200px", padding: "15px", alignSelf: "center" }}>
         <TypographyProfile>
+          <Link href="#" style={{ color: "#f57f17" }}>
+            Change Avatar
+          </Link>
+          <br />
           <Link href="#" style={{ color: "#f57f17" }}>
             Change Email
           </Link>

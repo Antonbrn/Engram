@@ -96,7 +96,6 @@ const CreateAlbums = () => {
           {/* <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} /> */}
 
           <ButtonStyled
-            variant="outlined"
             onClick={(e) => {
               if (title) {
                 return addAlbum(e);
@@ -108,7 +107,7 @@ const CreateAlbums = () => {
             <HideButton
               component={Link}
               to="/myalbums"
-              style={{ color: "white" }}
+              style={{ color: "#bc5100" }}
             >
               Create Album
             </HideButton>
