@@ -5,8 +5,17 @@ import {
   Button,
   Avatar,
   Typography,
+  BottomNavigationAction
 } from "@material-ui/core";
 import styled from "styled-components";
+
+
+export const AvatarStyledBar = styled(BottomNavigationAction)`
+  color: #bc5100;
+  align-self: center;
+  
+  
+`;
 
 export const AvatarStyled = styled(Avatar)`
   align-self: center;
@@ -16,8 +25,8 @@ export const AvatarStyled = styled(Avatar)`
 
   @media only screen and (min-width: 1200px) {
     align-self: center;
-    height: 5rem;
-    width: 5rem;
+    height: 7rem;
+    width: 7rem;
     margin: 0;
     
 
@@ -29,11 +38,13 @@ export const LoggedUser = styled.h4`
   font-family: "Viga";
   font-size: 1.1rem;
   margin: 0;
+  
 
   @media only screen and (min-width: 1200px) {
     align-self: center;
     font-size: 2.5vh;
     margin: 0;
+    padding-bottom: 50px;
   }
 `;
 

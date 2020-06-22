@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import fire from "../../base";
 import { Link } from "@material-ui/core";
+import FaceIcon from '@material-ui/icons/Face';
 import {
   BoxContainer,
   StyledTextField,
@@ -9,7 +10,8 @@ import {
   LoggedUser,
   EmailButton,
   TypographyProfile,
-  ProfileDivContainer
+  ProfileDivContainer,
+  AvatarStyledBar
 } from "./ProfilePageStyling";
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
@@ -19,7 +21,13 @@ const ProfilePage = () => {
 
   return (
     <BoxContainer>
-      <AvatarStyled style={{ background: "transparent", color: "#bc5100" }} />
+      <AvatarStyledBar
+        style={{ paddingTop: "8px", }}
+        component={Link}
+        to="/profilepage"
+        value="profile"
+        icon={<FaceIcon style={{ fontSize: "10vh", }} />}
+      />
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
       <ProfileDivContainer >
         <TypographyProfile>
