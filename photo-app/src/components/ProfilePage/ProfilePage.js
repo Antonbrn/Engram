@@ -22,10 +22,6 @@ const ProfilePage = () => {
   return (
     <BoxContainer>
       <AvatarStyledBar
-        style={{ paddingTop: "8px", }}
-        component={Link}
-        to="/profilepage"
-        value="profile"
         icon={<FaceIcon style={{ fontSize: "10vh", }} />}
       />
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
