@@ -27,21 +27,24 @@ export default function FeedList() {
     db.collection("albums")
       .where("invited", "array-contains", currentUser.id)
       .onSnapshot((snapshot) => {
-        const getSharedAlbumsId = snapshot.docs.map((doc) => doc.id);
-        setSharedAlbumsId(getSharedAlbumsId);
-      });
+        //const getSharedAlbumsId = snapshot.docs.map((doc) => doc.id);
+        //setSharedAlbumsId(getSharedAlbumsId);
 
-    const albumsCollection = db
-      .collection("photos")
-      .where("albumId", "==", sharedAlbumsId);
-    albumsCollection.onSnapshot((snapshot) => {
-      snapshot.forEach((doc) => {
-        setSharedPhotos(doc);
+        snapshot.docs.forEach((doc) => {
+          db.collection("photos")
+            .where("albumId", "==", doc.id)
+            .onSnapshot((snapshot) => {
+              let newPhotos = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+
+              setSharedPhotos((oldContent) => [...oldContent, ...newPhotos]);
+            });
+        });
       });
-    });
   }, []);
 
-  console.log(sharedPhotos);
   return (
     <FeedBox>
       {photos.map((photo, index) => (
