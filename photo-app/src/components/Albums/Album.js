@@ -66,7 +66,7 @@ const Album = (props) => {
   const [clickedPhoto, setClickedPhoto] = useState([]);
   const [openPhotoModal, setOpenPhotoModal] = useState(false);
   const [openInviteModal, setOpenInviteModal] = useState(false);
-
+  const [adminId, setAdminId] = useState("");
   const [stateRedirect, setStateRedirect] = useState(false);
   //Get photofile
   const getPhotoFile = (e) => {
@@ -85,12 +85,14 @@ const Album = (props) => {
     }
   };
   const confirmDelete = () => {
-    var shouldDelete = window.confirm(
-      "Do you really want to delete this album?"
-    );
-    if (shouldDelete) {
-      deleteAlbum();
-      setRedirect();
+    if (currentUser.id === adminId) {
+      var shouldDelete = window.confirm(
+        "Do you really want to delete this album?"
+      );
+      if (shouldDelete) {
+        deleteAlbum();
+        setRedirect();
+      }
     }
   };
 
@@ -133,8 +135,10 @@ const Album = (props) => {
       let data = doc.data();
       if (data && typeof data.invited !== "undefined") {
         setInviteCount(data.invited.length);
+        setAdminId(data.userId);
       }
     });
+  console.log(adminId);
 
   //delete albums and photos
   const deleteAlbum = () => {
