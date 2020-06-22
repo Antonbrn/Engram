@@ -207,6 +207,13 @@ export const BoxStyled = styled(Box)`
   }
 `;
 
+export const DeletePhotoButton = styled(IconButton)`
+  // color: transparent;
+  // &:hover {
+  //   color: red;
+  //   border: 2px solid black;
+  // }
+`;
 export const StyledCardContent = styled(CardContent)`
   background: linear-gradient(-360deg, #daecf0 20%, #fff);
 `;
