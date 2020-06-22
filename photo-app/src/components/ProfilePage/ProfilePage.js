@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import fire from "../../base";
 import { Link } from "@material-ui/core";
+import FaceIcon from '@material-ui/icons/Face';
 import {
   BoxContainer,
   StyledTextField,
@@ -9,6 +10,8 @@ import {
   LoggedUser,
   EmailButton,
   TypographyProfile,
+  ProfileDivContainer,
+  AvatarStyledBar
 } from "./ProfilePageStyling";
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
@@ -18,19 +21,16 @@ const ProfilePage = () => {
 
   return (
     <BoxContainer>
-      <AvatarStyled style={{ background: "transparent", color: "#bc5100" }} />
-
+      <AvatarStyledBar
+        icon={<FaceIcon style={{ fontSize: "10vh", }} />}
+      />
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
-      <ButtonStyled type="submit">Add Avatar</ButtonStyled>
-      {/* <StyledTextField
-                disabled
-                name="ChangeEmail"
-                label="Change Email (coming soon)"
-                type="text"
-                InputProps={{ disableUnderline: true }}
-            /> */}
-      <div style={{ width: "200px", padding: "15px", alignSelf: "center" }}>
+      <ProfileDivContainer >
         <TypographyProfile>
+          <Link href="#" style={{ color: "#f57f17" }}>
+            Change Avatar
+          </Link>
+          <br />
           <Link href="#" style={{ color: "#f57f17" }}>
             Change Email
           </Link>
@@ -43,7 +43,7 @@ const ProfilePage = () => {
             Change Password
           </Link>
         </TypographyProfile>
-      </div>
+      </ProfileDivContainer>
 
       <EmailButton
         a

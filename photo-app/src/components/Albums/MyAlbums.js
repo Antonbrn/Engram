@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import {
-  Box,
-} from "@material-ui/core";
-import { Link, } from "react-router-dom";
+import { Box } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { AuthContext } from "../../Auth";
 import { db } from "../../base";
@@ -15,9 +13,8 @@ import {
   AlbumDiv,
   Title,
   StyledCardMedia,
-  ArrowButtonStyled
+  ArrowButtonStyled,
 } from "./StylesAlbums";
-
 
 export const AlbumContext = React.createContext();
 
@@ -53,80 +50,84 @@ const MyAlbums = () => {
 
   return (
     <>
-      <ContainerStyled style={{paddingBottom: 100, paddingTop: 130}}>
-        <Box style={{display: "flex", flexDirection:"row", justifyContent: "space-between"}}>
-        <Title variant="h4"
-          style={{}}>My Albums</Title>
-        <ButtonStyled
-          variant="outlined"
-          component={Link}
-          to="/createalbums"
-          style={{margin: 3}}
+      <ContainerStyled style={{ paddingBottom: 100, paddingTop: 130 }}>
+        <Box
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          Create album
-        </ButtonStyled>
+          <Title variant="h4" style={{}}>
+            My Albums
+          </Title>
+          <ButtonStyled
+            variant="outlined"
+            component={Link}
+            to="/createalbums"
+            style={{ margin: 3, whiteSpace: "nowrap" }}
+          >
+            Create album
+          </ButtonStyled>
         </Box>
         <Box borderBottom={1} />
         {/* Box för display flex */}
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-            {albums.map((album) => (
-              <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
-                <CardContainer>
-                  <CardActionArea
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    component={Link}
-                    to={"/album/" + album.id + "/" + album.title}
-                  >
-                    <StyledCardMedia component="img" src={album.url} />
-                  </CardActionArea>
-                </CardContainer>
-                <TypographyStyled
+          {albums.map((album) => (
+            <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
+              <CardContainer>
+                <CardActionArea
                   style={{
-                    display: "inline-block",
+                    width: "100%",
+                    height: "100%",
                   }}
+                  component={Link}
+                  to={"/album/" + album.id + "/" + album.title}
                 >
-                  {album.title}
-                </TypographyStyled>
-              </AlbumDiv>
-            ))}
-        
+                  <StyledCardMedia component="img" src={album.url} />
+                </CardActionArea>
+              </CardContainer>
+              <TypographyStyled
+                style={{
+                  display: "inline-block",
+                }}
+              >
+                {album.title}
+              </TypographyStyled>
+            </AlbumDiv>
+          ))}
         </BoxContainer>
 
-        
         <Title variant="h4">Shared Albums</Title>
         <Box borderBottom={1} />
 
         <BoxContainer>
           {/* Loopar ut alla albums i ett card med title */}
-          
-            {sharedAlbums.map((album) => (
-              <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
-                <CardContainer>
-                  <CardActionArea
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    component={Link}
-                    to={"/album/" + album.id + "/" + album.title}
-                  >
-                    <StyledCardMedia component="img" src={album.url} />
-                  </CardActionArea>
-                </CardContainer>
-                <TypographyStyled
+
+          {sharedAlbums.map((album) => (
+            <AlbumDiv key={album.id} style={{ textAlign: "center" }}>
+              <CardContainer>
+                <CardActionArea
                   style={{
-                    display: "inline-block",
+                    width: "100%",
+                    height: "100%",
                   }}
+                  component={Link}
+                  to={"/album/" + album.id + "/" + album.title}
                 >
-                  {album.title}
-                </TypographyStyled>
-              </AlbumDiv>
-            ))}
-          
+                  <StyledCardMedia component="img" src={album.url} />
+                </CardActionArea>
+              </CardContainer>
+              <TypographyStyled
+                style={{
+                  display: "inline-block",
+                }}
+              >
+                {album.title}
+              </TypographyStyled>
+            </AlbumDiv>
+          ))}
         </BoxContainer>
       </ContainerStyled>
     </>
