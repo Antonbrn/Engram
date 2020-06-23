@@ -282,7 +282,7 @@ const Album = props => {
               </label>
             </div>
             <br />
-            <div style={{ marginTop: 10 }}>
+            <div style={{ marginTop: 5 }}>
               <TextFieldInputStyled
                 style={{ margin: 0, paddingTop: "3px" }}
                 onClick={addPhotos}
@@ -347,7 +347,7 @@ const Album = props => {
           <ArrowBackIcon
             style={{
               color: "#bc5100",
-              fontSize: "6vh",
+              fontSize: "6vh"
             }}
           />
         </ArrowButtonStyled>
@@ -362,18 +362,20 @@ const Album = props => {
                 onClick={handleOpenPhotoModal}
               >
                 <AddPhotoAlternateIcon
-                  style={{ color: "#bc5100", fontSize: "6vh" }}
+                  style={{ color: "#bc5100", fontSize: "3.5vh" }}
                 />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Invite Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon style={{ color: "#bc5100", fontSize: "6vh" }} />
+                <PersonAddIcon
+                  style={{ color: "#bc5100", fontSize: "3.5vh" }}
+                />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Album">
               <IconButtonStyled onClick={confirmDelete}>
-                <DeleteIcon style={{ color: "#bc5100", fontSize: "6vh" }} />
+                <DeleteIcon style={{ color: "#bc5100", fontSize: "3.5vh" }} />
               </IconButtonStyled>
             </Tooltip>
           </div>
