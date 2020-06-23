@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
           alignItems: "center",
         }}
       >
-        <CircularProgress style={{ color: "#bc5100" }} size={150} />;
+        <CircularProgress style={{ color: "#bc5100" }} size={150} />
       </div>
     );
   }
