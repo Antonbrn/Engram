@@ -15,7 +15,7 @@ import {
   TypographyStyled,
   BoxBorder,
   HideButton,
-  ArrowButtonStyled
+  ArrowButtonStyled,
 } from "./StylesAlbums";
 
 const CreateAlbums = () => {
@@ -23,7 +23,7 @@ const CreateAlbums = () => {
   const [thumbnail, setThumbnail] = useState(null);
 
   //function for getting the img file
-  const getThumbnailFile = e => {
+  const getThumbnailFile = (e) => {
     if (e.target.files[0]) {
       setThumbnail(e.target.files[0]);
     }
@@ -31,15 +31,15 @@ const CreateAlbums = () => {
 
   const { currentUser } = useContext(AuthContext);
 
-  const addAlbum = e => {
+  const addAlbum = (e) => {
     e.preventDefault();
 
     //Upload the imagefile to firebase storage
     const uploadTask = storage.ref(`images/${thumbnail.name}`).put(thumbnail);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -47,13 +47,13 @@ const CreateAlbums = () => {
           .ref("images")
           .child(thumbnail.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //add url and title to the database, Albums collection
             db.collection("albums").add({
               url: url,
               title: title,
               userId: currentUser.id,
-              invited: []
+              invited: [],
             });
           });
       }
@@ -61,39 +61,37 @@ const CreateAlbums = () => {
   };
 
   return (
-    <ContainerStyled>
-      <ArrowButtonStyled
-        component={Link}
-        to="/myalbums"
-        style={{ float: "left" }}
-      >
-        <ArrowBackIcon style={{ color: "#bc5100" }} />
+    <ContainerStyled maxWidth="md">
+      <ArrowButtonStyled component={Link} to="/myalbums" style={{}}>
+        <ArrowBackIcon style={{ color: "#bc5100", fontSize: "3.5vh" }} />
       </ArrowButtonStyled>
 
       <ContainerStyledCreateAlbum>
         <BoxBorder>
-          <TypographyStyled variant="h4">Create Album</TypographyStyled>
+          <TypographyStyled variant="h4" style={{ fontSize: "3.5vh" }}>
+            Create Album
+          </TypographyStyled>
           <TextField
             error={false}
             required
             label="Title"
             value={title}
-            onChange={e => setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
 
-          <TextFieldInputStyled>
-            <InputStyled type="file" onChange={getThumbnailFile} />
+          <TextFieldInputStyled style={{ fontSize: "2vh" }}>
+            <InputStyled type="file" onChange={getThumbnailFile} style={{}} />
             ADD THUMBNAIL
           </TextFieldInputStyled>
           <br />
-          <label style={{ textAlign: "center" }}>
+          <label style={{ textAlign: "center", fontSize: "2vh" }}>
             {thumbnail && thumbnail.name}
           </label>
 
           {/* <img style={{ maxWidth: "250px", maxHeight: "250px" }} src={url} /> */}
           <div>
             <ButtonStyled
-              onClick={e => {
+              onClick={(e) => {
                 if (title) {
                   return addAlbum(e);
                 } else {
@@ -104,7 +102,7 @@ const CreateAlbums = () => {
               <HideButton
                 component={Link}
                 to="/myalbums"
-                style={{ color: "#bc5100" }}
+                style={{ color: "#bc5100", fontSize: "2vh" }}
               >
                 Create Album
               </HideButton>
