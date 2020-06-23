@@ -35,6 +35,7 @@ export const ButtonStyled = styled(Button)`
   color: #bc5100;
   border: solid 2px #bc5100;
   margin: 10px;
+  align-self: flex-end;
   &:hover {
     color: #bc5100;
 

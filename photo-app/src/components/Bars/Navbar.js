@@ -52,11 +52,11 @@ const Navbar = () => {
           />}
          
           <AvatarStyledBar
-          style={{paddingTop: "8px",}}
+          
         component={Link}
         to="/profilepage"
         value="profile"
-        icon={<FaceIcon style={{fontSize: "40px",}}/>}
+        icon={<FaceIcon style={{fontSize: "3.2vh",}}/>}
       />
          
         </Toolbar>
