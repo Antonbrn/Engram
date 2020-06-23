@@ -60,6 +60,11 @@ export const StyledAppbar = styled(AppBar)`
   height: 70px;
   position: fixed;
   background: linear-gradient(90deg, #bc5100, #ffb04c);
+
+  @media only screen and (min-width: 2000px) {
+    height: 100px;
+    
+  }
 `;
 
 export const StyledSettingsIcon = styled(SettingsIcon)`

@@ -99,8 +99,8 @@ export const BoxContainer = styled(Box)`
   justify-content: center;
   flex-flow: column nowrap;
   
-  @media only screen and (min-width: 1200px) {
-    /* padding-top: 200px; */
+  @media only screen and (min-width: 2000px) {
+    padding-top: 120px;
     
   }
 `;

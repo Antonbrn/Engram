@@ -56,7 +56,7 @@ const Navbar = () => {
         component={Link}
         to="/profilepage"
         value="profile"
-        icon={<FaceIcon style={{fontSize: "3.2vh",}}/>}
+        icon={<FaceIcon style={{fontSize: "4vh",}}/>}
       />
          
         </Toolbar>
