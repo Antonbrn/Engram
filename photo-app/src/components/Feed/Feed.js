@@ -7,7 +7,6 @@ import { ImageStyle, Wrapper } from "./FeedStyle";
 export default function FeedList() {
   const { currentUser } = useContext(AuthContext);
   const [photos, setPhotos] = useState([]);
-  const [sharedAlbumsId, setSharedAlbumsId] = useState([]);
   const [sharedPhotos, setSharedPhotos] = useState([]);
 
   //Get Photos

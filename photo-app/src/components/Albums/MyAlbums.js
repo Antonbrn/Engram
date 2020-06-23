@@ -13,7 +13,6 @@ import {
   AlbumDiv,
   Title,
   StyledCardMedia,
-  ArrowButtonStyled,
 } from "./StylesAlbums";
 
 export const AlbumContext = React.createContext();

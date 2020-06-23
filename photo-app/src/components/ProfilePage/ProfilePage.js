@@ -1,17 +1,15 @@
 import React, { useContext } from "react";
 import fire from "../../base";
 import { Link } from "@material-ui/core";
-import FaceIcon from '@material-ui/icons/Face';
+import FaceIcon from "@material-ui/icons/Face";
 import {
   BoxContainer,
-  StyledTextField,
   ButtonStyled,
-  AvatarStyled,
   LoggedUser,
   EmailButton,
   TypographyProfile,
   ProfileDivContainer,
-  AvatarStyledBar
+  AvatarStyledBar,
 } from "./ProfilePageStyling";
 //Authcontext, userdata
 import { AuthContext } from "../../Auth";
@@ -21,11 +19,9 @@ const ProfilePage = () => {
 
   return (
     <BoxContainer>
-      <AvatarStyledBar
-        icon={<FaceIcon style={{ fontSize: "10vh", }} />}
-      />
+      <AvatarStyledBar icon={<FaceIcon style={{ fontSize: "10vh" }} />} />
       <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
-      <ProfileDivContainer >
+      <ProfileDivContainer>
         <TypographyProfile>
           <Link href="#" style={{ color: "#f57f17" }}>
             Change Avatar
@@ -45,10 +41,7 @@ const ProfilePage = () => {
         </TypographyProfile>
       </ProfileDivContainer>
 
-      <EmailButton
-        a
-        href="mailto:Agust.Ronnback@cmeducations.se?&subject=Feedback&body=We%20apreciate%20you%20taking%20time%20to%20send%20us%20your%20feedback"
-      >
+      <EmailButton href="mailto:Agust.Ronnback@cmeducations.se?&subject=Feedback&body=We%20apreciate%20you%20taking%20time%20to%20send%20us%20your%20feedback">
         Send us your Feedback
       </EmailButton>
 

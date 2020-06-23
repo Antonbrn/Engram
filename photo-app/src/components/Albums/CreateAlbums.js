@@ -15,13 +15,11 @@ import {
   TypographyStyled,
   BoxBorder,
   HideButton,
-  IconButtonStyled,
   ArrowButtonStyled,
 } from "./StylesAlbums";
 
 const CreateAlbums = () => {
   const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
 
   //function for getting the img file
@@ -57,7 +55,6 @@ const CreateAlbums = () => {
               userId: currentUser.id,
               invited: [],
             });
-            setUrl(url);
           });
       }
     );
