@@ -10,8 +10,8 @@ export const FeedBox = styled(Container)`
   padding-bottom: 85px;
 
 
-  @media only screen and (min-width: 768px) {
-
+  @media only screen and (min-width: 2000px) {
+    padding-top: 110px;
 }
 `;
 
