@@ -20,7 +20,7 @@ const ProfilePage = () => {
   return (
     <BoxContainer>
       <AvatarStyledBar icon={<FaceIcon style={{ fontSize: "10vh" }} />} />
-      <LoggedUser>{`${currentUser.username.toUpperCase()}`}</LoggedUser>
+      <LoggedUser>{`${currentUser.username}`}</LoggedUser>
       <ProfileDivContainer>
         <TypographyProfile>
           <Link href="#" style={{ color: "#f57f17" }}>
