@@ -276,9 +276,11 @@ const Album = props => {
             </TextFieldInputStyled>
 
             <br />
-            <label style={{ paddingTop: "3px" }}>
-              {photoFile && photoFile.name}
-            </label>
+            <div style={{ marginTop: 20 }}>
+              <label style={{ paddingTop: "3px" }}>
+                {photoFile && photoFile.name}
+              </label>
+            </div>
             <br />
             <div style={{ marginTop: 10 }}>
               <TextFieldInputStyled
@@ -345,7 +347,7 @@ const Album = props => {
           <ArrowBackIcon
             style={{
               color: "#bc5100",
-              fontSize: "6vh"
+              fontSize: "6vh",
             }}
           />
         </ArrowButtonStyled>

@@ -1,9 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  TextField,
-} from "@material-ui/core";
+import { Box, Button, FormControl, TextField } from "@material-ui/core";
 import styled from "styled-components";
 import background from "./hejhej2.jpg";
 
@@ -23,11 +18,12 @@ export const StyledBoxContainer = styled(Box)`
 `;
 
 export const ButtonStyled = styled(Button)`
+  font-family: "viga";
   width: 100%;
-  background: #bc5100;
-  color: #ffff;
+  background: linear-gradient(180deg, #f6ecda 50%, #f5d5a6);
+  color: #bc5100;
+  border: solid 2px #bc5100;
   margin-top: 15px;
-  border: solid 1px #bc5100;
   &:hover {
     color: #bc5100;
     border: solid 1px #bc5100;
