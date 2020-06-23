@@ -270,9 +270,11 @@ const Album = (props) => {
             </TextFieldInputStyled>
 
             <br />
-            <label style={{ paddingTop: "3px" }}>
-              {photoFile && photoFile.name}
-            </label>
+            <div style={{ marginTop: 20 }}>
+              <label style={{ paddingTop: "3px" }}>
+                {photoFile && photoFile.name}
+              </label>
+            </div>
             <br />
             <div style={{ marginTop: 10 }}>
               <TextFieldInputStyled
@@ -339,12 +341,14 @@ const Album = (props) => {
           <ArrowBackIcon
             style={{
               color: "#bc5100",
-              fontSize: "6vh"
+              fontSize: "6vh",
             }}
           />
         </ArrowButtonStyled>
         <TitleDiv>
-          <Title variant="h5" style={{fontSize: "6vh"}}>{albumTitle}</Title>
+          <Title variant="h5" style={{ fontSize: "6vh" }}>
+            {albumTitle}
+          </Title>
           <div className={classes.albumButton}>
             <Tooltip title="Add Photo" placement="bottom">
               <IconButtonStyled
@@ -358,14 +362,12 @@ const Album = (props) => {
             </Tooltip>
             <Tooltip title="Invite Friend">
               <IconButtonStyled onClick={handleOpenInviteModal}>
-                <PersonAddIcon
-                  style={{ color: "#bc5100", fontSize: "6vh" }}
-                />
+                <PersonAddIcon style={{ color: "#bc5100", fontSize: "6vh" }} />
               </IconButtonStyled>
             </Tooltip>
             <Tooltip title="Delete Album">
               <IconButtonStyled onClick={confirmDelete}>
-                <DeleteIcon style={{ color: "#bc5100", fontSize: "6vh"}} />
+                <DeleteIcon style={{ color: "#bc5100", fontSize: "6vh" }} />
               </IconButtonStyled>
             </Tooltip>
           </div>
