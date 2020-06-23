@@ -12,7 +12,6 @@ import {
   StyledTextField,
   FormControlStyled,
 } from "./LoginSignupStyles";
-import TextField from "@material-ui/core/TextField";
 
 const SignUp = ({ history }) => {
   const handleSignUp = useCallback(
@@ -38,7 +37,7 @@ const SignUp = ({ history }) => {
   return (
     <StyledBoxContainer>
       <StyledForm>
-        <img src={logo} />
+        <img src={logo} alt={"logo"} />
         <form onSubmit={handleSignUp}>
           <FormControlStyled>
             <StyledTextField
@@ -54,7 +53,6 @@ const SignUp = ({ history }) => {
               name="password"
               type="password"
               label="Choose a password"
-              type="password"
             />
             <br />
             <ButtonStyled type="submit" size="large">
@@ -72,40 +70,6 @@ const SignUp = ({ history }) => {
         </form>
       </StyledForm>
     </StyledBoxContainer>
-
-    // <Box className={classes.signUpPage}>
-    //   <img src={logo} />
-    //   <form className={classes.formStyle} onSubmit={handleSignUp}>
-    //     <FormControl className={classes.signUpBox}>
-    //       <Typography>SIGN UP</Typography>
-    //       <label className={classes.labelStyle}>
-    //         <input
-    //           className={classes.inputStyle}
-    //           name="email"
-    //           type="email"
-    //           placeholder="email"
-    //         />
-    //       </label>
-    //       <label className={classes.labelStyle}>
-    //         <input
-    //           className={classes.inputStyle}
-    //           name="username"
-    //           type="text"
-    //           placeholder="username"
-    //         />
-    //       </label>
-    //       <label>
-    //         <input
-    //           className={classes.inputStyle}
-    //           name="password"
-    //           type="password"
-    //           placeholder="password"
-    //         />
-    //       </label>
-    //       <Button type="submit">Signup</Button>
-    //     </FormControl>
-    //   </form>
-    // </Box>
   );
 };
 

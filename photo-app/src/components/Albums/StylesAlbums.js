@@ -5,7 +5,6 @@ import {
   Button,
   IconButton,
   Input,
-  CardActionArea,
   CardContent,
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";

@@ -1,24 +1,16 @@
 import React from "react";
 import { Typography, Container, Grid, Avatar } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
 import { Title, TitleDiv, StyledCardContent } from "../Albums/StylesAlbums";
 
-const useStyles = makeStyles({
-  root: {},
-  media: {}
-});
-
 const Notifications = () => {
-  const classes = useStyles();
   return (
-    <div style={{ paddingTop: "50px" }}>
+    <div>
       <div
         style={{
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <TitleDiv style={{ marginTop: 100, paddingBottom: 10 }}>
@@ -28,7 +20,7 @@ const Notifications = () => {
       <div
         style={{
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <TitleDiv style={{ paddingBottom: 20 }}>
@@ -38,7 +30,7 @@ const Notifications = () => {
       <Grid>
         <Container
           style={{
-            paddingBottom: 30
+            paddingBottom: 30,
           }}
         >
           <Card>
@@ -46,7 +38,7 @@ const Notifications = () => {
               <StyledCardContent
                 style={{
                   paddingBottom: 30,
-                  background: "linear-gradient(160deg,#daecf0 20%,#fff)"
+                  background: "linear-gradient(160deg,#daecf0 20%,#fff)",
                 }}
               >
                 <div style={{ display: "flex" }}>
@@ -55,7 +47,7 @@ const Notifications = () => {
                       src="https://picsum.photos/200"
                       style={{
                         display: "flex",
-                        alignItems: "center"
+                        alignItems: "center",
                       }}
                     >
                       H
@@ -64,7 +56,7 @@ const Notifications = () => {
                   <div
                     style={{
                       display: "flex",
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
                     <Typography
@@ -93,7 +85,7 @@ const Notifications = () => {
                       src="https://picsum.photos/201"
                       style={{
                         display: "flex",
-                        alignItems: "center"
+                        alignItems: "center",
                       }}
                     >
                       D
@@ -102,7 +94,7 @@ const Notifications = () => {
                   <div
                     style={{
                       display: "flex",
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
                     <Typography
@@ -130,7 +122,7 @@ const Notifications = () => {
                       src="https://picsum.photos/202"
                       style={{
                         display: "flex",
-                        alignItems: "center"
+                        alignItems: "center",
                       }}
                     >
                       A
@@ -139,7 +131,7 @@ const Notifications = () => {
                   <div
                     style={{
                       display: "flex",
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
                     <Typography

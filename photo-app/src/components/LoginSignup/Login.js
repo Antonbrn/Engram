@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect, Link } from "react-router-dom";
 import { AuthContext } from "../../Auth";
-import { FormControl } from "@material-ui/core";
 //engram logo
 import logo from "../../engramLogo.png";
 //backend
@@ -40,7 +39,7 @@ const Login = ({ history }) => {
   return (
     <StyledBoxContainer>
       <StyledForm>
-        <img src={logo} />
+        <img src={logo} alt={"logo"} />
         <form onSubmit={handleLogin}>
           <FormControlStyled>
             <StyledTextField

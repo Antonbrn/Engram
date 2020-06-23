@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   TextField,
-  IconButton,
   Fade,
   Backdrop,
   Tooltip,
@@ -128,6 +127,7 @@ const Album = (props) => {
           });
       });
     });
+    handleClosedInviteModal();
   };
 
   db.collection("albums")
@@ -193,7 +193,7 @@ const Album = (props) => {
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      (snapshot) => { },
+      (snapshot) => {},
       (error) => {
         console.log(error);
       },
@@ -282,7 +282,7 @@ const Album = (props) => {
                 data-dismiss="modal"
               >
                 Add
-            </TextFieldInputStyled>
+              </TextFieldInputStyled>
             </div>
           </ModalDiv>
         </Fade>
@@ -310,7 +310,7 @@ const Album = (props) => {
         <Fade in={openInviteModal}>
           <ModalDiv>
             <h4>Invite members to album</h4>
-            <div style={{marginBottom: 30}}>
+            <div style={{ marginBottom: 30 }}>
               <TextField
                 error={false}
                 required
@@ -320,11 +320,14 @@ const Album = (props) => {
                 }}
               />
             </div>
-            <div>
-              <TextFieldInputStyled onClick={inviteMemberFunc}>
-                Invite member
+
+            <TextFieldInputStyled
+              type="button"
+              onClick={inviteMemberFunc}
+              data-dismiss="modal"
+            >
+              Invite member
             </TextFieldInputStyled>
-            </div>
           </ModalDiv>
         </Fade>
       </Modal>
@@ -378,13 +381,12 @@ const Album = (props) => {
         <BoxContainer>
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
-              <DeletePhotoButton>
-                <CloseSharpIcon
-                  style={{ fontSize: 15 }}
-                  onClick={(e) => {
-                    deletePhoto(photo);
-                  }}
-                />
+              <DeletePhotoButton
+                onClick={(e) => {
+                  deletePhoto(photo);
+                }}
+              >
+                <CloseSharpIcon style={{ fontSize: 15 }} />
               </DeletePhotoButton>
               <CardContainer>
                 <CardActionArea
