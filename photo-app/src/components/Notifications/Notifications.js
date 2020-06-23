@@ -13,8 +13,8 @@ const Notifications = () => {
           justifyContent: "center",
         }}
       >
-        <TitleDiv style={{ marginTop: 100, paddingBottom: 10 }}>
-          <Title variant="h4">Notifications</Title>
+        <TitleDiv style={{ marginTop: 100, paddingBottom: 10}}>
+          <Title variant="h4" style={{ fontSize: "2vh" }}>Notifications</Title>
         </TitleDiv>
       </div>
       <div
@@ -24,7 +24,7 @@ const Notifications = () => {
         }}
       >
         <TitleDiv style={{ paddingBottom: 20 }}>
-          <Title variant="h5" >(Coming soon)</Title>
+          <Title variant="h5" style={{ fontSize: "2vh" }} >(Coming soon)</Title>
         </TitleDiv>
       </div>
       <Grid>

@@ -26,6 +26,7 @@ export const ArrowButtonStyled = styled(IconButton)`
 export const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
+
 `;
 
 export const ButtonStyled = styled(Button)`
