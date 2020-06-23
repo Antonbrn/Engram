@@ -23,11 +23,16 @@ const SignUp = ({ history }) => {
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value)
           .then((cred) => {
-            return db.collection("users").doc(cred.user.uid).set({
-              username: username.value,
-            });
+            return db
+              .collection("users")
+              .doc(cred.user.uid)
+              .set({
+                username: username.value,
+              })
+              .then(() => {
+                history.push("/");
+              });
           });
-        history.push("/");
       } catch (error) {
         alert(error);
       }
