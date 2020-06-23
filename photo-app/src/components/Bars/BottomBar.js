@@ -23,7 +23,7 @@ const BottomBar = () => {
         to="/myalbums"
         value="myalbums"
         label="Albums"
-        icon={<PhotoAlbum />}
+        icon={<PhotoAlbum style={{fontSize: "3.2vh",}}/>}
       />
       
       <BottomNavigationActionStyled
@@ -32,7 +32,7 @@ const BottomBar = () => {
         value="feed"
         label="Home"
         id="goHome"
-        icon={<Home />}
+        icon={<Home style={{fontSize: "3.2vh",}}/>}
       />
 
       <BottomNavigationActionStyled
@@ -40,7 +40,7 @@ const BottomBar = () => {
         to="/notifications"
         value="notifications"
         label="Notifications"
-        icon={<NotificationsActive />}
+        icon={<NotificationsActive style={{fontSize: "3.2vh",}}/>}
       />
     </BottomNavigationStyled>
   );

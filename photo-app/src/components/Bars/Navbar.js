@@ -30,12 +30,13 @@ const Navbar = () => {
           {isActive && <BottomBar />}
 
           <AvatarStyledBar
-            style={{ paddingTop: "8px" }}
-            component={Link}
-            to="/profilepage"
-            value="profile"
-            icon={<FaceIcon style={{ fontSize: "40px" }} />}
-          />
+          
+        component={Link}
+        to="/profilepage"
+        value="profile"
+        icon={<FaceIcon style={{fontSize: "4vh",}}/>}
+      />
+         
         </Toolbar>
       </StyledAppbar>
     </>

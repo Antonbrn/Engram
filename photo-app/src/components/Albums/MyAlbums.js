@@ -57,16 +57,16 @@ const MyAlbums = () => {
             justifyContent: "space-between",
           }}
         >
-          <Title variant="h4" style={{}}>
-            My Albums
+            <Title variant="h4" style={{ fontSize: "4vh" }}>
+              My Albums
           </Title>
-          <ButtonStyled
-            variant="outlined"
-            component={Link}
-            to="/createalbums"
-            style={{ margin: 3, whiteSpace: "nowrap" }}
-          >
-            Create album
+            <ButtonStyled
+              variant="outlined"
+              component={Link}
+              to="/createalbums"
+              style={{ margin: 3, whiteSpace: "nowrap" }}
+            >
+              Create album
           </ButtonStyled>
         </Box>
         <Box borderBottom={1} />
@@ -98,7 +98,7 @@ const MyAlbums = () => {
           ))}
         </BoxContainer>
 
-        <Title variant="h4">Shared Albums</Title>
+        <Title variant="h4" style={{ fontSize: "4vh" }}>Shared Albums</Title>
         <Box borderBottom={1} />
 
         <BoxContainer>

@@ -21,21 +21,17 @@ export const BottomNavigationActionStyled = styled(BottomNavigationAction)`
   &:visited {
     color: #bc5100 !important;
   }
-  font-size: 30px;
+  font-size: 3.2vh;
 
-   /* @media only screen and (min-width: 768px) {
-     color: #ffb04c !important;
-     &:visited {
-      color: #ffb04c !important;
-     }
-  } */
+  @media only screen and (min-width: 1200px) {
+
+  }
 `;
 export const AvatarStyledBar = styled(BottomNavigationAction)`
   display: flex;
   flex: 0;
   margin: auto 0 auto 0;
   color: #bc5100;
-  
   
 `;
 
@@ -64,6 +60,11 @@ export const StyledAppbar = styled(AppBar)`
   height: 70px;
   position: fixed;
   background: linear-gradient(90deg, #bc5100, #ffb04c);
+
+  @media only screen and (min-width: 2000px) {
+    height: 100px;
+    
+  }
 `;
 
 export const StyledSettingsIcon = styled(SettingsIcon)`

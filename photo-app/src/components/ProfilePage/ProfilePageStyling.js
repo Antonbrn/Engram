@@ -44,7 +44,6 @@ export const LoggedUser = styled.h4`
     align-self: center;
     font-size: 2.5vh;
     margin: 0;
-    padding-bottom: 50px;
   }
 `;
 
@@ -54,6 +53,8 @@ export const ButtonStyled = styled(Button)`
   color: #bc5100;
   border: solid 2px #bc5100;
   margin: 10px;
+  
+
   &:hover {
     color: #bc5100;
 
@@ -63,7 +64,8 @@ export const ButtonStyled = styled(Button)`
     /* height: 100px;
     text-align: center; */
     align-self: center;
-    font-size: 2.5vh;
+    font-size: 1.5vh;
+    
   }
 `;
 
@@ -73,6 +75,9 @@ export const EmailButton = styled(Button)`
   color: #bc5100;
   border: solid 2px #bc5100;
   margin: 10px;
+  white-space: nowrap;
+  align-self: center;
+
   &:hover {
     color: #bc5100;
 
@@ -82,10 +87,7 @@ export const EmailButton = styled(Button)`
     margin: 10px;
   }
   @media only screen and (min-width: 1200px) {
-    /* height: 100px;
-    text-align: center; */
-    align-self: center;
-    font-size: 2.5vh;
+    font-size: 1.5vh;
   }
 `;
 
@@ -94,18 +96,18 @@ export const BoxContainer = styled(Box)`
   padding-bottom: 70px;
   text-align: center;
   display: flex;
-  flex: wrap;
   justify-content: center;
-  flex-direction: column;
+  flex-flow: column nowrap;
   
-  @media only screen and (min-width: 1200px) {
-    padding-top: 200px;
+  @media only screen and (min-width: 2000px) {
+    padding-top: 120px;
+    
   }
 `;
 export const ProfileDivContainer = styled.div`
   padding: 15px;
   align-self: center;
-  width: 200px;
+  min-width: 300px;
 
   @media only screen and (min-width: 1200px) {
     width: 25vh;
