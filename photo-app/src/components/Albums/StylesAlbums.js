@@ -5,7 +5,7 @@ import {
   Button,
   IconButton,
   Input,
-  CardContent,
+  CardContent
 } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import styled from "styled-components";
@@ -26,7 +26,6 @@ export const ArrowButtonStyled = styled(IconButton)`
 export const TitleDiv = styled.div`
   display: flex;
   justify-content: space-between;
-
 `;
 
 export const ButtonStyled = styled(Button)`
@@ -50,11 +49,9 @@ export const ButtonStyled = styled(Button)`
 export const ContainerStyled = styled(Container)`
   font-family: "Viga";
   padding-top: 80px;
-  
 
-    @media only screen and (min-width: 2000px) {
-      padding-top: 120px;
-    
+  @media only screen and (min-width: 2000px) {
+    padding-top: 120px;
   }
 `;
 export const BoxContainer = styled(Box)`
@@ -64,8 +61,8 @@ export const BoxContainer = styled(Box)`
   margin-bottom: 30px;
   padding: 10px 0 10px 0;
 
-     @media only screen and (min-width: 768px) {
-      margin-bottom: 10px;
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 10px;
   }
 `;
 export const CardContainer = styled(Card)`
@@ -87,7 +84,6 @@ export const TypographyStyled = styled(Typography)`
 export const Title = styled(Typography)`
   font-family: "Viga";
   text-align: left;
-  
 `;
 
 export const AlbumDiv = styled.div`
@@ -165,6 +161,7 @@ export const BoxBorder = styled(Box)`
   display: flex;
   justify-content: top;
   flex-direction: column;
+  align-items: center;
   @media only screen and (min-width: 768px) {
     padding: 150px;
   }
@@ -193,20 +190,19 @@ export const ModalDiv = styled.div`
   font-family: "Viga";
 
   @media only screen and (min-width: 767px) {
-      height: 25vh;
-      width: 40vw;
+    height: 25vh;
+    width: 40vw;
   }
 
   @media only screen and (min-width: 1200px) {
-      height: 25vh;
-      width: 30vw;
+    height: 25vh;
+    width: 30vw;
   }
 `;
 
 export const ImgModal = styled.img`
   width: 100%;
   height: 100%;
-
 `;
 
 export const BoxStyled = styled(Box)`
