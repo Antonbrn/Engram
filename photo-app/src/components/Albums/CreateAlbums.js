@@ -107,7 +107,7 @@ const CreateAlbums = () => {
             <HideButton
               component={Link}
               to="/myalbums"
-              style={{ color: "#bc5100" }}
+              style={{ color: "#bc5100", }}
             >
               Create Album
             </HideButton>

@@ -36,6 +36,7 @@ export const ButtonStyled = styled(Button)`
   border: solid 2px #bc5100;
   margin: 10px;
   align-self: flex-end;
+  font-size: 1.5vh;
   &:hover {
     color: #bc5100;
 
@@ -49,6 +50,12 @@ export const ButtonStyled = styled(Button)`
 export const ContainerStyled = styled(Container)`
   font-family: "Viga";
   padding-top: 80px;
+  
+
+    @media only screen and (min-width: 2000px) {
+      padding-top: 120px;
+    
+  }
 `;
 export const BoxContainer = styled(Box)`
   display: flex;
@@ -56,8 +63,9 @@ export const BoxContainer = styled(Box)`
   flex-flow: row wrap;
   margin-bottom: 30px;
   padding: 10px 0 10px 0;
-  @media only screen and (min-width: 768px) {
-    margin-bottom: 10px;
+
+     @media only screen and (min-width: 768px) {
+      margin-bottom: 10px;
   }
 `;
 export const CardContainer = styled(Card)`
@@ -79,6 +87,7 @@ export const TypographyStyled = styled(Typography)`
 export const Title = styled(Typography)`
   font-family: "Viga";
   text-align: left;
+  
 `;
 
 export const AlbumDiv = styled.div`

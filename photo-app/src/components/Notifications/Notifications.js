@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 const Notifications = () => {
   const classes = useStyles();
   return (
-    <div style={{}}>
+    <div style={{ paddingTop: "50px" }}>
       <div
         style={{
           display: "flex",
@@ -32,7 +32,7 @@ const Notifications = () => {
         }}
       >
         <TitleDiv style={{ paddingBottom: 20 }}>
-          <Title variant="h5">(Coming soon)</Title>
+          <Title variant="h5" >(Coming soon)</Title>
         </TitleDiv>
       </div>
       <Grid>
@@ -68,6 +68,7 @@ const Notifications = () => {
                     }}
                   >
                     <Typography
+                      style={{ fontSize: "2vh" }}
                       variant="body2"
                       color="textSecondary"
                       component="p"
@@ -105,6 +106,7 @@ const Notifications = () => {
                     }}
                   >
                     <Typography
+                      style={{ fontSize: "2vh" }}
                       variant="body2"
                       color="textSecondary"
                       component="p"
@@ -141,6 +143,7 @@ const Notifications = () => {
                     }}
                   >
                     <Typography
+                      style={{ fontSize: "2vh" }}
                       variant="body2"
                       color="textSecondary"
                       component="p"
