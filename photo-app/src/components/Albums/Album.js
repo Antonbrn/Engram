@@ -347,7 +347,7 @@ const Album = props => {
           <ArrowBackIcon
             style={{
               color: "#bc5100",
-              fontSize: "6vh"
+              fontSize: "3.5vh"
             }}
           />
         </ArrowButtonStyled>
