@@ -49,15 +49,19 @@ const SignUp = ({ history }) => {
               name="email"
               type="email"
               label="Enter a email"
-              // onSubmit={handleLogin}
+            // onSubmit={handleLogin}
             />
             <br />
-            <StyledTextField name="username" type="username" label="Username" />
+            <StyledTextField
+              name="username"
+              type="username"
+              label="Choose a Username"
+            />
             <br />
             <StyledTextField
               name="password"
-              type="username"
-              label="Choose a Username"
+              type="password"
+              label="Choose a Password"
             />
             <br />
             <ButtonStyled type="submit" size="large">

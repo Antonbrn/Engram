@@ -79,11 +79,13 @@ export const CardContainer = styled(Card)`
 `;
 export const TypographyStyled = styled(Typography)`
   font-family: "Viga";
+
 `;
 
 export const Title = styled(Typography)`
   font-family: "Viga";
   text-align: left;
+  overflow: hidden;
 `;
 
 export const AlbumDiv = styled.div`
