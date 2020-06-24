@@ -44,9 +44,9 @@ const Login = ({ history }) => {
           <FormControlStyled>
             <StyledTextField
               name="email"
-              label="Username/Email"
-              hintText="Enter Your Username/Email"
-              floatingLabelText="Email/Username"
+              label="Email"
+              hintText="Enter Your Email"
+              floatingLabelText="Email"
               onSubmit={handleLogin}
             />
             <br />
