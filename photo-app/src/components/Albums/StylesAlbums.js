@@ -190,13 +190,14 @@ export const ModalDiv = styled.div`
   font-family: "Viga";
 
   @media only screen and (min-width: 767px) {
-    height: 25vh;
+    height: 27vh;
     width: 40vw;
   }
 
   @media only screen and (min-width: 1200px) {
-    height: 25vh;
+    height: 27vh;
     width: 30vw;
+    
   }
 `;
 
