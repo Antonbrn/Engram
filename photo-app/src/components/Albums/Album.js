@@ -5,7 +5,7 @@ import {
   TextField,
   Fade,
   Backdrop,
-  Tooltip
+  Tooltip,
 } from "@material-ui/core";
 import {
   ContainerStyled,
@@ -22,7 +22,7 @@ import {
   ImgModal,
   BoxStyled,
   ArrowButtonStyled,
-  DeletePhotoButton
+  DeletePhotoButton,
 } from "./StylesAlbums";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -44,12 +44,12 @@ const useStyles = makeStyles({
     fontSize: 30,
     display: "flex",
     padding: 0,
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
-  modal: {}
+  modal: {},
 });
 
-const Album = props => {
+const Album = (props) => {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext);
   const albumId = props.match.params.id;
@@ -68,7 +68,7 @@ const Album = props => {
   const [adminId, setAdminId] = useState("");
   const [stateRedirect, setStateRedirect] = useState(false);
   //Get photofile
-  const getPhotoFile = e => {
+  const getPhotoFile = (e) => {
     if (e.target.files[0]) {
       setPhotoFile(e.target.files[0]);
     }
@@ -101,42 +101,40 @@ const Album = props => {
   useEffect(() => {
     db.collection("photos")
       .where("albumId", "==", albumId)
-      .onSnapshot(snapshot => {
-        const newPhotos = snapshot.docs.map(doc => ({
+      .onSnapshot((snapshot) => {
+        const newPhotos = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setPhotos(newPhotos);
       });
   }, []);
 
   //Invite member to album
-  const inviteMemberFunc = () => {
+  const inviteMemberFunc = (e) => {
+    e.preventDefault();
+    handleClosedInviteModal();
     const getMemberId = db
       .collection("users")
       .where("username", "==", inviteMember);
-    getMemberId.get().then(snapshot => {
-      snapshot.forEach(user => {
+    getMemberId.get().then((snapshot) => {
+      snapshot.forEach((user) => {
         db.collection("albums")
           .doc(albumId)
           .get()
-          .then(doc => {
+          .then((doc) => {
             const invited = doc.data().invited || [];
             invited.push(user.id);
-            db.collection("albums")
-              .doc(albumId)
-              .update({ invited: invited });
+            db.collection("albums").doc(albumId).update({ invited: invited });
           });
       });
     });
-    handleClosedInviteModal();
   };
 
   db.collection("albums")
     .doc(albumId)
-    .get()
-    .then(doc => {
-      let data = doc.data();
+    .onSnapshot((snapshot) => {
+      let data = snapshot.data();
       if (data && typeof data.invited !== "undefined") {
         setInviteCount(data.invited.length);
         setAdminId(data.userId);
@@ -145,28 +143,24 @@ const Album = props => {
 
   //delete albums
   const deleteAlbum = () => {
-    db.collection("albums")
-      .doc(albumId)
-      .delete();
+    db.collection("albums").doc(albumId).delete();
     const deletePhotos = db
       .collection("photos")
       .where("albumId", "==", albumId);
-    deletePhotos.get().then(snapshot => {
-      snapshot.forEach(doc => {
+    deletePhotos.get().then((snapshot) => {
+      snapshot.forEach((doc) => {
         doc.ref.delete();
       });
     });
   };
 
   //delete photos
-  const deletePhoto = x => {
-    db.collection("photos")
-      .doc(x.id)
-      .delete();
+  const deletePhoto = (x) => {
+    db.collection("photos").doc(x.id).delete();
   };
 
   //Modals
-  const handleOpen = photoUrl => {
+  const handleOpen = (photoUrl) => {
     setOpenPhoto(true);
     setClickedPhoto(photoUrl);
   };
@@ -192,15 +186,15 @@ const Album = props => {
   };
 
   //Add photos function
-  const addPhotos = e => {
+  const addPhotos = (e) => {
     e.preventDefault();
     handleClosedPhotoModal();
     //Upload photofile to firebase storage
     const uploadTask = storage.ref(`photos/${photoFile.name}`).put(photoFile);
     uploadTask.on(
       "state_changed",
-      snapshot => {},
-      error => {
+      (snapshot) => {},
+      (error) => {
         console.log(error);
       },
       () => {
@@ -208,12 +202,12 @@ const Album = props => {
           .ref("photos")
           .child(photoFile.name)
           .getDownloadURL()
-          .then(url => {
+          .then((url) => {
             //Add url, userId to database
             db.collection("photos").add({
               url: url,
               userId: currentUser.id,
-              albumId: albumId
+              albumId: albumId,
             });
           });
         setUrl(url);
@@ -230,7 +224,7 @@ const Album = props => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
         open={openPhoto}
         onClose={handleClosed}
@@ -239,7 +233,7 @@ const Album = props => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000
+          timeout: 1000,
         }}
       >
         <BoxStyled style={{}}>
@@ -255,7 +249,7 @@ const Album = props => {
 
           justifyContent: "center",
           alignItems: "center",
-          color: "black"
+          color: "black",
         }}
         open={openPhotoModal}
         onClose={handleClosedPhotoModal}
@@ -264,7 +258,7 @@ const Album = props => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000
+          timeout: 1000,
         }}
       >
         <Fade in={openPhotoModal}>
@@ -303,7 +297,7 @@ const Album = props => {
 
           justifyContent: "center",
           alignItems: "center",
-          color: "black"
+          color: "black",
         }}
         open={openInviteModal}
         onClose={handleClosedInviteModal}
@@ -312,7 +306,7 @@ const Album = props => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 1000
+          timeout: 1000,
         }}
       >
         <Fade in={openInviteModal}>
@@ -323,7 +317,7 @@ const Album = props => {
                 error={false}
                 required
                 label="Username"
-                onChange={e => {
+                onChange={(e) => {
                   setInviteMember(e.target.value);
                 }}
               />
@@ -347,7 +341,7 @@ const Album = props => {
           <ArrowBackIcon
             style={{
               color: "#bc5100",
-              fontSize: "3.5vh"
+              fontSize: "3.5vh",
             }}
           />
         </ArrowButtonStyled>
@@ -392,7 +386,7 @@ const Album = props => {
           {photos.map((photo, index) => (
             <AlbumDiv key={index}>
               <DeletePhotoButton
-                onClick={e => {
+                onClick={(e) => {
                   deletePhoto(photo);
                 }}
               >
@@ -402,9 +396,9 @@ const Album = props => {
                 <CardActionArea
                   style={{
                     width: "100%",
-                    height: "100%"
+                    height: "100%",
                   }}
-                  onClick={e => {
+                  onClick={(e) => {
                     handleOpen(photo.url);
                   }}
                 >
