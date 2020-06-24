@@ -56,8 +56,8 @@ const SignUp = ({ history }) => {
             <br />
             <StyledTextField
               name="password"
-              type="password"
-              label="Choose a password"
+              type="username"
+              label="Choose a Username"
             />
             <br />
             <ButtonStyled type="submit" size="large">
